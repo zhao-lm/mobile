@@ -2,7 +2,7 @@
   <div class="content-box">
     <common-header :tittle="tittle" :showback="false"></common-header>
       <div class="page-content">
-        <mt-button @click="todetail">story</mt-button>
+        <mt-button @click="todetail">点击跳转</mt-button>
     </div>
   </div>
 </template>
@@ -13,7 +13,7 @@ import commonHeader from 'common/common-header'
 export default {
   data () {
     return {
-      tittle: '我的故事',
+      tittle: '我的事项',
       num: 0
     }
   },

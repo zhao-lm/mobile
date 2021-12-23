@@ -2,7 +2,8 @@
   <div class="content-box">
     <common-header :showinput="true" :showback="false"></common-header>
     <div class="page-content">
-      <mt-button @click="todetail">home</mt-button>
+      <mt-button @click="todetail">采购详情</mt-button>
+      <mt-button @click="$router.togo('/Home/purchase')">采购申请</mt-button>
     </div>
   </div>
 </template>

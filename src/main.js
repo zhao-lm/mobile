@@ -10,6 +10,11 @@ import Mint from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import FastClick from 'fastclick'
 import '../static/js/flexible.js'
+import 'lib-flexible/flexible.js'
+import Vant from 'vant';
+import 'vant/lib/index.css';
+import ViewUI from 'view-design';
+import 'view-design/dist/styles/iview.css';
 if (process.env.MOCK) {    // 判断是否为mock模式
   require('./mock/index.js')
 }
@@ -55,6 +60,8 @@ window.addEventListener('popstate', function(e) {
 
 Vue.use(Mint)
 Vue.use(Vuex)
+Vue.use(Vant);
+Vue.use(ViewUI);
 Vue.config.productionTip = false
 FastClick.attach(document.body)
 

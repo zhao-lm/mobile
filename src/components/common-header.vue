@@ -1,7 +1,8 @@
 <template>
     <div class="header-box">
       <div class="left-icon">
-        <span v-if="showback" @click="back" class="icon-back"></span>
+        <!-- <span v-if="showback" @click="back" class="icon-back"></span> -->
+        <i v-if="showback" @click="back" class="mintui mintui-back"></i>
       </div>
       <div class="header-tittle">
         <span v-if="showinput">
@@ -65,11 +66,12 @@ export default {
   // position: fixed;
   // top: 0;
   // left: 0;
+  text-align: center;
   width: 100%;
   .h(100);
   .lh(100);
-  background-color: @base-color;
-  color: @base-header-color;
+  background-color: #fff;
+  color: #000;
   .fs(@base-header-size);
   display: flex;
   z-index: 1;

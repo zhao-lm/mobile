@@ -62,7 +62,12 @@ export default new Router({
     {
       path: '/Home/Detail',
       name: 'Detail',
-      component: (resolve) => require(['@/pages/detail'], resolve)
-    }
+      component: (resolve) => require(['@/pages/common/detail'], resolve)
+    },
+    {
+        path: '/Home/purchase',
+        name: 'purchase',
+        component: (resolve) => require(['@/pages/common/purchase'], resolve)
+      }
   ]
 })

@@ -45,6 +45,6 @@ export default {
 @import "~styles/index.less";
 @import "~styles/variable.less";
 .page-content{
-  .mb(98);
+  .mb(98); 
 }
 </style>

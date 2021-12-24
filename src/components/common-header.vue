@@ -12,6 +12,7 @@
       </div>
       <div class="right-icon">
         <span v-if="showmore" class="icon"></span>
+        <span v-if="showContent" class="headerText">下一步</span>
       </div>
     </div>
 </template>
@@ -44,6 +45,10 @@ export default {
       default: true
     },
     showmore: {
+      type: Boolean,
+      default: false
+    },
+    showContent: {
       type: Boolean,
       default: false
     }
@@ -105,6 +110,9 @@ export default {
       background-image: url("../assets/imgs/more.svg");
       background-size: cover;
     }
+  }
+  .headerText {
+    color: red;
   }
 }
 </style>

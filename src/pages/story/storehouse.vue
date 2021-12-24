@@ -1,50 +1,11 @@
 <template>
     <div class="content-box">
-        <common-header tittle="采购申请"></common-header>
+        <common-header tittle="选择仓库" :showContent="true"></common-header>
         <div class="page-content pur_box">
-            <van-tabs v-model="active" @change="getData()">
-                <van-tab title="全部"></van-tab>
-                <van-tab title="待审批"></van-tab>
-                <van-tab title="已通过"></van-tab>
-                <van-tab title="已驳回"></van-tab>
-            </van-tabs>
-            <div>
-                <img src="../../assets/imgs/phone.png" alt="">
-            </div>
+            
             <div class="item" v-for="(item,key) in arr" :key="key">
-                <div>
-                    <p>
-                        <img src="../../assets/imgs/订单管理.png" alt="">
-                        <span>订单编号：</span>
-                        <span>{{item.code}}</span>
-                    </p>
-                    <span v-if="item.status == 1" style="color: #F5854A;">
-                        待审批
-                    </span>
-                    <span v-if="item.status == 2" style="color: #4BC756;">
-                        已通过
-                    </span>
-                    <span v-if="item.status == 3" style="color: #D82138;">
-                        已驳回
-                    </span>
-                </div>
-                <div>
-                    <div>
-                        <div>
-                            <img v-for="(val,index) in item.imgList" :key="index" :src="require('../../'+val)" alt="">
-                        </div>
-                        <div v-if="item.imgList.length<=1" class="content">
-                            {{item.content}}
-                        </div>
-                        <div>
-                            ￥{{item.money}}
-                        </div>
-                    </div>
-                    <div>
-                        <span>申请时间：{{item.applicationTime}}</span>
-                        <span>x{{item.num}}</span>
-                    </div>
-                </div>
+                
+               
             </div>
         </div>
     </div>
@@ -58,8 +19,8 @@ export default {
     },
     data() {
         return {
-            active: 0,
-            data: [
+            active: 1,
+            arr: [
                 {
                     code: 'PO2112210020',
                     status: 1,
@@ -99,30 +60,11 @@ export default {
                     applicationTime: '2021-12-21 11:27',
                     num: 20
                 },
-            ],
-            arr: []
+            ]
         }
-    },
-    created() {
-        this.getData()
     },
     methods: {
-        getData() {
-            let arr = this.data.filter((item, key) => {
-                switch (this.active) {
-                    case 0:
-                        return true;
-                    case 1:
-                        return item.status == 1;
-                    case 2:
-                        return item.status == 2;
-                    case 3:
-                        return item.status == 3;
-                        break;
-                }
-            });
-            this.arr = arr
-        }
+
     }
 }
 </script>
@@ -131,7 +73,9 @@ export default {
 @import '~styles/index.less';
 @import '~styles/variable.less';
 .pur_box {
-    padding-bottom: 100px;
+    background-color:#e5e5e5;
+    margin-top: 20px;
+    padding: 0 20px;
     & > div:nth-of-type(1) {
         margin-top: 0;
     }
@@ -143,10 +87,6 @@ export default {
             height: 100%;
             vertical-align: middle;
         }
-    }
-    .van-tabs__wrap {
-        height: 60px;
-        border-top: 1px solid #e1e1e1;
     }
     .item {
         // height: 117px;
@@ -213,7 +153,7 @@ export default {
                 font-weight: 500;
                 color: #999999;
                 & > span:nth-of-type(1) {
-                    // padding-left: 102px;
+                    padding-left: 102px;
                 }
                 & > span:nth-of-type(2) {
                     font-size: 24px;

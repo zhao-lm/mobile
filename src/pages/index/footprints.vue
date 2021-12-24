@@ -13,7 +13,7 @@ import commonHeader from 'common/common-header'
 export default {
   data () {
     return {
-      tittle: '我的足迹',
+      tittle: '消息',
       num: 0
     }
   },
@@ -23,7 +23,7 @@ export default {
       setNum: 'SET_NUM'
     }),
     todetail() {
-      this.$router.togo('/Home/Detail')
+      this.$router.togo('/Footprints/tidings')
     }
   },
   components: {

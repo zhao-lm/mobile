@@ -30,14 +30,12 @@ Router.prototype.togoin = function () {
   this.isleft = true
 }
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/',
       name: 'index',
       component: (resolve) => require(['@/pages/index'], resolve),
       redirect: '/home',
-      children: [
-        {
+      children: [{
           path: '/home',
           name: 'home',
           component: (resolve) => require(['@/pages/index/home'], resolve)
@@ -59,15 +57,45 @@ export default new Router({
         }
       ]
     },
-    {
+    { //采购详情
       path: '/Home/Detail',
       name: 'Detail',
       component: (resolve) => require(['@/pages/common/detail'], resolve)
     },
+    { //采购申请
+      path: '/Home/purchase',
+      name: 'purchase',
+      component: (resolve) => require(['@/pages/common/purchase'], resolve)
+    },
+    { //我的消息
+      path: '/Footprints/tidings',
+      name: 'tidings',
+      component: (resolve) => require(['@/pages/information/tidings'], resolve)
+    },
+    { //仓库选品
+      path: '/Story/storehouse',
+      name: 'storehouse',
+      component: (resolve) => require(['@/pages/story/storehouse'], resolve)
+    },
+    {  //首页选品
+        path: '/Home/procurement',
+        name: 'procurement',
+        component: (resolve) => require(['@/pages/common/procurement'], resolve)
+    },
     {
-        path: '/Home/purchase',
-        name: 'purchase',
-        component: (resolve) => require(['@/pages/common/purchase'], resolve)
-      }
+      path: '/selection/selectBrand',
+      name: 'selectBrand',
+      component: (resolve) => require(['@/pages/selection/selectBrand'], resolve)
+    },
+    {
+      path: '/selection/slectWare',
+      name: 'selectWare',
+      component: (resolve) => require(['@/pages/selection/selectWare'], resolve)
+    },
+    {
+      path: '/selection/selectContract',
+      name: 'selectContract',
+      component: (resolve) => require(['@/pages/selection/selectContract'], resolve)
+    }
   ]
 })

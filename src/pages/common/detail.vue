@@ -20,24 +20,32 @@
                     </template>
                 </Step>
             </Steps>
-            <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
-                <van-swipe-item v-for="(item,key) in data.imgList" :key="key"><img :src="require('../../'+item)" alt="">
-                </van-swipe-item>
-            </van-swipe>
-            <div class="tit_item">
-                <span class="span1">订单编号</span>
-                <span>{{data.code}}</span>
+            <p class="tit_item">
+                <img src="../../assets/imgs/订单管理.png" alt="">
+                <span>
+                    <span class="span1">订单编号：</span><span>{{data.code}}</span>
+                </span>
+            </p>
+            <div>
+                <van-swipe class="my-swipe" ref="swiper" :autoplay="3000" indicator-color="white">
+                    <van-swipe-item v-for="(item,key) in data.imgList" :key="key"><img :src="require('../../'+item)"
+                            alt="">
+                    </van-swipe-item>
+                </van-swipe>
+                <van-icon name="arrow-left" @click="prev()" />
+                <van-icon name="arrow" @click="next()" />
             </div>
             <div class="detailed">
                 <div class="tit_item">
-                    <span class="span1">采购明细</span>
+                    <img src="../../assets/detailImg/采购明细.png" alt="">
+                    <span>
+                        <span class="span1">采购明细</span>
+                    </span>
                 </div>
                 <div>
                     <ul>
                         <li v-for="(item,key) in list" :key="key" @click="active=key">
-                            <div>
-                                <img :src="require('../../'+(active==key?item.ac_img:item.i_img))" alt="">
-                            </div>
+                            <img :src="require('../../'+(active==key?item.ac_img:item.i_img))" alt="">
                             <p>{{item.name}}</p>
                         </li>
                     </ul>
@@ -89,10 +97,13 @@
             </div>
             <div class="detailed" v-if="data.status==2&&error!='error'">
                 <div class="tit_item">
-                    <span class="span1">厂家信息</span>
+                    <img src="../../assets/detailImg/厂家信息.png" alt="">
+                    <span>
+                        <span class="span1">厂家信息</span>
+                    </span>
                 </div>
                 <div>
-                    <div class="items">
+                    <div class="item items">
                         <p>
                             <span>单据是否传输厂家</span>
                             <span>是</span>
@@ -114,9 +125,13 @@
             </div>
         </div>
         <div class="page-bottom" v-if="data.status!=2&&error!='error'">
-            <p @click="data.status++;error='error'">驳回</p>
-            <p @click="data.status++">通过</p>
+            <p @click="reject()">驳回</p>
+            <p @click="adopt()">通过</p>
         </div>
+        <van-popup v-model="show" class='pop_box'>
+            <img src="../../assets/detailImg/对勾备份.png" alt="">
+            <p v-text="error=='error'?'驳回成功':'通过成功'"></p>
+        </van-popup>
     </div>
 </template>
 
@@ -129,8 +144,8 @@ export default {
                 status: 0,
                 arr: [
                     { name: '董倩', time: '21-12-21', date: '11:27', method: '订单创建' },
-                    { name: '傅莹', time: '21-12-22', date: '09:05', method: '通过一审', error: '一审驳回' },
-                    { name: '汪杰', time: '21-12-25', date: '15:55', method: '通过二审', error: '二审驳回' }
+                    { name: '傅莹', time: '21-12-22', date: '11:27', method: '通过一审', error: '一审驳回' },
+                    { name: '汪杰', time: '21-12-25', date: '11:27', method: '通过二审', error: '二审驳回' }
                 ],
                 imgList: ['assets/imgs/iphone1.png', 'assets/imgs/iphone2.png', 'assets/imgs/iphone3.png', 'assets/imgs/iphone4.png'],
                 code: 'PO2112210020',
@@ -145,13 +160,14 @@ export default {
             },
             error: '',
             list: [
-                { i_img: 'assets/imgs/chanpin1.png', ac_img: 'assets/imgs/chanpin2.png', name: '产品' },
-                { i_img: 'assets/imgs/gongying1.png', ac_img: 'assets/imgs/gongying2.png', name: '供应商' },
-                { i_img: 'assets/imgs/num1.png', ac_img: 'assets/imgs/num2.png', name: '数量' },
-                { i_img: 'assets/imgs/cangku1.png', ac_img: 'assets/imgs/cangku2.png', name: '仓库' },
-                { i_img: 'assets/imgs/hetong1.png', ac_img: 'assets/imgs/hetong2.png', name: '合同' }
+                { i_img: 'assets/detailImg/产品默认.png', ac_img: 'assets/detailImg/产品选中.png', name: '产品' },
+                { i_img: 'assets/detailImg/供应商默认.png', ac_img: 'assets/detailImg/供应商选中.png', name: '供应商' },
+                { i_img: 'assets/detailImg/数量默认.png', ac_img: 'assets/detailImg/数量选中.png', name: '数量' },
+                { i_img: 'assets/detailImg/仓库默认.png', ac_img: 'assets/detailImg/仓库选中.png', name: '仓库' },
+                { i_img: 'assets/detailImg/合同默认.png', ac_img: 'assets/detailImg/合同选中.png', name: '合同' }
             ],
-            active: 0
+            active: 0,
+            show: false
         }
     },
     components: {
@@ -164,6 +180,35 @@ export default {
         tohome() {
             this.$router.goBack()
         },
+        reject() {
+            this.$dialog.confirm({
+                title: '',
+                message: '是否确认驳回单据？',
+                className: 'dialog'
+            })
+                .then(() => {
+                    this.data.status++;
+                    this.error = 'error';
+                    this.show = true
+                })
+                .catch(() => {
+
+                });
+        },
+        adopt() {
+            this.$dialog.confirm({
+                title: '',
+                message: '是否确认通过单据？',
+                className: 'dialog'
+            })
+                .then(() => {
+                    this.data.status++;
+                    this.show = true
+                })
+                .catch(() => {
+
+                });
+        },
         getTitle(item, key) {
             let str;
             str = this.data.status < key ? '待审核' : item.method;
@@ -171,6 +216,12 @@ export default {
                 str = item.error
             }
             return str;
+        },
+        prev() {
+            this.$refs.swiper.prev()
+        },
+        next() {
+            this.$refs.swiper.next()
         }
     }
 }
@@ -180,28 +231,137 @@ export default {
 <style  lang="less">
 @import '~styles/index.less';
 @import '~styles/variable.less';
-
+.dialog {
+    width: 528px;
+    .van-dialog__message {
+        font-size: 32px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: #000000;
+        height: 132px;
+        line-height: 80px;
+    }
+    .van-dialog__footer {
+        button {
+            height: 80px;
+            font-size: 32px;
+            font-family: PingFangSC-Medium, PingFang SC;
+            font-weight: 500;
+            color: #000000;
+            padding: 16px 0px;
+        }
+    }
+}
+.pop_box {
+    width: 260px;
+    height: 180px;
+    background: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    & > img {
+        width: 80px;
+        margin:20px 0 18px;
+    }
+    & > p {
+        font-size: 26px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #666666;
+    }
+}
 .detail_box {
+    padding-bottom: 100px;
     & .tit_item {
+        background: #fff;
+        padding: 14px 32px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        & > .span1 {
-            padding-left: 0.25rem;
-            border-left: 0.05rem solid rgb(51, 136, 255);
+        & img {
+            width: 28px;
+            margin-right: 12px;
+        }
+        & > span {
+            font-size: 24px;
+            font-family: PingFangSC-Medium, PingFang SC;
+            font-weight: 500;
+            color: #999999;
+            .span1 {
+                color: #000000;
+            }
         }
     }
     & > div {
-        margin-top: 0.2rem;
-        padding: 0.25rem 0.1rem;
+        margin-top: 14px;
         background: #fff;
     }
     & > div:nth-of-type(1) {
         margin-top: 0;
+        height: 188px;
+        padding: 20px 30px;
+        .ivu-steps-item {
+            .ivu-steps-head {
+                margin-top: 6px;
+            }
+            .ivu-steps-title {
+                font-size: 28px;
+                font-family: PingFangSC-Medium, PingFang SC;
+                font-weight: 500;
+                color: #aaaaaa;
+            }
+            .ivu-steps-content {
+                p:nth-of-type(1) {
+                    font-size: 24px;
+                    font-family: PingFangSC-Medium, PingFang SC;
+                    font-weight: 500;
+                    color: #aaaaaa;
+                    // text-align: center;
+                }
+                p {
+                    font-size: 24px;
+                    width: 110px;
+                    text-align: center;
+                    font-family: PingFangSC-Regular, PingFang SC;
+                    font-weight: 400;
+                    color: #aaaaaa;
+                }
+            }
+        }
+        .ivu-steps-status-process,
+        .ivu-steps-status-finish {
+            .ivu-steps-title {
+                color: #0382fe;
+            }
+            .ivu-steps-content {
+                p:nth-of-type(1) {
+                    color: #666666;
+                }
+            }
+        }
+    }
+    & > div:nth-of-type(2) {
+        margin-top: 0;
+        border-top: 1px solid #e1e1e1;
+        position: relative;
+        & > i {
+            position: absolute;
+            top: 176px;
+            font-size: 32px;
+        }
+        & > i:nth-of-type(1) {
+            left: 48px;
+        }
+
+        & > i:nth-of-type(2) {
+            right: 48px;
+        }
+    }
+    & > p:nth-of-type(1) {
+        margin-top: 14px;
     }
     .detailed {
         & > div:nth-of-type(2) {
-            padding: 0.2rem 0.4rem;
+            border-top: 1px solid #e1e1e1;
+            padding: 24px 32px;
             & > ul {
                 display: flex;
                 align-items: center;
@@ -209,69 +369,60 @@ export default {
                     height: 1.2rem;
                     width: 20%;
                     text-align: center;
-                    & > div {
-                        height: 0.8rem;
-                        img {
-                            width: 0.7rem;
-                        }
+                    font-size: 24px;
+                    font-family: PingFangSC-Medium, PingFang SC;
+                    font-weight: 500;
+                    color: #000000;
+                    img {
+                        width: 36px;
+                        margin: 8px 0px;
                     }
                 }
             }
             & .item {
-                margin-top: 0.2rem;
+                margin-top: 26px;
                 & > p {
                     height: 0.8rem;
                     display: flex;
                     align-items: center;
                     & > span {
                         display: block;
-                        border-top: 1px solid #969799;
-                        border-left: 1px solid #969799;
+                        border-top: 1px solid #e1e1e1;
+                        border-left: 1px solid #e1e1e1;
                         height: 100%;
                         line-height: 0.8rem;
                         padding-left: 0.3rem;
                     }
                     & > span:nth-of-type(1) {
                         width: 25%;
-                        color: #969799;
+                        font-size: 24px;
+                        font-family: PingFangSC-Regular, PingFang SC;
+                        font-weight: 400;
+                        color: #999999;
                     }
                     & > span:nth-of-type(2) {
                         width: 75%;
-                        border-right: 1px solid #969799;
+                        border-right: 1px solid #e1e1e1;
+                        font-size: 24px;
+                        font-family: PingFangSC-Medium, PingFang SC;
+                        font-weight: 500;
+                        color: #000000;
                     }
                 }
                 & > p:nth-last-of-type(1) {
                     & > span {
-                        border-bottom: 1px solid #969799;
+                        border-bottom: 1px solid #e1e1e1;
                     }
                 }
             }
             .items {
-                margin-top: 0.2rem;
                 & > p {
-                    height: 0.8rem;
-                    display: flex;
-                    align-items: center;
-                    & > span {
-                        display: block;
-                        border-top: 1px solid #969799;
-                        border-left: 1px solid #969799;
-                        height: 100%;
-                        line-height: 0.8rem;
-                        padding-left: 0.3rem;
-                        color: #969799;
-                    }
                     & > span:nth-of-type(1) {
                         width: 75%;
                     }
                     & > span:nth-of-type(2) {
                         width: 25%;
-                        border-right: 1px solid #969799;
-                    }
-                }
-                & > p:nth-last-of-type(1) {
-                    & > span {
-                        border-bottom: 1px solid #969799;
+                        color: #999999;
                     }
                 }
             }
@@ -295,36 +446,40 @@ export default {
         }
     }
     .my-swipe {
+        border-bottom: 1px solid #e1e1e1;
         .van-swipe-item {
             font-size: 20px;
             line-height: 1rem;
             text-align: center;
             background-color: #fff;
             & img {
-                height: 4rem;
+                height: 336px;
             }
         }
     }
 }
 .page-bottom {
     background: #fff;
-    padding: 0.2rem 0.3rem;
+    padding: 20px 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     & > p {
         width: 45%;
-        height: 1rem;
+        height: 60px;
         text-align: center;
-        line-height: 1rem;
+        line-height: 60px;
         border-radius: 1rem;
-        border: 1px solid red;
+        font-size: 28px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        border: 2px solid #ef1236;
     }
     & > p:nth-of-type(1) {
-        color: red;
+        color: #d82138;
     }
     & > p:nth-of-type(2) {
-        background: red;
+        background: #d82138;
         color: #fff;
     }
 }

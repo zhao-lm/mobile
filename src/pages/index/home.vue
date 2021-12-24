@@ -1,9 +1,11 @@
 <template>
   <div class="content-box">
-    <common-header :showinput="true" :showback="false"></common-header>
+    <!-- <common-header :showinput="true" :showback="false"></common-header> -->
+    <common-header :tittle="tittle" :showback="false"></common-header>
     <div class="page-content">
       <mt-button @click="todetail">采购详情</mt-button>
       <mt-button @click="$router.togo('/Home/purchase')">采购申请</mt-button>
+      <mt-button @click="$router.togo('/Story/storehouse')">仓库选品</mt-button>
     </div>
   </div>
 </template>
@@ -11,11 +13,10 @@
 <script>
 import {mapMutations, mapGetters, mapState} from 'vuex'
 import commonHeader from 'common/common-header'
-// import * as homeApi from 'api/home-api'
-// import { ERR_OK } from 'config/index'
 export default {
   data () {
     return {
+      tittle: '首页',
       num: 0
     }
   },

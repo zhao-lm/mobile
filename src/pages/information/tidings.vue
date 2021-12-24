@@ -1,21 +1,11 @@
 <template>
     <div class="content-box">
-        <common-header tittle="采购申请"></common-header>
-        <div class="page-content pur_box">
-            <van-tabs v-model="active" @change="getData()">
-                <van-tab title="全部"></van-tab>
-                <van-tab title="待审批"></van-tab>
-                <van-tab title="已通过"></van-tab>
-                <van-tab title="已驳回"></van-tab>
-            </van-tabs>
-            <div>
-                <img src="../../assets/imgs/phone.png" alt="">
-            </div>
-            <div class="item" v-for="(item,key) in arr" :key="key">
+        <common-header tittle="消息中心"></common-header>
+        <div class="page-content pur_box" style="padding:6px;">
+                        <div class="item" v-for="(item,key) in arr" :key="key">
                 <div>
                     <p>
-                        <img src="../../assets/imgs/订单管理.png" alt="">
-                        <span>订单编号：</span>
+                        <span>采购审批：</span>
                         <span>{{item.code}}</span>
                     </p>
                     <span v-if="item.status == 1" style="color: #F5854A;">
@@ -33,33 +23,33 @@
                         <div>
                             <img v-for="(val,index) in item.imgList" :key="index" :src="require('../../'+val)" alt="">
                         </div>
-                        <div v-if="item.imgList.length<=1" class="content">
+                        <div v-if="item.imgList.length<=1" class="content" style="flex:1;">
                             {{item.content}}
                         </div>
                         <div>
-                            ￥{{item.money}}
+                            <span style="display:block;text-align: right;"> 共{{item.setNum}}件</span>
+                            <span style="display:block;margin-top:10px;"> ￥{{item.money}}</span>
                         </div>
                     </div>
                     <div>
-                        <span>申请时间：{{item.applicationTime}}</span>
-                        <span>x{{item.num}}</span>
+                        <span>{{item.timeName}}：{{item.applicationTime}}</span>
+                        <span>{{item.num}}</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </template>
-
 <script>
-import commonHeader from 'common/common-header'
-export default {
-    components: {
-        commonHeader
-    },
-    data() {
+    import commonHeader from 'common/common-header'
+    export default{
+         components: {
+            commonHeader
+        },
+        data() {
         return {
-            active: 0,
-            data: [
+            active: 1,
+            arr: [
                 {
                     code: 'PO2112210020',
                     status: 1,
@@ -67,17 +57,21 @@ export default {
                     // imgList: ['assets/imgs/iphone1.png', 'assets/imgs/iphone2.png', 'assets/imgs/iphone3.png', 'assets/imgs/iphone4.png'],
                     content: '荣耀60 Pro（12GB+256GB）幻境星空',
                     money: '60.000.00',
+                    setNum:'20',
+                    timeName:'接收时间',
                     applicationTime: '2021-12-21 11:27',
-                    num: 20
+                    num: '11:27'
                 },
                 {
                     code: 'PO2112210020',
                     status: 2,
                     imgList: ['assets/imgs/iphone1.png', 'assets/imgs/iphone2.png', 'assets/imgs/iphone3.png', 'assets/imgs/iphone4.png'],
                     content: '荣耀60 Pro（12GB+256GB）幻境星空',
-                    money: '60.000.00',
+                    money: '16.760.000.00',
+                    setNum:'30',
+                    timeName:'审批时间',
                     applicationTime: '2021-12-21 11:27',
-                    num: 20
+                    num: '昨天'
                 },
                 {
                     code: 'PO2112210020',
@@ -85,53 +79,21 @@ export default {
                     imgList: ['assets/imgs/iphone1.png'],
                     // imgList: ['assets/imgs/iphone1.png', 'assets/imgs/iphone2.png', 'assets/imgs/iphone3.png', 'assets/imgs/iphone4.png'],
                     content: '荣耀60 Pro（12GB+256GB）幻境星空',
-                    money: '60.000.00',
+                    money: '16.760.000.00',
+                    setNum:'30',
+                    timeName:'审批时间',
                     applicationTime: '2021-12-21 11:27',
-                    num: 20
+                    num: '2021-12-17'
                 },
-                {
-                    code: 'PO2112210020',
-                    status: 1,
-                    imgList: ['assets/imgs/iphone1.png'],
-                    // imgList: ['assets/imgs/iphone1.png', 'assets/imgs/iphone2.png', 'assets/imgs/iphone3.png', 'assets/imgs/iphone4.png'],
-                    content: '荣耀60 Pro（12GB+256GB）幻境星空',
-                    money: '60.000.00',
-                    applicationTime: '2021-12-21 11:27',
-                    num: 20
-                },
-            ],
-            arr: []
-        }
-    },
-    created() {
-        this.getData()
-    },
-    methods: {
-        getData() {
-            let arr = this.data.filter((item, key) => {
-                switch (this.active) {
-                    case 0:
-                        return true;
-                    case 1:
-                        return item.status == 1;
-                    case 2:
-                        return item.status == 2;
-                    case 3:
-                        return item.status == 3;
-                        break;
-                }
-            });
-            this.arr = arr
+            ]
         }
     }
-}
+    }
 </script>
-
 <style lang="less">
 @import '~styles/index.less';
 @import '~styles/variable.less';
-.pur_box {
-    padding-bottom: 100px;
+    .pur_box {
     & > div:nth-of-type(1) {
         margin-top: 0;
     }
@@ -144,16 +106,13 @@ export default {
             vertical-align: middle;
         }
     }
-    .van-tabs__wrap {
-        height: 60px;
-        border-top: 1px solid #e1e1e1;
-    }
     .item {
         // height: 117px;
         height: 234px;
+        border-radius: 10px;
         & > div:nth-of-type(1) {
             padding: 16px 32px;
-            border-bottom: 1px solid #e1e1e1;
+            // border-bottom: 1px solid #e1e1e1;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -213,7 +172,7 @@ export default {
                 font-weight: 500;
                 color: #999999;
                 & > span:nth-of-type(1) {
-                    // padding-left: 102px;
+                    padding-left: 0px;
                 }
                 & > span:nth-of-type(2) {
                     font-size: 24px;

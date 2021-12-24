@@ -22,19 +22,19 @@ export default {
       navList: [
         {
           'path': '/home',
-          'name': '推荐'
+          'name': '首页'
         },
         {
           'path': '/story',
-          'name': '故事'
+          'name': '待办'
         },
         {
           'path': '/footprints',
-          'name': '足迹'
+          'name': '消息'
         },
         {
           'path': '/day',
-          'name': '纪念日'
+          'name': '我的'
         }
       ]
     }

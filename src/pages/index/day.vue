@@ -13,7 +13,7 @@ import commonHeader from 'common/common-header'
 export default {
   data () {
     return {
-      tittle: '激情燃烧的岁月',
+      tittle: '我的',
       num: 0
     }
   },

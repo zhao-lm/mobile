@@ -5,7 +5,8 @@
     <div class="page-content">
       <mt-button @click="todetail">采购详情</mt-button>
       <mt-button @click="$router.togo('/Home/purchase')">采购申请</mt-button>
-      <mt-button @click="$router.togo('/Story/storehouse')">仓库选品</mt-button>
+      <mt-button @click="$router.togo('/Home/procurement')">选品采购</mt-button>
+      <mt-button @click="$router.togo('/Logistics/loglist')">物流中心</mt-button>
     </div>
   </div>
 </template>

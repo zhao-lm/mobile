@@ -2,9 +2,9 @@
     <div class="content-box">
         <common-header tittle="待办" :showback="false"></common-header>
         <div class="page-content stor_box">
-            <van-tabs v-model="active" @change="getData()">
-                <van-tab title="待办理"></van-tab>
-                <van-tab title="已审理"></van-tab>
+            <van-tabs v-model="active" @change="getData()" style="background:#EDEFF2 !important">
+                <van-tab title="待审批"></van-tab>
+                <van-tab title="已审批"></van-tab>
             </van-tabs>
             <div class="item" v-for="(item,key) in arr" :key="key">
                 <div>
@@ -121,7 +121,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="less">
+<style lang="less" scoped>
 @import '~styles/index.less';
 @import '~styles/variable.less';
 

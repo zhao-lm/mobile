@@ -12,7 +12,7 @@
       </div>
       <div class="right-icon">
         <span v-if="showmore" class="icon"></span>
-        <span v-if="showContent" class="headerText">下一步</span>
+        <span v-if="showContent" class="headerText" @click="tijiao">提交</span>
       </div>
     </div>
 </template>
@@ -56,6 +56,9 @@ export default {
   methods: {
     back() {
       this.$router.goBack()
+    },
+    tijiao() {
+      this.$router.togo('/Logistics/loginsuccess')
     }
   },
   components: {

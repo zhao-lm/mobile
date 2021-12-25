@@ -279,8 +279,8 @@ export default {
                 font-weight: 400;
                 color: #000000;
                 & > div {
-                    height: 110px;
-                    line-height: 110px;
+                    height: 1.466667rem;
+                    line-height: 1.466667rem;
                     img {
                         vertical-align: middle;
                     }

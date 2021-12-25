@@ -15,6 +15,14 @@ import Vant from 'vant';
 import 'vant/lib/index.css';
 import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
+import VueTouch from 'vue-touch'
+Vue.use(VueTouch, {name: 'v-touch'});
+import { Popup } from 'mint-ui';
+Vue.component(Popup.name, Popup);
+import { Picker } from 'mint-ui';
+Vue.component(Picker.name, Picker);
+import vuePicturePreview from 'vue-picture-preview'
+Vue.use(vuePicturePreview)
 if (process.env.MOCK) {    // 判断是否为mock模式
   require('./mock/index.js')
 }

@@ -44,7 +44,7 @@
 </template>
 
 <script>
- import '@/utils/rem';
+import '@/utils/rem';
 import commonHeader from '@/components/common-header'
 export default {
     data(){

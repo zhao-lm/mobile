@@ -2,6 +2,7 @@
   <div id="app">
     <transition :name="transitionName">
       <router-view class="Router"></router-view>
+      <lg-preview></lg-preview>
     </transition>
   </div>
 </template>

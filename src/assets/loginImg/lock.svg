@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>密码</title>
+    <defs>
+        <ellipse id="path-1" cx="379" cy="251" rx="379" ry="251"></ellipse>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-3">
+            <stop stop-color="#C1E9FD" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <filter x="-13.0%" y="-18.5%" width="125.9%" height="139.7%" filterUnits="objectBoundingBox" id="filter-4">
+            <feOffset dx="0" dy="-3" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="8" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.0600688374 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <rect id="path-5" x="0" y="0" width="328" height="214" rx="10"></rect>
+        <filter x="-3.2%" y="-3.5%" width="106.4%" height="109.8%" filterUnits="objectBoundingBox" id="filter-6">
+            <feOffset dx="0" dy="3" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.0338450612 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="登录页" transform="translate(-31.000000, -276.000000)">
+            <rect id="矩形备份-6" fill="#F5F5F5" x="0" y="0" width="360" height="668"></rect>
+            <rect id="矩形备份" fill="#FFFFFF" x="0" y="1" width="360" height="639"></rect>
+            <ellipse id="椭圆形备份" fill="#F0F4F4" cx="187.5" cy="107" rx="305.5" ry="216"></ellipse>
+            <g id="Artwork" transform="translate(-199.000000, -168.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="蒙版" fill="#D8D8D8" xlink:href="#path-1"></use>
+                <g mask="url(#mask-2)" id="sky">
+                    <g transform="translate(51.857351, 163.587065)">
+                        <polygon fill="url(#linearGradient-3)" points="75.0276565 0 535.123726 0 535.123726 601.900498 75.0276565 601.900498"></polygon>
+                    </g>
+                </g>
+            </g>
+            <g id="输入框" filter="url(#filter-4)" transform="translate(16.000000, 202.000000)">
+                <g id="矩形">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-5"></use>
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-5"></use>
+                </g>
+                <g id="密码" transform="translate(15.000000, 75.000000)" fill-rule="nonzero">
+                    <rect id="矩形" fill="#000000" opacity="0" x="0" y="0" width="16.1077441" height="16"></rect>
+                    <path d="M13.6275575,5.53865008 L2.47964088,5.53865008 C2.15072852,5.5381263 1.83512091,5.66761194 1.6024511,5.89853995 C1.36978129,6.12946796 1.23917033,6.44286042 1.23943476,6.76957302 L1.23943476,13.5371686 C1.23943476,14.8962608 2.3486163,15.9980226 3.71686055,15.9980226 L12.3873517,15.9980226 C13.755596,15.9980226 14.8647771,14.8962608 14.8647771,13.5371686 L14.8647771,6.76957302 C14.8647771,6.0905254 14.3111769,5.53974252 13.6275575,5.53865008 Z M8.67270668,11.9987641 C8.67270668,12.3386737 8.39529999,12.6142248 8.05310149,12.6142248 C7.710903,12.6142248 7.43349631,12.3386737 7.43349631,11.9987641 L7.43349631,9.53791016 C7.43349631,9.19800061 7.710903,8.92244948 8.05310149,8.92244948 C8.39529999,8.92244948 8.67270668,9.19800061 8.67270668,9.53791016 L8.67270668,11.9987641 Z" id="形状" fill="#999999"></path>
+                    <path d="M8.05260382,1.23191003 C9.76208941,1.23354513 11.1474906,2.60967943 11.1491367,4.30773033 L11.1491367,5.53766298 L4.95507557,5.53766298 L4.95507557,4.30674164 C4.95672168,2.60869073 6.34212288,1.23255644 8.05160848,1.23092134 M8.05160848,0 C6.90169786,0.000262186132 5.79898944,0.454258345 4.98606651,1.2621145 C4.17314357,2.06997065 3.71659654,3.16551142 3.71686044,4.30773033 L3.71686044,6.76858431 L12.3883471,6.76858431 L12.3883471,4.30773033 C12.3883471,1.9291826 10.4471687,0.0009886875 8.05260382,0.0009886875 L8.05160848,0 Z" id="形状" fill="#999999"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

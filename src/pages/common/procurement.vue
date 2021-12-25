@@ -44,27 +44,29 @@
                             更多<img src="../../assets/detailImg/返回键备份 5.png" alt="">
                         </p>
                     </div>
-                    <ul>
-                        <li v-for="(item,key) in data" :key="key" class="case_item" :class="key==0?'active':''"
-                            :style="{background:colorList[key%4]}">
-                            <div>
+                    <waterfall :col="2" :data="data">
+                        <template>
+                            <div v-for="(item,key) in data" :key="key" class="cell-item" :class="key==0?'active':''"
+                                :style="{background:colorList[key%4]}">
                                 <div>
-                                    <p>{{item.name}}</p>
-                                    <p>{{item.describe}}</p>
+                                    <div>
+                                        <p>{{item.name}}</p>
+                                        <p>{{item.describe}}</p>
+                                    </div>
+                                    <img :src="require('../../'+item.icon)" alt="" v-if="key!=0">
                                 </div>
-                                <img :src="require('../../'+item.icon)" alt="" v-if="key!=0">
+                                <div>
+                                    <p> <span>合同采购价</span> <span>{{item.price}}元</span> </p>
+                                    <p> <span>当前总库存</span> <span>{{item.stock}}台</span> </p>
+                                    <p> <span>四周均销</span> <span>{{item.averageSales}}台</span> </p>
+                                    <p> <span>累计销量</span> <span>{{item.salesVolume}}台</span> </p>
+                                </div>
+                                <div class="img" v-if="key==0">
+                                    <img :src="require('../../'+item.icon)" alt="">
+                                </div>
                             </div>
-                            <div>
-                                <p> <span>合同采购价</span> <span>{{item.price}}元</span> </p>
-                                <p> <span>当前总库存</span> <span>{{item.stock}}台</span> </p>
-                                <p> <span>四周均销</span> <span>{{item.averageSales}}台</span> </p>
-                                <p> <span>累计销量</span> <span>{{item.salesVolume}}台</span> </p>
-                            </div>
-                            <div class="img" v-if="key==0">
-                                <img :src="require('../../'+item.icon)" alt="">
-                            </div>
-                        </li>
-                    </ul>
+                        </template>
+                    </waterfall>
                 </div>
             </div>
         </div>
@@ -279,8 +281,8 @@ export default {
                 font-weight: 400;
                 color: #000000;
                 & > div {
-                    height: 1.466667rem;
-                    line-height: 1.466667rem;
+                    height: 110px;
+                    line-height: 110px;
                     img {
                         vertical-align: middle;
                     }
@@ -333,70 +335,67 @@ export default {
                 }
             }
         }
-        & > ul {
-            // display: flex;
-            // align-items: center;
-            // justify-content: space-between;
-            // flex-wrap: wrap;
-            column-count: 2;
-            column-gap: 14px;
-            li.active {
-                position: relative;
-                .img {
-                    height: 156px;
-                    & > img {
-                        position: absolute;
-                        right: 0;
-                        bottom: 0;
-                        width: 246px;
-                    }
-                }
-                & > div:nth-of-type(1) {
-                    & > div {
-                        width: 87%;
-                    }
+        div.active {
+            position: relative;
+            .img {
+                height: 156px;
+                & > img {
+                    position: absolute;
+                    right: -2.5px;
+                    bottom: 0;
+                    width: 246px;
                 }
             }
-            & > li {
-                break-inside: avoid;
-                box-sizing: border-box;
-                // width: 48%;
-                border-radius: 8px;
-                background: #eaf1f9;
+            & > div:nth-of-type(1) {
+                & > div {
+                    width: 87%;
+                }
+            }
+        }
+        & .cell-item {
+            // width: 48%;
+            border-radius: 15px;
+            background: #eaf1f9;
+            // margin-bottom: 14px;
+            padding: 18px 22px;
+            border: 7px solid #fff;
+            & > div:nth-of-type(1) {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
                 margin-bottom: 14px;
-                padding: 18px 22px;
-                & > div:nth-of-type(1) {
+                & > div {
+                    width: 70%;
+                    & > p {
+                        font-size: 28px;
+                        font-family: PingFangSC-Medium, PingFang SC;
+                        font-weight: 500;
+                        color: #000000;
+                    }
+                    & > p:nth-of-type(2) {
+                        font-size: 24px;
+                        word-break: break-all;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                    }
+                }
+                & > img {
+                    width: 72px;
+                }
+            }
+            & > div:nth-of-type(2) {
+                & > p {
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
-                    margin-bottom: 14px;
-                    & > div {
-                        width: 70%;
-                        & > p {
-                            font-size: 28px;
-                            font-family: PingFangSC-Medium, PingFang SC;
-                            font-weight: 500;
-                            color: #000000;
-                        }
-                        & > p:nth-of-type(2) {
-                            font-size: 24px;
-                            word-break: break-all;
-                        }
-                    }
-                    & > img {
-                        width: 72px;
-                    }
-                }
-                & > div:nth-of-type(2) {
-                    & > p {
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-between;
-                        font-size: 20px;
-                        font-family: PingFangSC-Regular, PingFang SC;
-                        font-weight: 400;
-                        color: #666666;
-                    }
+                    font-size: 20px;
+                    font-family: PingFangSC-Regular, PingFang SC;
+                    font-weight: 400;
+                    color: #666666;
+                    margin-bottom: 3px;
                 }
             }
         }

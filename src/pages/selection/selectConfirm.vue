@@ -1,6 +1,6 @@
 <template>
    <div class="box">
-        <common-header @sureClick='onSureClick' :showRightTitle="true" :rightTitle='rightTitle' :tittle="tittle" :showback="true" :showright='true'></common-header>
+        <common-header @sureClick='onSureClick'  :tittle="tittle" :showback="true" :showright='true'></common-header>
         <div class="head">
             <div class="rightContent">
                 <div class="phoneItem">
@@ -34,6 +34,29 @@
                 <div>经销</div>
             </div>
         </div>
+        <div class="info">
+            <div class="infoHead">
+                 <span></span>
+                 <div class="infoTitle">仓库信息</div>
+            </div>
+            <div class="main">
+                <div class="leftMain">
+                    <div>供应商名称</div>
+                    <div>合同编码</div>
+                    <div>生效日期</div>
+                    <div>经代码</div>
+                </div>
+                <div class="rightMain">
+                    <div>宁夏理工大学</div>
+                    <div>1234567</div>
+                    <div>7654321</div>
+                    <div>经销</div>
+                </div>
+            </div>
+        </div>
+        <div class="button">
+            <div @click="toSure" class="submit">提交</div>
+        </div>
    </div>
 </template>
 
@@ -43,17 +66,16 @@ import commonHeader from '@/components/common-header'
 export default {
     data(){
         return {
-             tittle: '合同验证',
-             rightTitle:'下一步'
+             tittle: '确认采购信息'
         }
     },
     methods:{
      //点击确定的时候
-     onSureClick(){
-         this.$router.push({
-             path:'/selection/selectWare'
-         })
-     }
+            toSure(){
+                this.$router.push({
+                    path:'/selection/selectSuccess'
+                })  
+            }
     },
      components: {
         commonHeader
@@ -86,9 +108,10 @@ export default {
   margin: 0 1%;
   display: flex;
   align-items: center;
+  border-bottom: 0.01rem dashed #ccc;
 }
 .itemLeft {
-  height: 1rem;
+  height: 1rem; 
   width: 1rem;
   margin-top: 0.15rem;
 }
@@ -151,7 +174,6 @@ export default {
   line-height: 0.4rem;
 }
 .main{
-    margin-top: 0.2rem;
     margin-left: 2%;
     width: 96%;
     background: white;
@@ -181,5 +203,54 @@ export default {
     font-size: 0.16rem;
     height: 0.6rem;
     line-height: 0.6rem;
+}
+.info{
+    width: 98%;
+    margin-top: 0.2rem;
+    background: white;
+    margin-left: 1%;
+    border-radius: 0.1rem;
+}
+.infoHead{
+    height: 0.8rem;
+    width: 100%;
+    border-bottom: 0.01rem #ccc dashed;
+    display: flex;
+}
+.infoHead span {
+    height: 0.25rem;
+    width: 0.04rem;
+    background: red;
+    margin-left: 0.2rem;
+    margin-top: 0.26rem;
+}
+.infoTitle{
+    font-size: 0.22rem;
+    margin-left: 0.1rem;
+    font-weight: 600;
+    line-height: 0.8rem;
+}
+.button{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1rem;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    background: white;
+}
+.submit{
+    width: 94%;
+    height: 0.7rem;
+    background: red;
+    color: white;
+    margin-left: 0.2rem;
+    margin-top: 0.15rem;
+    font-size: 0.24rem;
+    line-height: 0.6rem;
+    text-align: center;
+    border-radius: 0.5rem;
 }
 </style>

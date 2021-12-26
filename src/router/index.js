@@ -99,20 +99,41 @@ export default new Router({
         name: 'procurement',
         component: (resolve) => require(['@/pages/common/procurement'], resolve)
     },
+    // 选择品牌
     {
       path: '/selection/selectBrand',
       name: 'selectBrand',
       component: (resolve) => require(['@/pages/selection/selectBrand'], resolve)
     },
+    // 合同验证
+    {
+      path: '/selection/selectContract',
+      name: 'selectContract',
+      component: (resolve) => require(['@/pages/selection/selectContract'], resolve)
+    },
+    //选择仓库
     {
       path: '/selection/slectWare',
       name: 'selectWare',
       component: (resolve) => require(['@/pages/selection/selectWare'], resolve)
     },
+     //确认采购信息
     {
-      path: '/selection/selectContract',
-      name: 'selectContract',
-      component: (resolve) => require(['@/pages/selection/selectContract'], resolve)
+      path: '/selection/selectConfirm',
+      name: 'selectConfirm',
+      component: (resolve) => require(['@/pages/selection/selectConfirm'], resolve)
+    },
+    //采购成功
+    {
+      path: '/selection/selectSuccess',
+      name: 'selectSuccess',
+      component: (resolve) => require(['@/pages/selection/selectSuccess'], resolve)
+    },
+    //详情页面
+    {
+      path: '/selection/selectInfo',
+      name: 'selectInfo',
+      component: (resolve) => require(['@/pages/selection/selectInfo'], resolve)
     },
     { //运单信息
       path: '/Logistics/loglist',

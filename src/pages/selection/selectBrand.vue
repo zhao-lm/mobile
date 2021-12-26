@@ -44,19 +44,21 @@
 </template>
 
 <script>
-import '@/utils/rem';
 import commonHeader from '@/components/common-header'
 export default {
     data(){
         return {
              tittle: '我的足迹',
-             rightTitle:'确定'
+             rightTitle:'确定',
+            //  imgArr:["../../assets/logoImg/360.png"]
         }
     },
     methods:{
      //点击确定的时候
      onSureClick(){
-         console.log('我是点击确定的时间')
+         this.$router.push({
+             path:'/selection/selectContract'
+         })
      }
     },
      components: {

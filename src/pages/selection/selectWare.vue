@@ -106,7 +106,6 @@
 </template>
 
 <script>
-import '@/utils/rem';
 import commonHeader from "@/components/common-header";
 export default {
   data() {
@@ -157,7 +156,9 @@ export default {
      },
     //点击确定的时候
     nextClick() {
-      console.log("我是点击下一步的时间");
+       this.$router.push({
+             path:'/selection/selectConfirm'
+         })
     }
   },
   components: {

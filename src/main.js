@@ -25,6 +25,7 @@ import vuePicturePreview from 'vue-picture-preview'
 Vue.use(vuePicturePreview)
 import water from "vue-waterfall2";  //瀑布流插件
 Vue.use(water);  //瀑布流插件使用
+import '@/utils/rem';
 if (process.env.MOCK) {    // 判断是否为mock模式
   require('./mock/index.js')
 }

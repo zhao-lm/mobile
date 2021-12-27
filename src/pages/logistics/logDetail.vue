@@ -4,10 +4,16 @@
       <div class="page-content stor_box">
         <div class="item content" v-for="(item, key) in arr" :key="key">
           <div>
-            <p>运单编号：{{ item.code }}</p>
-            <p>华盛编号：{{ item.hscode }}</p>
             <p>
-              运单图片：
+              <span>运单编号：</span>
+              <span>{{ item.code }}</span>
+            </p>
+            <p>
+              <span>华盛编号：</span>
+              <span>{{ item.hscode }}</span>
+            </p>
+            <p>
+              <span>运单图片：</span>
               <img
                 v-for="(val, index) in item.imgList"
                 :key="index"
@@ -15,22 +21,36 @@
                 alt=""
               />
             </p>
-            <p>上传时间：{{ item.applicationTime }}</p>
+            <p>
+              <span>上传时间：</span>
+              <span>{{ item.applicationTime }}</span>
+            </p>
           </div>
         </div>
         <div class="eResult">
           <p>评价结果</p>
-          <div class="eBtn">
-            <p>是否合格：{{hege}}</p>
-            <p v-show="hege=='不合格'">原因分类：其他</p>
-            <p v-show="hege=='不合格'">具体原因：非本单签收单</p>
+          <div class="eBtn1">
+            <p>
+              <span>是否合格：</span>
+              <span>{{hege}}</span>
+            </p>
+            <p v-show="hege=='不合格'">
+              <span>原因分类：其他</span>
+            </p>
+            <p v-show="hege=='不合格'">
+              <span>具体原因：非本单签收单</span>
+            </p>
           </div>
         </div>
         <div class='hecha'>
           <p>核查信息</p>
           <div class="hBtn">
-            <p>核查人员：乔士兰</p>
-            <p>核查时间：2021-12-25 11:57</p>
+            <p>
+              <span>核查人员：乔士兰</span>
+            </p>
+            <p>
+              <span>核查时间：2021-12-25 11:57</span>
+            </p>
           </div>
         </div>
       </div>
@@ -109,27 +129,16 @@
     margin-top: 20px;
   }
   .item {
-    height: 234px;
-    & > div:nth-of-type(1) {
-      padding: 10px 36px;
-      & > p:nth-of-type(1) {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      & > p {
-        font-size: 24px;
-        font-family: PingFangSC-Regular, PingFang SC;
-        font-weight: 400;
-        margin-top: 10px;
-      }
-      & > p:nth-of-type(3) {
-        img {
-          width: 48px;
-          height: 72px;
-          margin-right: 28px;
-          vertical-align: top;
-        }
+    height: 300px;
+    padding: 30px;
+    & > div > p {
+      display: flex;
+      margin-bottom:20px;
+      font-size: 30px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      & > img {
+        width: 80px;
+        height: 60px;
       }
     }
   }
@@ -141,43 +150,37 @@
     font-family: PingFangSC-Regular, PingFang SC;
     font-weight: 400;
   }
-  & > div.eBtn {
+  & > div.eBtn1 {
     background-color: #fff;
-    padding: 0.5rem;
-    padding-top:0.1rem;
-    border-radius: 0.1rem;
+    padding: 30px;
+    padding-bottom:5px;
+    border-radius: 10px;
     & > p {
-      margin-right: 0.6rem;
-      margin-top:0.5rem;
-    }
-    & > .hegebtn {
-      width: 2rem;
-      height: 0.6rem;
-      line-height: 0.2rem;
-      border-radius: 0.2rem;
-      margin-right: 0.2rem;
-    }
-    & > .active {
-      color: #d82138;
-      border: 1px solid #d82138;
-      background-color: #fff;
+      margin-right: 60px;
+      display: block;
+      margin-bottom: 40px;
+      span {
+        font-size: 30px;
+      }
     }
   }
 }
 .hecha > p {
-   font-size: 0.4rem;
-   padding: 0.3rem;
+   font-size: 30px;
+   padding: 25px;
    font-family: PingFangSC-Regular, PingFang SC;
    font-weight: 400; 
 }
 .hecha .hBtn {
     background-color: #fff;
-    padding: 0.5rem;
-    padding-top:0.1rem;
-    border-radius: 0.1rem;
+    padding: 40px;
+    padding-top:10px;
+    border-radius: 10px;
+    font-size: 30px;
 }
 .hecha .hBtn p {
-    margin-right: 0.6rem;
-    margin-top:0.5rem;
+    margin-right: 60px;
+    margin-top:50px;
+    font-size: 30px;
 }
 </style>

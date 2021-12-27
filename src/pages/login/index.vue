@@ -6,14 +6,16 @@
         </div>
         
         <div class="loginInput">
-            <div style="display:flex;padding-left:1rem;padding-top:0.5rem">
+            <div style="display:flex;margin-left:20px;">
               <img src="../../assets/loginImg/people.svg" alt="">
-              <mt-field class="inputClass" placeholder="请输入账号" v-model="username"></mt-field>
+              <!-- <mt-field class="inputClass" placeholder="请输入账号" v-model="username"></mt-field> -->
+              <input class="inputClass" type="text" placeholder="请输入账号">
             </div>
-            <div style="display:flex;padding-left:1rem;">
+            <div style="display:flex;margin-left:20px;">
               <img src="../../assets/loginImg/lock.svg" alt="">
-              <mt-field class="inputClass" placeholder="请输入密码" :type="password" v-modal="password"></mt-field>
-              <img style="margin-right:0.2rem;" @click="toShow" src="../../assets/loginImg/eye.svg" alt="">
+              <!-- <mt-field class="inputClass" placeholder="请输入密码" :type="password" v-modal="password"></mt-field> -->
+              <input class="inputClass" type="text" placeholder="请输入密码">
+              <img style="margin-right:0.2rem;border-bottom: 1px solid #ccc;" @click="toShow" src="../../assets/loginImg/eye.svg" alt="">
             </div>
             <mt-button type="danger" @click="toLogin">登 录</mt-button>
         </div>
@@ -58,14 +60,15 @@ export default {
   height:120%;
 }
 .cHeader {
-  margin-top:1rem;
   text-align: center;
   & > img {
-    width: 8rem;
-    height:4rem;
+    margin-top:120px;
+    width: 300px;
+    height:144px;
   }
   & > p {
-    font-size: 70px;
+    font-size: 45px;
+    font-family: PingFangSC-Regular, PingFang SC;
     font-weight: bold;
     margin-top:40px;
     color: #d82138;
@@ -73,26 +76,34 @@ export default {
 }
 .loginInput {
   background-color: #fff;
-  height: 6rem;
+  height: 428px;
   margin: 0 auto;
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 120px;
   width: 90%;
   border-radius: 10px;
   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.03);
+  padding-top: 40px;
 }
 .mint-field-core {
   font-size:30px;
 }
 .mint-button--danger {
   margin-top: 80px;
-  width: 80%;
-  height: 80px;
-  border-radius: 0.2rem;
-  font-size: 40px;
+  width: 598px;
+  height: 84px;
+  background: linear-gradient(270deg, #FD7F63 0%, #F6565C 100%);
+  border-radius: 42px;
+  font-size: 36px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  line-height: 50px;
 }
 .inputClass {
-  width: 90%;
-  height: 1.2rem;
+  font-size: 35px;
+  border-bottom: 2px solid #ccc;
+  margin-left:18px;
+  height:75px;
+  width:90%;
 }
 </style>

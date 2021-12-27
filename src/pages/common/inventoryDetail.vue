@@ -17,7 +17,7 @@
             </div>
             <div class="tit_item">
                 <span>采购模式</span>
-                <span>{{data.code}}</span>
+                <span>{{data.pattern}}</span>
             </div>
             <div class="tit_item">
                 <span>当前日期</span>
@@ -25,7 +25,7 @@
             </div>
             <div class="tit_item">
                 <span>库存数量</span>
-                <span>{{data.num}}</span>
+                <span style='color:#d82138'> <span class="span1">{{data.num}}</span>件</span>
             </div>
             <div class="detailed">
                 <div class="tit_item">
@@ -77,7 +77,7 @@
                     </span>
                 </div>
                 <div>
-                    <div class="item">
+                    <div class="item" style="margin-top:0px;">
                         <p>
                             <span>地点编码</span>
                             <span>{{data.placeCode}}</span>
@@ -156,7 +156,7 @@ export default {
     }
     & .tit_item {
         background: #fff;
-        padding: 14px 32px;
+        padding: 14px 20px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -173,6 +173,11 @@ export default {
         }
         & > span:nth-of-type(2) {
             color: #999;
+        }
+        .span1{
+            font-size: 30px;
+            font-weight: 600;
+            margin-right: 4px;
         }
     }
     .my-swipe {

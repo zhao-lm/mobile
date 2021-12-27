@@ -176,6 +176,15 @@ export default {
     computed: {
 
     },
+    created(){
+        // console.log(this.$route.query.status);
+        if(this.$route.query.status){
+            if(this.$route.query.status==3){
+                this.error = 'error'
+            }
+            this.data.status = this.$route.query.status-1   
+        }
+    },
     methods: {
         tohome() {
             this.$router.goBack()
@@ -189,7 +198,13 @@ export default {
                 .then(() => {
                     this.data.status++;
                     this.error = 'error';
-                    this.show = true
+                    this.show = true;
+                    setTimeout(() => {
+                        this.show = false;
+                        setTimeout(() => {
+                            this.$router.push('/story');
+                        }, 500)
+                    }, 500)
                 })
                 .catch(() => {
 
@@ -202,8 +217,14 @@ export default {
                 className: 'dialog'
             })
                 .then(() => {
-                    this.data.status++;
-                    this.show = true
+                    // this.data.status++;
+                    this.show = true;
+                    setTimeout(() => {
+                        this.show = false;
+                        setTimeout(() => {
+                            this.$router.push('/story');
+                        }, 500)
+                    }, 500)
                 })
                 .catch(() => {
 
@@ -228,7 +249,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style  lang="less" scoped>
+<style  lang="less">
 @import '~styles/index.less';
 @import '~styles/variable.less';
 .dialog {
@@ -261,7 +282,7 @@ export default {
     & > img {
         width: 80px;
         height: auto;
-        margin:20px 0 18px;
+        margin: 20px 0 18px;
     }
     & > p {
         font-size: 26px;
@@ -270,7 +291,7 @@ export default {
         color: #666666;
     }
 }
-/deep/.detail_box {
+.detail_box {
     padding-bottom: 100px;
     & .tit_item {
         background: #fff;

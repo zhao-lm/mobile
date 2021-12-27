@@ -4,10 +4,16 @@
     <div class="page-content stor_box">
       <div class="item content" v-for="(item, key) in arr" :key="key">
         <div>
-          <p>运单编号：{{ item.code }}</p>
-          <p>华盛编号：{{ item.hscode }}</p>
           <p>
-            运单图片：
+            <span>运单编号：</span>
+            <span>{{ item.code }}</span>
+          </p>
+          <p>
+            <span>华盛编号：</span>
+            <span>{{ item.hscode }}</span>
+          </p>
+          <p>
+            <span>运单图片：</span>
             <img
               v-for="(val, index) in item.imgList" v-preview="require('../../' + val)"
                preview-title-enable="true"
@@ -17,7 +23,10 @@
               alt=""
             />
           </p>
-          <p>上传时间：{{ item.applicationTime }}</p>
+          <p>
+            <span>上传时间：</span>
+            <span>{{item.applicationTime }}</span>
+          </p>
         </div>
       </div>
       <div class="eResult">
@@ -55,7 +64,7 @@
             <mt-picker
               :slots="slots"
               @change="onValuesChange"
-              style="width: 10rem; height: 10rem"
+              class="mtPicker"
               showToolbar
             >
               <div class="picker-toolbar-title">
@@ -67,7 +76,7 @@
           </mt-popup>
         </div>
 
-        <div style="margin-bottom: 2rem" v-show="juti">
+        <div class="otherR" v-show="juti">
           <mt-field
             label="具体原因"
             type="textarea"
@@ -238,55 +247,45 @@ export default {
     margin-top: 20px;
   }
   .item {
-    // height: 117px;
-    height: 234px;
-    & > div:nth-of-type(1) {
-      padding: 10px 36px;
-      & > p:nth-of-type(1) {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      & > p {
-        font-size: 24px;
-        font-family: PingFangSC-Regular, PingFang SC;
-        font-weight: 400;
-        margin-top: 10px;
-      }
-      & > p:nth-of-type(3) {
-        img {
-          width: 48px;
-          height: 72px;
-          margin-right: 28px;
-          vertical-align: top;
-        }
+    height: 300px;
+    padding: 30px;
+    & > div > p {
+      display: flex;
+      margin-bottom:20px;
+      font-size: 30px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      & > img {
+        width: 80px;
+        height: 60px;
       }
     }
   }
 }
 .eResult {
   & > p {
-    font-size: 0.4rem;
-    padding: 0.3rem;
+    font-size: 30px;
+    padding: 30px;
     font-family: PingFangSC-Regular, PingFang SC;
     font-weight: 400;
   }
   & > div.eBtn {
     background-color: #fff;
-    height: 1.5rem;
-    padding-top: 0.45rem;
-    padding-left: 0.3rem;
-    border-radius: 0.1rem;
+    height: 110px;
+    padding-top: 30px;
+    padding-left: 30px;
+    border-radius: 10px;
     & > p {
-      margin-right: 0.6rem;
+      margin-right: 40px;
+      font-size:30px;
       display: inline-block;
     }
     & > .hegebtn {
-      width: 2rem;
-      height: 0.6rem;
-      line-height: 0.2rem;
-      border-radius: 0.2rem;
-      margin-right: 0.2rem;
+      width: 160px;
+      height: 50px;
+      font-size: 30px;
+      line-height: 40px;
+      border-radius:12px;
+      margin-right: 20px;
     }
     & > .active {
       color: #d82138;
@@ -296,29 +295,43 @@ export default {
   }
 }
 .reision {
-  margin-top: 0.2rem;
+  margin-top: 20px;
   & > div.rBtn {
     background-color: #fff;
-    height: 1.5rem;
-    padding-top: 0.25rem;
-    padding-left: 0.3rem;
-    border-radius: 0.1rem;
+    height: 110px;
+    padding-top: 20px;
+    padding-left: 30px;
+    border-radius: 10px;
+    & > p {
+      font-size: 30px;
+    }
     & > div > .selectBtn {
       display: inline-block;
-      margin-left: 0.6rem;
+      margin-left: 40px;
       border: 1px solid #ccc;
-      width: 6rem;
-      height: 1rem;
-      padding: 0.3rem;
-      border-radius: 0.2rem;
+      width: 480px;
+      height: 60px;
+      padding: 30px;
+      border-radius: 12px;
+      font-size: 30px;
     }
     & > div > img {
-      width: 0.8rem;
-      height: 0.8rem;
+      width: 40px;
+      height: 50px;
       position: absolute;
-      right: 0.1rem;
-      top: 0.15rem;
+      right: 10px;
+      top: 10px;
     }
+  }
+  .mint-cell {
+    padding-bottom: 20px;
+  }
+  .mint-cell-title {
+    width: 150px;
+  }
+  .mint-cell-text{
+    font-size: 30px;
+    margin-left:20px;
   }
 }
 .picker-toolbar-title {
@@ -327,24 +340,28 @@ export default {
   justify-content: space-around;
   height: 40px;
   line-height: 40px;
-  font-size: 0.5rem;
-  margin-top: 0.5rem;
+  font-size: 30px;
+  margin-top: 30px;
 }
 
 .usi-btn-cancel {
-  font-size: 0.5rem;
+  font-size: 30px;
 }
 .usi-btn-sure {
   color: #ff6600;
-  font-size: 0.5rem;
+  font-size: 30px;
 }
 .picker-slot-wrapper {
-  height: 10rem !important;
-  font-size: 0.5rem;
+  height: 750px !important;
+  font-size: 30px;
 }
 .mint-field-core {
   border: 1px solid #ccc;
-  margin-left: 0.8rem;
-  margin-right: 1.6rem;
+  margin-left: 40px;
+  margin-right: 65px;
+}
+.mtPicker {
+  width: 750px;
+  height: 750px;
 }
 </style>

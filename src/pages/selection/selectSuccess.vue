@@ -10,7 +10,7 @@
        </div>
     <div class="button">
         <div class="sure">确定</div>
-        <div @click="toDetail" class="toDetail">查看详情</div>
+        <div @click="toDetail" class="toDetail">查看申请</div>
     </div>
                             
   </div>

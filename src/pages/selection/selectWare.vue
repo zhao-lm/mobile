@@ -62,27 +62,71 @@
                 <div class="firstTitle">
                     <div class="type">{{item.type}}:</div>
                     <div class="typeInput">
-                        <Select v-model="item.typeModel" >
-                            <Option v-for="i in typeList" :value="i.value" :key="i.value">{{ i.label }}</Option>
-                        </Select>
+                        <Input v-model="item.typeModel" :disabled='true'>
+                            <!-- <Option v-for="i in typeList" :value="i.value" :key="i.value">{{ i.label }}</Option> -->
+                        </Input>
                     </div>
                     <img @click="deleteItem(index)"  src='../../assets/logoImg/delete.png' alt="">
                 </div>
                     <div class="firstTitle">
                     <div class="type">{{item.address}}:</div>
                     <div class="typeInput">
-                        <Select v-model="item.addressModel" >
-                            <Option v-for="i in addressList" :value="i.value" :key="i.value">{{ i.label }}</Option>
-                        </Select>
+                        <Input  v-model="item.addressModel"  @on-focus="showModel">
+                         
+                            <!-- <Option v-for="i in addressList" :value="i.value" :key="i.value">{{ i.label }}</Option> -->
+                        </Input>
                     </div>
-                
+                      <van-action-sheet v-model="show" title="地点库位">
+                            <div class="ModalContent">
+                                 <div class="modalHead">
+                                     <input type="text" placeholder="请输入地点名称或编码">
+                                 </div>
+                                 <div class="modalWare">
+                                     <div class="wareTitle">常用仓库</div>
+                                     <div class="wareCompany"> 
+                                          <div @click="oftenWare(index)" :class="activeClass==index?'activeClass':''" v-for="(item,index) in cityList" :key="index">{{item}}</div>
+                                     </div>
+                                 </div>
+                                  <div class="scroll">
+                                        <div class="scrollTitle">选择仓库与库位</div>
+                                        <div class="scrollMain">
+                                            <div class="scrollLeft">
+                                              <div @click="letfScrollClcik(index)" class="leftItem" v-for="(item,index) in LeftList" :key="index">
+                                                <span v-if="scrollLeftActive==index" class="scrollActive"></span>
+                                                <div style="margin-left:0.3rem">
+                                                      <p :class="scrollLeftActive==index?'active':''">{{item.name}}</p>
+                                                      <p>{{item.value}}</p>
+                                               </div>
+                                               </div>
+                                            </div>
+                                            <div class="scrollRight">
+                                              <div class="scrollRightContent">
+                                              <div @click="rightScrollClcik(index)" class="rightItem" v-for="(item,index) in rightList" :key="index">
+                                                 <div class="itemCon">
+                                                    <p>{{item.name}}</p>
+                                                    <p>{{item.value}}</p>
+                                                 </div>
+                                                 <div v-if="scrollRightActive==index" class="itemIcon">
+                                                    <Icon type="ios-checkmark" />
+                                                 </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                        </div>
+                                     </div>
+                                 <div class="wareBot">
+                                    <div class="reset">重置</div>
+                                    <div @click="sure" class="sure">确定</div>
+                                 </div>
+                            </div>
+                      </van-action-sheet>
                 </div>
                     <div class="firstTitle">
                     <div class="type">{{item.location}}:</div>
                     <div class="typeInput">
-                        <Select v-model="item.locationModel" >
+                        <Input  v-model="item.locationModel" :disabled='true' >
                             <Option v-for="i in locationList" :value="i.value" :key="i.value">{{ i.label }}</Option>
-                        </Select>
+                        </Input>
                     </div>
                     
                 </div>
@@ -112,6 +156,28 @@ export default {
     return {
       tittle: "选择仓库",
       rightTitle: "下一步",
+      cityList: ["北京分公司", "天津分公司", "河北新公司"],
+      activeClass: 0,
+      scrollRightActive:0,
+      scrollLeftActive:0,
+      LeftList: [
+        { name: "北京分公司", value: 1000 },
+        { name: "天津分公司", value: 2000 },
+        { name: "河北分公司", value: 3000 }
+      ],
+
+      rightList: [
+        { name: "物流商全新良品库", value: 1001 },
+        { name: "物流商演示产品库", value: 1002 },
+        { name: "科捷北京待修产品库", value: 1003 },
+        { name: "科捷北京营业盒损库", value: 1004 },
+        { name: "物流商物流盒损库", value: 1005 },
+        { name: "物流商售后产品库", value: 1006 },
+        { name: "科捷北京客户代办库", value: 1007 },
+        { name: "物流商拍卖良品库", value: 1008 },
+        { name: "业务周转库（当日清0)", value: 1009 },
+        { name: "业务周转库（定期清理)", value: 1010 }
+      ],
       addArr: [
         {
           address: "仓库地点",
@@ -125,40 +191,65 @@ export default {
           locationModel: "",
           typeModel: "",
           num: 0,
-         
-          soldNum:0
+          soldNum: 0
         }
       ],
+      show: false
     };
   },
   methods: {
-      //删除
-      deleteItem(index){
-         this.addArr.splice(index,1)
-      },
+    //删除
+    deleteItem(index) {
+      this.addArr.splice(index, 1);
+      this.refresh()
+    },
     // 添加列表
-     add(){
-       this.addArr.push({
-          address: "仓库地点",
-          type: "采购类型",
-          location: "仓库库位",
-          hasImage: true,
-          numCount: "采购数量",
-          addressList: [],
-          locationList: [],
-          typeList: [],
-          addressModel: "",
-          locationModel: "",
-          typeModel: "",
-          num: 0,
-          soldNum:0
-       })
-     },
-    //点击确定的时候
+    add() {
+      this.addArr.push({
+        address: "仓库地点",
+        type: "采购类型",
+        location: "仓库库位",
+        hasImage: true,
+        numCount: "采购数量",
+        addressList: [],
+        locationList: [],
+        typeList: [],
+        addressModel: "",
+        locationModel: "",
+        typeModel: "",
+        num: 0,
+        soldNum: 0
+      });
+      this.refresh()
+    },
+    refresh(){
+      for(let i in this.addArr){
+        this.addArr[i].typeModel='经销采购订单'
+        this.addArr[i].addressModel='北京分公司(1000)'
+        this.addArr[i].locationModel='物流商全新良品库（1001）'
+      }
+    },
+    oftenWare(index){
+      this.activeClass=index
+    },
+    letfScrollClcik(index){
+      this.scrollLeftActive=index
+    },
+     rightScrollClcik(index){
+      this.scrollRightActive=index
+    },
+    sure(){
+      this.show=false
+      this.refresh()
+    },
+    //点击确定的时候,
+    showModel() {
+        this.show = true;
+    },
     nextClick() {
-       this.$router.push({
-             path:'/selection/selectConfirm'
-         })
+      this.$router.push({
+        path: "/selection/selectConfirm"
+      });
     }
   },
   components: {
@@ -169,6 +260,169 @@ export default {
 </script>
 
 <style scoped>
+.ModalContent {
+  padding: 0 0.15rem;
+  background: white;
+  overflow: hidden;
+}
+.scrollRightContent{
+  height: 65%;
+  overflow: auto;
+
+}
+.modalHead {
+  height: 1rem;
+  width: 100%;
+}
+.modalHead input {
+  background: #ccc;
+  border: none;
+  outline: none;
+  border-radius: 0.3rem;
+  height: 0.6rem;
+  width: 100%;
+  text-indent: 0.15rem;
+  margin-top: 0.2rem;
+}
+.modalHead input::placeholder {
+  text-indent: 0.15rem;
+}
+.modalWare {
+  display: flex;
+  flex-direction: column;
+}
+.wareCompany {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.scrollRight {
+  height: 100%;
+  width: 70%;
+}
+.rightItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.itemCon {
+  height: 1rem;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-items: center;
+  margin-left: 0.15rem;
+}
+.itemCon p:nth-child(1) {
+  font-size: 0.16rem;
+}
+.itemCon p:nth-child(2) {
+  font-size: 0.14rem;
+  color: #999999;
+}
+.itemIcon {
+  height: 1rem;
+  width: 0.5rem;
+}
+.itemIcon i {
+  font-size: 0.5rem;
+  color: red;
+}
+.wareCompany div {
+  height: 0.6rem;
+  width: 30%;
+  border: 0.01rem solid #ccc;
+  line-height: 0.6rem;
+  text-align: center;
+  font-size: 0.18rem;
+  margin-top: 0.1rem;
+  border-radius: 0.3rem;
+}
+.wareTitle {
+  font-size: 0.22rem;
+  font-weight: 600;
+}
+.scrollActive {
+  height: 0.6rem;
+  width: 0.04rem;
+  background: red;
+}
+.scroll {
+  margin-bottom: 1rem;
+  height: 6.6rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-top: 0.1rem;
+}
+.scrollTitle {
+  font-size: 0.22rem;
+  font-weight: 600;
+}
+.scrollMain {
+  display: flex;
+}
+.scrollLeft {
+  width: 30%;
+  height: 100%;
+}
+.leftItem {
+  height: 1rem;
+  display: flex;
+  align-items: center;
+}
+.leftItem p:nth-child(1) {
+  font-size: 0.16rem;
+}
+.leftItem p:nth-child(2) {
+  font-size: 0.14rem;
+  color: #999999;
+}
+.leftScroll {
+  height: 100%;
+}
+
+.wareBot {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1rem;
+  display: flex;
+}
+.reset {
+  height: 0.6rem;
+  width: 26%;
+  text-align: center;
+  line-height: 0.6rem;
+  color: red;
+  border: 0.01rem solid red;
+  border-radius: 0.3rem;
+  font-size: 0.18rem;
+  margin-top: 0.2rem;
+  margin-left: 2%;
+}
+.sure {
+  height: 0.6rem;
+  width: 68%;
+  background: red;
+  color: white;
+  border-radius: 0.3rem;
+  text-align: center;
+  line-height: 0.6rem;
+  font-size: 0.18rem;
+  margin-left: 3%;
+  margin-top: 0.2rem;
+}
+
+/* /deep/ .ivu-select .ivu-select-dropdown{
+  display: none;
+} */
 .head {
   margin-top: 0.15rem;
   width: 100%;
@@ -219,6 +473,8 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 2;
+  background: white;
 }
 .itemNum {
   font-size: 0.14rem;
@@ -229,7 +485,7 @@ export default {
   color: red;
 }
 .title {
-    height: 0.6rem;
+  height: 0.6rem;
   width: 100%;
   display: flex;
   align-items: center;
@@ -361,5 +617,12 @@ export default {
   height: 0.8rem;
   line-height: 0.8rem;
   font-weight: 600;
+}
+.activeClass {
+  border: 0.01rem solid red;
+  color: red;
+}
+.active{
+  color: red;
 }
 </style>

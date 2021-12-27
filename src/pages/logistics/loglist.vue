@@ -1,7 +1,7 @@
 <template>
   <div class="content-box">
     <common-header tittle="运单信息"></common-header>
-    <div class="page-content stor_box">
+    <div class="page-content stor_box1">
       <van-tabs
         v-model="active"
         @change="getData()"
@@ -19,7 +19,8 @@
       <div class="item content" v-for="(item, key) in arr" :key="key">
         <div>
           <p>
-            运单编号：{{ item.code }}
+            <span>运单编号：</span>
+            <span>{{ item.code }}</span>
             <mt-button
               class="hege"
               v-if="item.isqualified == 1"
@@ -33,7 +34,10 @@
               >不合格</mt-button
             >
           </p>
-          <p>华盛编号：{{ item.hscode }}</p>
+          <p>
+            <span>华盛编号：</span>
+            <span>{{ item.hscode }}</span>
+          </p>
           <p>
             运单图片：
             <img
@@ -43,7 +47,10 @@
               alt=""
             />
           </p>
-          <p>上传时间：{{ item.applicationTime }}</p>
+          <p>
+            <span>上传时间：</span>
+            <span>{{ item.applicationTime }}</span>
+          </p>
           <div v-if="item.pjDiv=='1'" class="pjDiv" @click="addGoodsHandler()">
              <mt-button class="pingjia">评价</mt-button> 
           </div>
@@ -163,7 +170,7 @@ export default {
     }
   }
 }
-.stor_box {
+.stor_box1 {
   padding-bottom: 100px;
   & > div:nth-of-type(1) {
     margin-top: 0;
@@ -171,6 +178,9 @@ export default {
   .van-tabs__wrap {
     height: 60px;
     border-top: 1px solid #e1e1e1;
+  }
+  .van-tab__text {
+    font-size: 30px;
   }
   .van-tab__text--ellipsis {
     overflow: visible;
@@ -180,51 +190,44 @@ export default {
     margin-top: 20px;
   }
   .item {
-    // height: 117px;
-    height: 300px;
-    & > div:nth-of-type(1) {
-      padding: 10px 36px;
-      & > p:nth-of-type(1) {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      & > p {
-        font-size: 24px;
-        font-family: PingFangSC-Regular, PingFang SC;
-        font-weight: 400;
-        margin-top: 10px;
-        & > .hege {
-          width: 2rem;
-          height: 0.6rem;
-          line-height: 0.2rem;
-          border-radius: 0.2rem;
-          color: #4bc756;
-        }
-        & > .nohege {
-          width: 2rem;
-          height: 0.6rem;
-          line-height: 0.2rem;
-          border-radius: 0.2rem;
-          color: #d82138;
-        }
-      }
-      & > p:nth-of-type(3) {
-        img {
-          width: 48px;
-          height: 72px;
-          margin-right: 28px;
-          vertical-align: top;
-        }
+    height: 350px;
+    padding: 30px;
+    & > div > p {
+      display: flex;
+      margin-bottom:20px;
+      font-size: 30px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      & > img {
+        width: 80px;
+        height: 60px;
       }
     }
   }
 }
+.hege {
+  width: 160px;
+  height: 55px;
+  line-height: 30px;
+  border-radius: 15px;
+  color: #4bc756;
+  font-size:30px;
+  margin-left:100px;
+}
+.nohege {
+  width: 160px;
+  height: 55px;
+  line-height: 30px;
+  border-radius: 15px;
+  color: #d82138;
+  font-size:30px;
+  margin-left:100px;
+}
 .pingjia {
-    width: 2rem;
-    height: 0.6rem;
-    line-height: 0.2rem;
-    border-radius: 0.2rem;
+    width: 160px;
+    height: 55px;
+    line-height: 30px;
+    border-radius: 15px;
+    font-size:30px;
     color: #d82138;
     border:1px solid #d82138; 
     background-color: #fff;

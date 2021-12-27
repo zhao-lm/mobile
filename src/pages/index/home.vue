@@ -1,6 +1,5 @@
 <template>
   <div class="content-box">
-    <!-- <common-header :showinput="true" :showback="false"></common-header> -->
     <div class="page-content">
       <!-- <mt-button @click="todetail">采购详情</mt-button>
       <mt-button @click="$router.togo('/Home/purchase')">采购申请</mt-button>
@@ -11,51 +10,54 @@
       </div>
       <div class="conCenter">
 
-        <div class="caigou" style="margin-top:0.3rem">
+        <div class="caigou tit_item">
+          <i></i>
           <p>采购中心</p>
           <div class="caiImg">
-            <div class="left">
-              <img style="width:4.35rem;margin-right:0.3rem;" src="../../assets/loginImg/cai1.jpg" alt="">
+            <div class="caileft">
+              <img src="../../assets/loginImg/cai1.jpg" alt="" @click="goPush('/Home/procurement')">
             </div>
-            <div class="right">
-              <img style="margin-bottom:0.23rem;width:4.3rem" src="../../assets/loginImg/cai2.jpg" alt="">
-              <img style="width:4.3rem" src="../../assets/loginImg/cai3.jpg" alt="">
+            <div class="cairight">
+              <img class="imgClass1" src="../../assets/loginImg/cai2.jpg" alt="" @click="goPush('/story')">
+              <img class="imgClass2" src="../../assets/loginImg/cai3.jpg" alt="" @click="goPush('/Home/purchase')">
             </div>
           </div>
         </div>
 
-        <div class="caigou" style="margin-top:0.6rem">
+        <div class="caigou tit_item">
+          <i></i>
           <p>仓储中心</p>
           <div class="caiImg">
-            <div class="left">
-              <img style="margin-bottom:0.23rem;width:4.3rem" src="../../assets/loginImg/cangchu1.jpg" alt="">
-               <img style="width:4.3rem" src="../../assets/loginImg/cangchu2.jpg" alt="">
+            <div class="cairight">
+              <img class="imgClass1" src="../../assets/loginImg/cangchu1.jpg" alt="">
+              <img class="imgClass2" src="../../assets/loginImg/cangchu2.jpg" alt="" @click="goPush('/inventoryReport')">
             </div>
-            <div class="right">
-             
-              <img style="width:4.35rem;margin-left:0.3rem;" src="../../assets/loginImg/cangchu3.jpg" alt="">
+            <div class="cangleft">
+              <img src="../../assets/loginImg/cangchu3.jpg" alt="">
             </div>
           </div>
         </div>
 
-        <div class="caigou" style="margin-top:0.6rem">
+        <div class="caigou tit_item" style="margin-top:0.6rem">
+          <i></i>
           <p>物流中心</p>
           <div class="caiImg">
-            <div class="left">
-              <img style="width:4.35rem;margin-right:0.3rem;" src="../../assets/loginImg/wuliu1.jpg" alt="">
+            <div class="caileft">
+              <img src="../../assets/loginImg/wuliu1.jpg" alt="" @click="goPush('/Logistics/loglist')">
             </div>
-            <div class="right">
-              <img style="margin-bottom:0.23rem;width:4.3rem" src="../../assets/loginImg/wuliu2.jpg" alt="">
-              <img style="width:4.3rem" src="../../assets/loginImg/wuliu3.jpg" alt="">
+            <div class="cairight">
+              <img class="imgClass1" src="../../assets/loginImg/wuliu2.jpg" alt="">
+              <img class="imgClass2" src="../../assets/loginImg/wuliu3.jpg" alt="">
             </div>
           </div>
         </div>
 
-        <div class="caigou" style="margin-top:0.6rem">
+        <div class="caigou tit_item" style="margin-top:0.6rem">
+          <i></i>
           <p>供货中心</p>
           <div class="caiImg">
-            <div class="left">
-              <img style="width:4.35rem;margin-right:0.3rem;" src="../../assets/loginImg/gonghuo1.jpg" alt="">
+            <div class="gongleft">
+              <img src="../../assets/loginImg/gonghuo1.jpg" alt="" @click="goPush('/Home/ask_apply')">
             </div>
           </div>
         </div>
@@ -80,6 +82,9 @@ export default {
     }),
     todetail() {
       this.$router.togo('/Home/Detail')
+    },
+    goPush(path){
+        this.$router.push({path:path})
     }
     // login() {
     //   let params = {
@@ -119,19 +124,70 @@ export default {
   .mb(98);
 }
 .conCenter {
-  padding: 0.5rem;
-  padding-top:0.2rem;
+  padding-left:32px;
+  padding-right: 32px;
+  background-color: #fff;
 }
 .caigou {
-  font-size: 0.4rem;
-  font-family: PingFangSC-Regular, PingFang SC;
-  font-weight: 700 !important;
-  color:#000;
+  & > p {
+    font-size: 36px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: #000000;
+    margin-left:15px; 
+  }
 }
 .caiImg {
   display: flex;
   justify-content:space-between;
   align-items:flex-start;
-  margin-top:0.2rem;
+  margin-top:14px;
+}
+.tit_item{
+    display:block;
+    margin-top: 10px;
+    position: relative;
+    & > ::before{
+        content: '';
+        background: #d82138;
+        width:4px;
+        height:28px;
+        top: 0px;
+        left: 0px;
+        position: absolute;
+        margin-top:13px;
+    }
+}
+.caileft {
+  & > img {
+    width:322px;
+    height:294px;
+    margin-right:30px;
+  }
+}
+.cangleft {
+  & > img {
+    width:322px;
+    height:294px;
+    margin-left:30px;
+  }
+}
+.gongleft {
+  & > img {
+    width:322px;
+    height:148px;
+  }
+}
+.cairight {
+  & > .imgClass1 {
+    width: 322px;
+    height: 134px;
+    
+  }
+  & > .imgClass2 {
+    width: 324px;
+    height: 134px;
+    margin-top:16px;
+  }
 }
 </style>

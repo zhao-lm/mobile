@@ -12,7 +12,7 @@
       </div>
       <div class="right-icon">
         <span v-if="showmore" class="icon"></span>
-        <span v-if="showContent" class="headerText" @click="tijiao">提交</span>
+        <span style="color:red;font-size:0.3rem" @click="sonClick" v-if="showRightTitle">{{rightTitle}}</span>
       </div>
     </div>
 </template>
@@ -48,17 +48,21 @@ export default {
       type: Boolean,
       default: false
     },
-    showContent: {
-      type: Boolean,
-      default: false
+    rightTitle:{
+      type:String,
+      default:''
+    },
+    showRightTitle:{
+      type:Boolean,
+      default:false
     }
   },
   methods: {
     back() {
       this.$router.goBack()
     },
-    tijiao() {
-      this.$router.togo('/Logistics/loginsuccess')
+    sonClick(){
+      this.$emit('sureClick')
     }
   },
   components: {
@@ -113,9 +117,6 @@ export default {
       background-image: url("../assets/imgs/more.svg");
       background-size: cover;
     }
-  }
-  .headerText {
-    color: red;
   }
 }
 </style>

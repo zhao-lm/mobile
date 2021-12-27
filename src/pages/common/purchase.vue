@@ -11,7 +11,7 @@
             <div>
                 <img src="../../assets/imgs/phone.png" alt="">
             </div>
-            <div class="item" v-for="(item,key) in arr" :key="key">
+            <div class="item" v-for="(item,key) in arr" :key="key" @click="goPush(item)">
                 <div>
                     <p>
                         <img src="../../assets/imgs/订单管理.png" alt="">
@@ -122,6 +122,9 @@ export default {
                 }
             });
             this.arr = arr
+        },
+        goPush(item){
+            this.$router.push({path:'/Home/Detail',query:{status:item.status}})
         }
     }
 }

@@ -18,7 +18,7 @@
                 </van-tabs>
                 <div>
                     <ul>
-                        <li v-for="(item,key) in list" :key="key">
+                        <li v-for="(item,key) in list" :key="key" @click="goPush(item)">
                             <div>
                                 <img :src="require('../../'+item.icon)" alt="">
                             </div>
@@ -27,7 +27,7 @@
                     </ul>
                 </div>
                 <div>
-                    <van-swipe :loop="false" :show-indicators='false'>
+                    <van-swipe :show-indicators='false' :autoplay='3000'>
                         <van-swipe-item v-for="(item,key)  in imgList" :key="key">
                             <img v-if="item[0]" :src="require('../../'+item[0])" alt="">
                             <img v-if="item[1]" :src="require('../../'+item[1])" alt="">
@@ -40,7 +40,7 @@
                             <img src="../../assets/detailImg/编组 3.png" alt="">
                             <span>热门推荐</span>
                         </p>
-                        <p>
+                        <p style="display:none">
                             更多<img src="../../assets/detailImg/返回键备份 5.png" alt="">
                         </p>
                     </div>
@@ -121,7 +121,7 @@ export default {
                     icon: 'assets/detailImg/诺基亚.png',
                 },
             ],
-            imgList: [['assets/detailImg/位图(1).png', 'assets/detailImg/位图.png'], ['assets/detailImg/位图备份.png']],
+            imgList: [['assets/detailImg/位图(1).png', 'assets/detailImg/位图.png'], ['assets/detailImg/位图备份.png', 'assets/detailImg/位图(1).png'],['assets/detailImg/位图.png','assets/detailImg/位图备份.png']],
             data: [
                 {
                     name: '荣耀60',
@@ -129,7 +129,7 @@ export default {
                     price: '3000',
                     stock: '3000',
                     averageSales: 3000,
-                    salesVolume: 123456,
+                    salesVolume: 42456,
                     icon: 'assets/detailImg/编组.png'
                 },
                 {
@@ -214,6 +214,9 @@ export default {
     methods: {
         getData() {
 
+        },
+        goPush(item){
+            this.$router.push({path:'/selection/selectBrand',query:{}})
         }
     }
 }
@@ -373,7 +376,7 @@ export default {
                     & > p {
                         font-size: 28px;
                         font-family: PingFangSC-Medium, PingFang SC;
-                        font-weight: 500;
+                        font-weight: 600;
                         color: #000000;
                     }
                     & > p:nth-of-type(2) {

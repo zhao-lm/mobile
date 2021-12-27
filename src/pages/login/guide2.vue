@@ -1,7 +1,7 @@
 <template>
-    <div class="content-box guide2">
+    <div class="content-box guide2" @click="nextGuide">
         <img src="../../assets/loginImg/guide2.png" alt="">
-        <mt-button class="word2" @click="nextGuide"></mt-button>
+        <!-- <mt-button class="word2" @click="nextGuide"></mt-button> -->
           <v-touch
                 @swipeleft = "swipeLeft"
                 @swiperight = "swipeRight"

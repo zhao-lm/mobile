@@ -1,5 +1,5 @@
 <template>
-    <div class="content-box">
+    <div class="content-box guide2">
         <img src="../../assets/loginImg/guide2.png" alt="">
         <mt-button class="word2" @click="nextGuide"></mt-button>
           <v-touch
@@ -38,19 +38,20 @@ export default {
     width: 100%;
     height: 100%;
 }
-.content-box img {
+.guide2 img {
     width: 100%;
     height: 100%;
 }
 .word2 {
-    width: 4rem;
-    height: 1.5rem;
+    width: 5rem;
+    height: 2rem;
     background: none;
     position: absolute;
-    bottom: 1.2rem;
+    bottom: 1rem;
     left: 3rem;
-    z-index: 12;
+    z-index: 1200;
     box-shadow: none;
+    background-color: transparent;
     -webkit-box-shadow: none;
 }
 </style>

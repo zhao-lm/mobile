@@ -101,6 +101,7 @@ export default {
         align-items: center;
         background: #fff;
         & > img {
+            width: 160px;
             height: 170px;
         }
         & > div {
@@ -111,6 +112,7 @@ export default {
                 color: #000000;
             }
             & > p:nth-of-type(2) {
+                margin-top: 8px;
                 padding: 2px 14px;
                 background: #f8f8f8;
                 border-radius: 18px;
@@ -158,10 +160,12 @@ export default {
             font-family: PingFangSC-Regular, PingFang SC;
             font-weight: 400;
             color: #666666;
-            & img {
-                width: 32px;
-            }
+            
         }
+        & img {
+                width: 32px;
+                height: 32px;
+            }
     }
 }
 </style>

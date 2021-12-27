@@ -7,7 +7,7 @@
       <mt-button @click="$router.togo('/Home/procurement')">选品采购</mt-button>
       <mt-button @click="$router.togo('/Logistics/loglist')">物流中心</mt-button> -->
       <div class="conHeader">
-        <img style="width:100%" src="../../assets/loginImg/syHeader.jpg" alt="">
+        <img style="width:100%;height:100%;" src="../../assets/loginImg/syHeader.jpg" alt="">
       </div>
       <div class="conCenter">
 

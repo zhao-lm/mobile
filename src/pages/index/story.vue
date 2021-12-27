@@ -6,7 +6,7 @@
                 <van-tab title="待审批"></van-tab>
                 <van-tab title="已审批"></van-tab>
             </van-tabs>
-            <div class="item" v-for="(item,key) in arr" :key="key">
+            <div class="item" v-for="(item,key) in arr" :key="key" @click="goDetail(item)">
                 <div>
                     <p>
                         <img src="../../assets/imgs/订单管理.png" alt="">
@@ -38,6 +38,10 @@
                     <div>
                         <span>申请时间：{{item.applicationTime}}</span>
                         <span>x{{item.num}}</span>
+                    </div>
+                    <div class="page-bottomd" v-if="item.status==1">
+                        <p @click="reject()">审批</p>
+                        <!-- <p @click="adopt()">通过</p> -->
                     </div>
                 </div>
             </div>
@@ -93,7 +97,7 @@ export default {
                     num: 20
                 },
             ],
-            arr:[]
+            arr: []
         }
     },
     created() {
@@ -103,15 +107,18 @@ export default {
         todetail() {
             this.$router.togo('/Home/Detail')
         },
-        getData(){
-            let arr = this.data.filter((item,key)=>{
-                if(this.active==0){
-                    return item.status==1
-                }else{
-                    return item.status!=1
+        getData() {
+            let arr = this.data.filter((item, key) => {
+                if (this.active == 0) {
+                    return item.status == 1
+                } else {
+                    return item.status != 1
                 }
             });
-            this.arr=arr
+            this.arr = arr
+        },
+        goDetail(item){
+            this.$router.push({path:'/Home/Detail',query:{id:item.id}})
         }
     },
     components: {
@@ -121,10 +128,33 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="less" scoped>
+<style lang="less">
 @import '~styles/index.less';
 @import '~styles/variable.less';
-
+.page-bottomd {
+    margin-top: 20px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    & > p {
+        padding: 10px 35px;
+        text-align: center;
+        border-radius: 1rem;
+        font-size: 24px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 400;
+        border: 1px solid #ef1236;
+        margin-left: 20px;
+    }
+    & > p:nth-of-type(1) {
+        color: #d82138;
+    }
+    & > p:nth-of-type(2) {
+        background: #d82138;
+        color: #fff;
+    }
+}
 .stor_box {
     padding-bottom: 100px;
     & > div:nth-of-type(1) {
@@ -136,6 +166,7 @@ export default {
     }
     .van-tab__text--ellipsis {
         overflow: visible;
+        font-size: 28px;
     }
     & > div {
         background: #fff;
@@ -143,7 +174,7 @@ export default {
     }
     .item {
         // height: 117px;
-        height: 234px;
+        // height: 234px;
         & > div:nth-of-type(1) {
             padding: 16px 32px;
             border-bottom: 1px solid #e1e1e1;
@@ -182,18 +213,19 @@ export default {
                         height: 72px;
                         margin-right: 28px;
                     }
-                    .content {
-                        font-size: 26px;
-                        font-family: PingFangSC-Medium, PingFang SC;
-                        font-weight: 500;
-                        color: #000000;
-                    }
-                    & > div:nth-last-of-type(1) {
-                        font-size: 28px;
-                        font-family: PingFangSC-Medium, PingFang SC;
-                        font-weight: 500;
-                        color: #666666;
-                    }
+                }
+                .content {
+                    font-size: 26px;
+                    font-family: PingFangSC-Medium, PingFang SC;
+                    font-weight: 500;
+                    color: #000000;
+                    padding-right: 20px;
+                }
+                & > div:nth-last-of-type(1) {
+                    font-size: 28px;
+                    font-family: PingFangSC-Medium, PingFang SC;
+                    font-weight: 500;
+                    color: #666666;
                 }
             }
             & > div:nth-of-type(2) {
@@ -206,7 +238,7 @@ export default {
                 font-weight: 500;
                 color: #999999;
                 & > span:nth-of-type(1) {
-                    padding-left: 102px;
+                    // padding-left: 102px;
                 }
                 & > span:nth-of-type(2) {
                     font-size: 24px;

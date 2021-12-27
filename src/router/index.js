@@ -154,6 +154,24 @@ export default new Router({
       path: '/Logistics/logDetail',
       name: 'logDetail',
       component: (resolve) => require(['@/pages/logistics/logDetail'], resolve)
+    },{ //订单列表
+      path: '/Home/ask_apply',
+      name: 'ask_apply',
+      component: (resolve) => require(['@/pages/information/ask_apply'], resolve)
+    },{ //订单详情
+      path: '/Home/deil_ask',
+      name: 'ask_apply',
+      component: (resolve) => require(['@/pages/information/deil_ask'], resolve)
+    },
+    { //库存报表
+        path: '/inventoryReport',
+        name: 'inventoryReport',
+        component: (resolve) => require(['@/pages/common/inventoryReport'], resolve)
+    },
+    { //库存报表详情
+        path: '/inventoryReport/detail',
+        name: 'inventoryDetail',
+        component: (resolve) => require(['@/pages/common/inventoryDetail'], resolve)
     }
   ]
 })

@@ -228,7 +228,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style  lang="less">
+<style  lang="less" scoped>
 @import '~styles/index.less';
 @import '~styles/variable.less';
 .dialog {
@@ -260,6 +260,7 @@ export default {
     text-align: center;
     & > img {
         width: 80px;
+        height: auto;
         margin:20px 0 18px;
     }
     & > p {
@@ -269,7 +270,7 @@ export default {
         color: #666666;
     }
 }
-.detail_box {
+/deep/.detail_box {
     padding-bottom: 100px;
     & .tit_item {
         background: #fff;
@@ -375,6 +376,7 @@ export default {
                     color: #000000;
                     img {
                         width: 36px;
+                        height: 36px;
                         margin: 8px 0px;
                     }
                 }
@@ -454,6 +456,7 @@ export default {
             background-color: #fff;
             & img {
                 height: 336px;
+                width: auto;
             }
         }
     }

@@ -55,6 +55,7 @@ exports.cssLoaders = function (options) {
     if (options.extract) {
       return ExtractTextPlugin.extract({
         use: loaders,
+        publicPath:'../../',  //解决北京图片引入报错的问题
         fallback: 'vue-style-loader'
       })
     } else {

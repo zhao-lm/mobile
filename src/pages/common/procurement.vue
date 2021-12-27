@@ -259,6 +259,7 @@ export default {
     }
     .van-tab__text--ellipsis {
         overflow: visible;
+        font-size: 26px;
     }
     .van-tabs__nav {
         background: #edeff2;
@@ -284,6 +285,8 @@ export default {
                     height: 110px;
                     line-height: 110px;
                     img {
+                        width: auto;
+                        height: auto;
                         vertical-align: middle;
                     }
                 }
@@ -340,6 +343,7 @@ export default {
             .img {
                 height: 156px;
                 & > img {
+                    height: 156px;
                     position: absolute;
                     right: -2.5px;
                     bottom: 0;
@@ -395,7 +399,7 @@ export default {
                     font-family: PingFangSC-Regular, PingFang SC;
                     font-weight: 400;
                     color: #666666;
-                    margin-bottom: 3px;
+                    margin-bottom: 4px;
                 }
             }
         }

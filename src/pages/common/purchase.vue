@@ -189,18 +189,19 @@ export default {
                         height: 72px;
                         margin-right: 28px;
                     }
-                    .content {
-                        font-size: 26px;
-                        font-family: PingFangSC-Medium, PingFang SC;
-                        font-weight: 500;
-                        color: #000000;
-                    }
-                    & > div:nth-last-of-type(1) {
-                        font-size: 28px;
-                        font-family: PingFangSC-Medium, PingFang SC;
-                        font-weight: 500;
-                        color: #666666;
-                    }
+                }
+                .content {
+                    font-size: 26px;
+                    font-family: PingFangSC-Medium, PingFang SC;
+                    font-weight: 500;
+                    color: #000000;
+                    padding-right: 20px;
+                }
+                & > div:nth-last-of-type(1) {
+                    font-size: 28px;
+                    font-family: PingFangSC-Medium, PingFang SC;
+                    font-weight: 500;
+                    color: #666666;
                 }
             }
             & > div:nth-of-type(2) {
@@ -226,6 +227,7 @@ export default {
     }
     .van-tab__text--ellipsis {
         overflow: visible;
+        font-size: 28px;
     }
 }
 </style>

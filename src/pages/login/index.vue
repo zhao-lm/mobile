@@ -13,7 +13,7 @@
             <div style="display:flex;padding-left:1rem;">
               <img src="../../assets/loginImg/lock.svg" alt="">
               <mt-field class="inputClass" placeholder="请输入密码" :type="password" v-modal="password"></mt-field>
-              <img @click="toShow" style='position: absolute;right: 1rem;top: 7.7rem;' src="../../assets/loginImg/eye.svg" alt="">
+              <img style="margin-right:0.2rem;" @click="toShow" src="../../assets/loginImg/eye.svg" alt="">
             </div>
             <mt-button type="danger" @click="toLogin">登 录</mt-button>
         </div>
@@ -51,20 +51,23 @@ export default {
 @import "~styles/index.less";
 @import "~styles/variable.less";
 .contentBg {
-  background: url('../../assets/loginImg/logoSky.png') no-repeat 0 0;
+  background: url('~@/assets/loginImg/logoSky.png');
   background-size:100% 100%;
   background-color: #fff;
+  width:100%;
+  height:120%;
 }
 .cHeader {
+  margin-top:1rem;
   text-align: center;
   & > img {
     width: 8rem;
     height:4rem;
   }
   & > p {
-    font-size: 0.6rem;
+    font-size: 70px;
     font-weight: bold;
-    margin-top:0.2rem;
+    margin-top:40px;
     color: #d82138;
   }
 }
@@ -73,20 +76,22 @@ export default {
   height: 6rem;
   margin: 0 auto;
   text-align: center;
-  margin-top: 0.8rem;
+  margin-top: 2rem;
   width: 90%;
   border-radius: 10px;
   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.03);
 }
+.mint-field-core {
+  font-size:30px;
+}
 .mint-button--danger {
-  margin-top: 2rem;
-  width: 6rem;
-  height: 0.8rem;
+  margin-top: 80px;
+  width: 80%;
+  height: 80px;
   border-radius: 0.2rem;
-  font-size: 0.4rem;
+  font-size: 40px;
 }
 .inputClass {
-  border-bottom: 1px solid #ccc;
   width: 90%;
   height: 1.2rem;
 }

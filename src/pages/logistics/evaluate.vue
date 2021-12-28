@@ -1,7 +1,7 @@
 <template>
   <div class="content-box">
     <common-header tittle="评价运单" :showContent="showContent"></common-header>
-    <div class="page-content stor_box">
+    <div class="page-content stor_box2">
       <div class="item content" v-for="(item, key) in arr" :key="key">
         <div>
           <p>
@@ -45,7 +45,7 @@
           >
         </div>
       </div>
-      <div class="reision" v-show="ishege == '2'">
+      <div class="reision1" v-show="ishege == '2'">
         <div class="rBtn">
           <p style="display: inline-block">原因分类</p>
           <div
@@ -230,7 +230,7 @@ export default {
     }
   }
 }
-.stor_box {
+.stor_box2 {
   padding-bottom: 100px;
   & > div:nth-of-type(1) {
     margin-top: 0;
@@ -282,19 +282,21 @@ export default {
     & > .hegebtn {
       width: 160px;
       height: 50px;
-      font-size: 30px;
       line-height: 40px;
-      border-radius:12px;
       margin-right: 20px;
+      border-radius:12px;
+      .mint-button-text {
+        font-size: 30px;
+      }
     }
     & > .active {
       color: #d82138;
       border: 1px solid #d82138;
-      background-color: #fff;
+      background-color: #fff !important;
     }
   }
 }
-.reision {
+.reision1 {
   margin-top: 20px;
   & > div.rBtn {
     background-color: #fff;
@@ -324,14 +326,19 @@ export default {
     }
   }
   .mint-cell {
-    padding-bottom: 20px;
+    padding-bottom: 20px !important;
   }
   .mint-cell-title {
-    width: 150px;
+    width: 150px !important;
   }
   .mint-cell-text{
-    font-size: 30px;
-    margin-left:20px;
+    font-size: 30px !important;
+    margin-left:20px !important;
+  }
+  .mint-field-core {
+    border: 1px solid #ccc !important;
+    margin-left: 40px  !important;
+    margin-right: 65px !important;
   }
 }
 .picker-toolbar-title {
@@ -354,11 +361,6 @@ export default {
 .picker-slot-wrapper {
   height: 750px !important;
   font-size: 30px;
-}
-.mint-field-core {
-  border: 1px solid #ccc;
-  margin-left: 40px;
-  margin-right: 65px;
 }
 .mtPicker {
   width: 750px;

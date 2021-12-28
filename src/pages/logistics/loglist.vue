@@ -187,10 +187,10 @@ export default {
   }
   & > div.content {
     background: #fff;
-    margin-top: 20px;
+    margin-top: 30px;
   }
   .item {
-    height: 350px;
+    height: 400px;
     padding: 30px;
     & > div > p {
       display: flex;
@@ -205,37 +205,45 @@ export default {
   }
 }
 .hege {
-  width: 160px;
-  height: 55px;
-  line-height: 30px;
-  border-radius: 15px;
-  color: #4bc756;
-  font-size:30px;
-  margin-left:100px;
+  width: 160px !important;
+  height: 55px !important;
+  line-height: 30px !important;
+  border-radius: 15px !important;
+  margin-left:100px !important;
+  background-color: #fff !important;
+  .mint-button-text {
+      color: #4bc756;
+      font-size:30px;
+  }
 }
 .nohege {
-  width: 160px;
-  height: 55px;
-  line-height: 30px;
-  border-radius: 15px;
-  color: #d82138;
-  font-size:30px;
-  margin-left:100px;
+  width: 160px !important;
+  height: 55px !important;
+  line-height: 30px !important;
+  border-radius: 15px !important;
+  margin-left:100px !important;
+  background-color: #fff !important;
+  .mint-button-text {
+      color: #d82138;
+      font-size:30px;
+  }
 }
 .pingjia {
-    width: 160px;
-    height: 55px;
-    line-height: 30px;
-    border-radius: 15px;
-    font-size:30px;
-    color: #d82138;
-    border:1px solid #d82138; 
-    background-color: #fff;
-    padding-top: 0.1rem;
+    width: 160px !important;
+    height: 55px !important;
+    line-height: 30px !important;
+    border-radius: 15px !important;
+    border:1px solid #d82138 !important; 
+    background-color: #fff !important;
+    padding-top: 10px !important;
+    .mint-button-text {
+      color: #d82138;
+      font-size:30px;
+    }
 }
 .pjDiv {
-    margin-top:0.5rem;
-    margin-bottom:0.5rem;
+    margin-top:20px;
+    margin-bottom:50px;
     text-align:right;
 }
 </style>

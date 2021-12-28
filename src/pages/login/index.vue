@@ -58,6 +58,29 @@ export default {
   background-color: #fff;
   width:100%;
   height:120%;
+  .mint-field-core {
+    font-size:30px;
+  }
+  .mint-button-text {
+    font-size: 36px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+  }
+  .mint-button--danger {
+    margin-top: 80px;
+    width: 598px;
+    height: 84px;
+    background: linear-gradient(270deg, #FD7F63 0%, #F6565C 100%);
+    border-radius: 42px;
+    line-height: 50px;
+  }
+  .inputClass {
+    font-size: 35px;
+    border-bottom: 2px solid #ccc;
+    margin-left:18px;
+    height:75px;
+    width:90%;
+  }
 }
 .cHeader {
   text-align: center;
@@ -79,31 +102,11 @@ export default {
   height: 428px;
   margin: 0 auto;
   text-align: center;
-  margin-top: 120px;
+  margin-top: 200px;
   width: 90%;
   border-radius: 10px;
   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.03);
   padding-top: 40px;
 }
-.mint-field-core {
-  font-size:30px;
-}
-.mint-button--danger {
-  margin-top: 80px;
-  width: 598px;
-  height: 84px;
-  background: linear-gradient(270deg, #FD7F63 0%, #F6565C 100%);
-  border-radius: 42px;
-  font-size: 36px;
-  font-family: PingFangSC-Regular, PingFang SC;
-  font-weight: 400;
-  line-height: 50px;
-}
-.inputClass {
-  font-size: 35px;
-  border-bottom: 2px solid #ccc;
-  margin-left:18px;
-  height:75px;
-  width:90%;
-}
+
 </style>

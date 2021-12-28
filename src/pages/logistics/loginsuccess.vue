@@ -84,10 +84,6 @@ export default {
     color: red;
   }
 }
-.content-box {
-  background-color: #fff;
-  text-align: center;
-}
 .contMsg {
   margin-top: 4rem;
 }

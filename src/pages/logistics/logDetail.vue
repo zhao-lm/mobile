@@ -1,7 +1,7 @@
 <template>
     <div class="content-box">
       <common-header tittle="评价运单" :showContent="showContent"></common-header>
-      <div class="page-content stor_box">
+      <div class="page-content stor_box3">
         <div class="item content" v-for="(item, key) in arr" :key="key">
           <div>
             <p>
@@ -112,7 +112,7 @@
 <style lang="less">
 @import "~styles/index.less";
 @import "~styles/variable.less";
-.stor_box {
+.stor_box3 {
   padding-bottom: 100px;
   & > div:nth-of-type(1) {
     margin-top: 0;

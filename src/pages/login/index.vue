@@ -14,7 +14,7 @@
             <div style="display:flex;margin-left:20px;">
               <img src="../../assets/loginImg/lock.svg" alt="">
               <!-- <mt-field class="inputClass" placeholder="请输入密码" :type="password" v-modal="password"></mt-field> -->
-              <input class="inputClass" type="text" placeholder="请输入密码">
+              <input class="inputClass" :type="password" placeholder="请输入密码">
               <img style="margin-right:0.2rem;border-bottom: 1px solid #ccc;" @click="toShow" src="../../assets/loginImg/eye.svg" alt="">
             </div>
             <mt-button type="danger" @click="toLogin">登 录</mt-button>

@@ -6,7 +6,7 @@
       <mt-button @click="$router.togo('/Home/procurement')">选品采购</mt-button>
       <mt-button @click="$router.togo('/Logistics/loglist')">物流中心</mt-button> -->
       <div class="conHeader">
-        <img style="width:100%;height:100%;" src="../../assets/loginImg/syHeader.jpg" alt="">
+        <img style="width:100%;height:100%;" src="../../assets/loginImg/syHeader.png" alt="">
       </div>
       <div class="conCenter">
 
@@ -38,7 +38,7 @@
           </div>
         </div>
 
-        <div class="caigou tit_item" style="margin-top:0.6rem">
+        <div class="caigou tit_item">
           <i></i>
           <p>物流中心</p>
           <div class="caiImg">
@@ -52,7 +52,7 @@
           </div>
         </div>
 
-        <div class="caigou tit_item" style="margin-top:0.6rem">
+        <div class="caigou tit_item">
           <i></i>
           <p>供货中心</p>
           <div class="caiImg">
@@ -129,6 +129,7 @@ export default {
   background-color: #fff;
 }
 .caigou {
+  padding-top:40px;
   & > p {
     font-size: 36px;
     font-family: PingFangSC-Medium, PingFang SC;
@@ -145,14 +146,13 @@ export default {
 }
 .tit_item{
     display:block;
-    margin-top: 10px;
     position: relative;
     & > ::before{
         content: '';
         background: #d82138;
         width:4px;
         height:28px;
-        top: 0px;
+        top: 30px;
         left: 0px;
         position: absolute;
         margin-top:13px;

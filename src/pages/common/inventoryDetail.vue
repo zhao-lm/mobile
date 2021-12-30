@@ -2,7 +2,7 @@
     <div class="content-box">
         <common-header tittle="商品库存详情"></common-header>
         <div class="page-content inveD_box">
-            <div class="tit_item">
+            <div class="tit_itemed">
                 <span>商品编码</span>
                 <span>{{data.code}}</span>
             </div>
@@ -15,20 +15,20 @@
                 <van-icon name="arrow-left" @click="prev()" />
                 <van-icon name="arrow" @click="next()" />
             </div>
-            <div class="tit_item">
+            <div class="tit_itemed">
                 <span>采购模式</span>
                 <span>{{data.pattern}}</span>
             </div>
-            <div class="tit_item">
+            <div class="tit_itemed">
                 <span>当前日期</span>
                 <span>{{data.date}}</span>
             </div>
-            <div class="tit_item">
+            <div class="tit_itemed">
                 <span>库存数量</span>
                 <span style='color:#d82138'> <span class="span1">{{data.num}}</span>件</span>
             </div>
             <div class="detailed">
-                <div class="tit_item">
+                <div class="tit_itemed">
                     <span>商品明细</span>
                 </div>
                 <div>
@@ -71,7 +71,7 @@
                 </div>
             </div>
             <div class="detailed">
-                <div class="tit_item">
+                <div class="tit_itemed">
                     <span>
                         仓库信息
                     </span>
@@ -154,7 +154,7 @@ export default {
     & > div {
         margin-top: 20px;
     }
-    & .tit_item {
+    & .tit_itemed {
         background: #fff;
         padding: 14px 20px;
         display: flex;

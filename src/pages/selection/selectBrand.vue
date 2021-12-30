@@ -5,17 +5,18 @@
         <div class="header">
             <div class="headerInput">
                 <input class="headInput" type="text" placeholder="请输入产品名称或编码">
-            </div>
-            <div class="headSearch">
+                <div class="headSearch">
                 <i @click="search" class="mintui mintui-search"></i>
             </div>
+            </div>
+            
         </div>
         <div class="content">
 
             <div class="leftContent">
                 <div @click="logoClick(index)" class="phoneName" :class="actives==index?'active':''"
                     v-for="(item,index) in imgArr" :key="index">
-                    <img :src='item.img' alt="">
+                    <img :src="require('../../'+item.img)" alt="">
                     <span>{{item.title}}</span>
                 </div>
 
@@ -34,14 +35,14 @@
                 <div class="phoneItem" v-for="(item,index) in itemArr" :key="index" @click="rightActiveClick(index)"
                     :class="rightActive==index?'borderActive':' '">
                     <div class="itemLeft">
-                        <img :src="item.img" alt="">
+                        <img :src="require('../../'+item.img)" alt="">
 
                     </div>
                     <div class="itemRight">
                         <div class="itemTitle">{{item.title}}</div>
                         <div class="itemBot">
                             <div class="itemNum">{{item.num}}</div>
-                            <div class="itemPrice">{{item.price}}￥</div>
+                            <div class="itemPrice">￥<span>{{item.price}}</span> </div>
                         </div>
                     </div>
                 </div>
@@ -60,85 +61,85 @@ export default {
             actives: 0,
             rightActive: null,
             imgArr: [
-                { img: "../../../static/logoImg/hw.png", title: "华为" },
-                { img: "../../../static/logoImg/mi.png", title: "小米" },
-                { img: "../../../static/logoImg/iphpne.png", title: "苹果" },
-                { img: "../../../static/logoImg/360.png", title: "360" },
-                { img: "../../../static/logoImg/VIVO.png", title: "vivo" },
-                { img: "../../../static/logoImg/cw.png", title: "创维" },
-                { img: "../../../static/logoImg/zx.png", title: "中兴" },
-                { img: "../../../static/logoImg/H3C.png", title: "h3c" },
-                { img: "../../../static/logoImg/njy.png", title: "诺基亚" }
+                { img: "assets/logoImg/hw.png", title: "华为" },
+                { img: "assets/logoImg/mi.png", title: "小米" },
+                { img: "assets/logoImg/iphpne.png", title: "苹果" },
+                { img: "assets/logoImg/360.png", title: "360" },
+                { img: "assets/logoImg/VIVO.png", title: "vivo" },
+                { img: "assets/logoImg/cw.png", title: "创维" },
+                { img: "assets/logoImg/zx.png", title: "中兴" },
+                { img: "assets/logoImg/H3C.png", title: "h3c" },
+                { img: "assets/logoImg/njy.png", title: "诺基亚" }
             ],
             itemArr: [
                 {
-                    img: "../../../static/logoImg/iphone.png",
+                    img: "assets/logoImg/iphone.png",
                     title: "IPHONE XS MAX GOLD 256GB A2104-CHN",
                     num: "7402709579",
                     price: "3000"
                 },
                 {
-                    img: "../../../static/logoImg/iphone.png",
+                    img: "assets/logoImg/iphone.png",
                     title: "IPHONE XS MAX GOLD 256GB A2104-CHN",
                     num: "7402709579",
                     price: "3000"
                 },
                 {
-                    img: "../../../static/logoImg/iphone.png",
+                    img: "assets/logoImg/iphone.png",
                     title: "IPHONE XS MAX GOLD 256GB A2104-CHN",
                     num: "7402709579",
                     price: "3000"
                 },
                 {
-                    img: "../../../static/logoImg/iphone.png",
+                    img: "assets/logoImg/iphone.png",
                     title: "IPHONE XS MAX GOLD 256GB A2104-CHN",
                     num: "7402709579",
                     price: "3000"
                 },
                 {
-                    img: "../../../static/logoImg/iphone.png",
+                    img: "assets/logoImg/iphone.png",
                     title: "IPHONE XS MAX GOLD 256GB A2104-CHN",
                     num: "7402709579",
                     price: "3000"
                 },
                 {
-                    img: "../../../static/logoImg/iphone.png",
+                    img: "assets/logoImg/iphone.png",
                     title: "IPHONE XS MAX GOLD 256GB A2104-CHN",
                     num: "7402709579",
                     price: "3000"
                 },
                 {
-                    img: "../../../static/logoImg/iphone.png",
+                    img: "assets/logoImg/iphone.png",
                     title: "IPHONE XS MAX GOLD 256GB A2104-CHN",
                     num: "7402709579",
                     price: "3000"
                 },
                 {
-                    img: "../../../static/logoImg/iphone.png",
+                    img: "assets/logoImg/iphone.png",
                     title: "IPHONE XS MAX GOLD 256GB A2104-CHN",
                     num: "7402709579",
                     price: "3000"
                 },
                 {
-                    img: "../../../static/logoImg/iphone.png",
+                    img: "assets/logoImg/iphone.png",
                     title: "IPHONE XS MAX GOLD 256GB A2104-CHN",
                     num: "7402709579",
                     price: "3000"
                 },
                 {
-                    img: "../../../static/logoImg/iphone.png",
+                    img: "assets/logoImg/iphone.png",
                     title: "IPHONE XS MAX GOLD 256GB A2104-CHN",
                     num: "7402709579",
                     price: "3000"
                 },
                 {
-                    img: "../../../static/logoImg/iphone.png",
+                    img: "assets/logoImg/iphone.png",
                     title: "IPHONE XS MAX GOLD 256GB A2104-CHN",
                     num: "7402709579",
                     price: "3000"
                 },
                 {
-                    img: "../../../static/logoImg/iphone.png",
+                    img: "assets/logoImg/iphone.png",
                     title: "IPHONE XS MAX GOLD 256GB A2104-CHN",
                     num: "7402709579",
                     price: "3000"
@@ -161,7 +162,7 @@ export default {
                 path: "/selection/selectContract"
             });
         },
-        search(){
+        search() {
 
         }
     },
@@ -172,7 +173,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 .header {
     height: 1rem;
     width: 100%;
@@ -204,7 +205,7 @@ export default {
     color: red;
     position: absolute;
     right: 0.65rem;
-    top: 1.6rem;
+    top: 0.3rem;
 }
 .headSearch i {
     font-size: 0.32rem;
@@ -238,23 +239,21 @@ export default {
     padding-top: 15px;
     /* border-bottom: 1px solid  #fff; */
     box-shadow: 0 15px 10px -15px #fff;
-    /* margin: 0.2rem 0rem 0.2rem 0.2rem; */
 }
 .phoneName span {
-    font-size: 0.14rem;
+    font-size: 24px;
     display: block;
     /* width: 1.35rem; */
     /* text-align: center; */
-    margin-top: -0.1rem;
-    text-indent: 0.1rem;
+    /* margin-top: 0.1rem; */
+    // text-indent: 0.1rem;
 }
 .phoneName img {
     height: 0.8rem;
     width: 0.8rem;
-        vertical-align: unset;
+    /* vertical-align: unset; */
     /* display: inline-block; */
     /* margin-left: 0.35rem; */
-    /* margin-top: 0.2rem; */
     /* margin:0.1rem 0 0.1rem 0.1rem  */
 }
 .rightContent {
@@ -294,7 +293,9 @@ export default {
 .itemTitle {
     min-height: 0.65rem;
     width: 98%;
-    font-size: 0.2rem;
+    color: #000;
+    font-size: 24px;
+    line-height: 30px;
     text-overflow: -o-ellipsis-lastline;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -305,18 +306,24 @@ export default {
 }
 .itemBot {
     height: 0.35rem;
+    margin-top: 5px;
     width: 98%;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 .itemNum {
-    font-size: 0.16rem;
+    font-size:20px;
     color: #ccc;
 }
 .itemPrice {
     font-size: 0.16rem;
     color: red;
+    &>span{
+        font-size: 30px;
+        font-weight: 600;
+
+    }
 }
 .borderActive {
     border: 0.04rem solid red;
@@ -326,7 +333,6 @@ export default {
     /* height: 1.4rem; */
     /* width: 1.4rem; */
     width: 100%;
-    /* margin: 0.2rem 0 0.2rem 0.2rem; */
 }
 /* .active img{
     height: 1.1rem;

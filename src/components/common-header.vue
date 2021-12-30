@@ -82,6 +82,8 @@ export default {
   width: 100%;
   .h(100);
   .lh(100);
+//   height:;
+  //padding-top: 60px;
   background-color: #fff;
   color: #000;
   .fs(@base-header-size);

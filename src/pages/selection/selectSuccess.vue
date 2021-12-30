@@ -59,12 +59,12 @@ export default {
     display: inline-block;
 }
 .order{
-    font-size: 0.24rem;
+    font-size: 26px;
     font-weight: 600;
     margin-top: 0.4rem;
 }
 .orderNo{
-    font-size: 0.16rem;
+    font-size:20px;
     color:#9e9e9e;
     margin-top: 0.4rem;
 }
@@ -83,7 +83,7 @@ export default {
     width: 40%;
     border-radius: 0.5rem;
     border: 1px solid red;
-    font-size: 0.16rem;
+    font-size: 20px;
     color: red;
     text-align: center;
     line-height: 0.7rem;
@@ -94,7 +94,7 @@ export default {
     width: 40%;
     border-radius: 0.5rem;
     border: 1px solid red;
-    font-size: 0.16rem;
+    font-size: 20px;
     color: red;
     text-align: center;
     line-height: 0.7rem;

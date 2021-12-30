@@ -2,7 +2,8 @@
     <div class="content-box">
         <common-header tittle="待办" :showback="false"></common-header>
         <div class="page-content stor_box">
-            <van-tabs v-model="active" @change="getData()" style="background:#EDEFF2 !important">
+            <van-tabs v-model="active" @change="getData()" title-active-color='#d82138'
+                style="background:#EDEFF2 !important">
                 <van-tab title="待审批"></van-tab>
                 <van-tab title="已审批"></van-tab>
             </van-tabs>
@@ -40,6 +41,7 @@
                         <span>x{{item.num}}</span>
                     </div>
                     <div class="page-bottomd" v-if="item.status==1">
+                        <a></a>
                         <p @click="reject()">审批</p>
                         <!-- <p @click="adopt()">通过</p> -->
                     </div>
@@ -117,8 +119,8 @@ export default {
             });
             this.arr = arr
         },
-        goDetail(item){
-            this.$router.push({path:'/Home/Detail',query:{id:item.id}})
+        goDetail(item) {
+            this.$router.push({ path: '/Home/Detail', query: { id: item.id } })
         }
     },
     components: {
@@ -136,7 +138,7 @@ export default {
     background: #fff;
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: space-between;
     & > p {
         padding: 10px 35px;
         text-align: center;
@@ -144,7 +146,7 @@ export default {
         font-size: 24px;
         font-family: PingFangSC-Medium, PingFang SC;
         font-weight: 400;
-        border: 1px solid #ef1236;
+        border: 3px solid #ef1236;
         margin-left: 20px;
     }
     & > p:nth-of-type(1) {
@@ -168,6 +170,9 @@ export default {
         overflow: visible;
         font-size: 28px;
     }
+    .van-tabs__line {
+        height: 4px;
+    }
     & > div {
         background: #fff;
         margin-top: 20px;
@@ -182,9 +187,12 @@ export default {
             justify-content: space-between;
             align-items: center;
             & > p:nth-of-type(1) {
+                display: flex;
+                align-items: center;
                 & > img {
                     width: 28px;
-                    vertical-align: bottom;
+                    margin-right: 10px;
+                    // vertical-align: bottom;
                 }
                 font-size: 24px;
                 font-family: PingFangSC-Medium, PingFang SC;

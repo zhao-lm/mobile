@@ -15,7 +15,7 @@
                         <p @click="show=true">{{form.time | getVal}}</p>
                         <img src="../../assets/detailImg/downDrop.png" alt="">
                     </div>
-                    <div>
+                    <div @click="shows=true">
                         筛选
                         <img src="../../assets/detailImg/downDrop.png" alt="">
                     </div>
@@ -54,16 +54,17 @@
                 </div>
             </div>
         </div>
+        <ActionSheet :shows.sync='shows' @refresh='search'/>
         <van-calendar v-model="show" :show-confirm="false" @confirm='onConfirm' />
     </div>
 </template>
 
 <script>
 import commonHeader from 'common/common-header';
-
+import ActionSheet from '../../components/actionSheet.vue';
 export default {
     components: {
-        commonHeader
+        commonHeader,ActionSheet
     },
     data() {
         return {
@@ -72,6 +73,7 @@ export default {
                 time: '',
                 uid: 'AD11-1001',
             },
+            shows:false,
             show: false,
             flag: false,
             total: 25,
@@ -258,7 +260,7 @@ export default {
             padding: 28px 36px;
             & > div:nth-of-type(1) {
                 display: flex;
-                justify-content: space-between;
+                // justify-content: space-between;
                 & > div:nth-of-type(1) {
                     img {
                         width: 48px;
@@ -272,6 +274,7 @@ export default {
                     font-weight: 500;
                     color: #000000;
                     padding-right: 20px;
+                    flex: 1;
                 }
                 & > div:nth-last-of-type(1) {
                     font-size: 28px;
@@ -286,7 +289,7 @@ export default {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                font-size: 20px;
+                font-size: 24px;
                 font-family: PingFangSC-Medium, PingFang SC;
                 font-weight: 500;
                 color: #999999;

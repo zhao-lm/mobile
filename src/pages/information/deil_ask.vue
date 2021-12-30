@@ -1,7 +1,7 @@
 <template>
     <div class="content-box">
         <common-header tittle="销售订单详情"></common-header>
-        <p class="tit_item">
+        <p class="tit_item1">
             <i></i>
             <span>
                 <span class="span1">订单编号：</span><span>{{data.code}}</span>
@@ -25,7 +25,7 @@
             <van-icon name="arrow-left" @click="prev()" class="arrow-left arrow"/>
             <van-icon name="arrow" @click="next()" class="arrow arrow-right"/>
         </div>
-        <p class="tit_item">
+        <p class="tit_item1">
             <i></i>
             <span>
                 <span class="span1">数量金额</span>
@@ -41,7 +41,7 @@
                 <span>{{item.encod}}</span>
             </p>
         </div>
-        <p class="tit_item">
+        <p class="tit_item1">
             <i></i>
             <span>
                 <span class="span1">其他明细</span>
@@ -74,7 +74,7 @@
                             <span>编码</span>
                             <span>7403017380</span>
                         </p>
-                         <div class="tit_item">
+                         <div class="tit_item1">
                             <i></i>
                             <span>
                                 <span class="span1">厂家信息</span>
@@ -224,11 +224,12 @@ export default{
             background-color: #fff;
             & img {
                 height: 336px;
+                width:200px;
             }
         }
     }
     .arrow{
-        position: absolute;
+        position: absolute !important;
         top: 50%;
         transform: translateY(-50%);
         font-size: 32px;
@@ -239,11 +240,13 @@ export default{
     .arrow-right{
         right: 48px;
     }
-    .tit_item{
+    .van-icon{
+        position: absolute !important;
+    }
+    .tit_item1{
         line-height: 48px;
         background:#fff;
         display:block;
-        flex: 1;
         margin-top: 10px;
         position: relative;
         padding-left:20px;
@@ -300,6 +303,7 @@ export default{
                 & > li {
                     height: 1.2rem;
                     width: 20%;
+                    flex: 1;
                     text-align: center;
                     font-size: 24px;
                     font-family: PingFangSC-Medium, PingFang SC;
@@ -307,6 +311,7 @@ export default{
                     color: #000000;
                     img {
                         width: 36px;
+                        height: 36px;
                         margin: 8px 0px;
                     }
                 }

@@ -48,9 +48,13 @@
                     <p>{{data.email}}</p>
                 </li>
             </ul>
-            <div>
+
+        </div>
+        <div class="fixed_bx">
+            <div @click="$router.push('/')">
                 退出
             </div>
+
         </div>
     </div>
 </template>
@@ -89,11 +93,33 @@ export default {
 <style scoped lang="less">
 @import '~styles/index.less';
 @import '~styles/variable.less';
-.page-content {
-    .mb(98);
+// .page-content {
+//     .mb(98);
+// }
+.fixed_bx {
+    width: 100%;
+    background: #fff;
+    padding: 15px 0px;
+    position: fixed;
+    bottom: 96px;
+    & > div {
+        width: 598px;
+        height: 84px;
+        background: linear-gradient(270deg, #fd7f63 0%, #f6565c 100%);
+        border-radius: 42px;
+        margin: 0 auto;
+        line-height: 84px;
+        text-align: center;
+        font-size: 36px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: #ffffff;
+    }
 }
 .user_box {
-    padding: 0px 0px 66px;
+    padding: 0px 0px 200px;
+    // position: relative;
+    // .mb(98);
     & > div:nth-of-type(1) {
         height: 190px;
         // padding-top: 20px;
@@ -123,19 +149,7 @@ export default {
             }
         }
     }
-    & > div:nth-of-type(2) {
-        width: 598px;
-        height: 84px;
-        background: linear-gradient(270deg, #fd7f63 0%, #f6565c 100%);
-        border-radius: 42px;
-        margin: 122px auto 0;
-        line-height: 84px;
-        text-align: center;
-        font-size: 36px;
-        font-family: PingFangSC-Regular, PingFang SC;
-        font-weight: 400;
-        color: #ffffff;
-    }
+
     & > ul {
         margin-top: 20px;
     }
@@ -160,12 +174,11 @@ export default {
             font-family: PingFangSC-Regular, PingFang SC;
             font-weight: 400;
             color: #666666;
-            
         }
         & img {
-                width: 32px;
-                height: 32px;
-            }
+            width: 32px;
+            height: 32px;
+        }
     }
 }
 </style>

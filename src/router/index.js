@@ -113,11 +113,11 @@ export default new Router({
     },
     //选择仓库
     {
-      path: '/selection/slectWare',
+      path: '/selection/selectWare',
       name: 'selectWare',
       component: (resolve) => require(['@/pages/selection/selectWare'], resolve)
     },
-     //确认采购信息
+     //确认采购信息`
     {
       path: '/selection/selectConfirm',
       name: 'selectConfirm',

@@ -253,7 +253,8 @@ export default {
 @import '~styles/index.less';
 @import '~styles/variable.less';
 .dialog {
-    width: 528px;
+    // width: 528px;
+    width:528px !important;
     .van-dialog__message {
         font-size: 32px;
         font-family: PingFangSC-Regular, PingFang SC;
@@ -352,6 +353,16 @@ export default {
         .ivu-steps-status-finish {
             .ivu-steps-title {
                 color: #0382fe;
+            }
+            .ivu-steps-content {
+                p:nth-of-type(1) {
+                    color: #666666;
+                }
+            }
+        }
+        .ivu-steps-status-error{
+            .ivu-steps-title {
+                color: #D82138;
             }
             .ivu-steps-content {
                 p:nth-of-type(1) {

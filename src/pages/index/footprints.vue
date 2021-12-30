@@ -1,8 +1,8 @@
 <template>
     <div class="content-box">
         <common-header tittle="消息中心"></common-header>
-        <div class="page-content pur_box" style="padding:6px;">
-                        <div class="item" v-for="(item,key) in arr" :key="key">
+        <div class="page-content pur_box1" style="padding:6px;">
+            <div class="item" v-for="(item,key) in arr" :key="key" @click="goPush(item)">
                 <div>
                     <p>
                         <span>采购审批：</span>
@@ -41,12 +41,12 @@
     </div>
 </template>
 <script>
-    import commonHeader from 'common/common-header'
-    export default{
-         components: {
-            commonHeader
-        },
-        data() {
+import commonHeader from 'common/common-header'
+export default {
+    components: {
+        commonHeader
+    },
+    data() {
         return {
             active: 1,
             arr: [
@@ -57,8 +57,8 @@
                     // imgList: ['assets/imgs/iphone1.png', 'assets/imgs/iphone2.png', 'assets/imgs/iphone3.png', 'assets/imgs/iphone4.png'],
                     content: '荣耀60 Pro（12GB+256GB）幻境星空',
                     money: '60.000.00',
-                    setNum:'20',
-                    timeName:'接收时间',
+                    setNum: '20',
+                    timeName: '接收时间',
                     applicationTime: '2021-12-21 11:27',
                     num: '11:27'
                 },
@@ -68,8 +68,8 @@
                     imgList: ['assets/imgs/iphone1.png', 'assets/imgs/iphone2.png', 'assets/imgs/iphone3.png', 'assets/imgs/iphone4.png'],
                     content: '荣耀60 Pro（12GB+256GB）幻境星空',
                     money: '16.760.000.00',
-                    setNum:'30',
-                    timeName:'审批时间',
+                    setNum: '30',
+                    timeName: '审批时间',
                     applicationTime: '2021-12-21 11:27',
                     num: '昨天'
                 },
@@ -80,20 +80,26 @@
                     // imgList: ['assets/imgs/iphone1.png', 'assets/imgs/iphone2.png', 'assets/imgs/iphone3.png', 'assets/imgs/iphone4.png'],
                     content: '荣耀60 Pro（12GB+256GB）幻境星空',
                     money: '16.760.000.00',
-                    setNum:'30',
-                    timeName:'审批时间',
+                    setNum: '30',
+                    timeName: '审批时间',
                     applicationTime: '2021-12-21 11:27',
                     num: '2021-12-17'
                 },
             ]
         }
+    },
+    methods:{
+        goPush(item){
+            this.$router.push({path:'/Home/Detail',query:{status:item.status}})
+        }
     }
-    }
+}
 </script>
 <style lang="less">
 @import '~styles/index.less';
 @import '~styles/variable.less';
-    .pur_box {
+.pur_box1 {
+    background-color: #e5e5e5;
     & > div:nth-of-type(1) {
         margin-top: 0;
     }
@@ -163,7 +169,7 @@
                 }
             }
             & > div:nth-of-type(2) {
-                margin-top: 20px;
+                margin-top: 0px;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;

@@ -1,22 +1,21 @@
 <template>
     <div class="content-box">
         <common-header tittle="销售订单"></common-header>
-        <div class="page-content pur_box">
+        <div class="page-content pur_box1">
             <div class="pro_head" style="margin-top:5px;background: transparent;">
                 <p>
                     <input type="text" placeholder="输入订单号、客户名称/编码、产品品牌/型号">
                     <span>搜索</span>
                 </p>
             </div>
-            <div style="overflow:hidden;margin-top:5px;">
+            <div style="overflow:hidden;margin-top:5px;padding-top:9px;">
                 <van-tabs v-model="active" @change="getData()" style="width:50%;float:left;">
                     <van-tab title="全部"></van-tab>
                     <van-tab title="今天"></van-tab>
                     <van-tab title="本周"></van-tab>
                 </van-tabs>
-                <div class="rBtn" style="width:50%;float:left;height:32px;line-height:32px;text-align:right;padding-right:20px;">
-                    <p style="display: inline-block" @click="handleClick">筛选<i class="right" style="border: solid black;
-  border-width: 0 1px 1px 0;display: inline-block;padding: 3px;transform: rotate(-45deg);margin-left:5px;"></i ></p>
+                <div class="rBtn" style="width:50%;float:left;height:30px;line-height:26px;text-align:right;padding-right:20px;">
+                    <p style="display: inline-block" @click="handleClick">筛选 ></p>
                     <mt-popup
                         v-model="popupVisible"
                         popup-transition="popup-fade"
@@ -33,7 +32,7 @@
                             <div class="">筛选</div>
                         </div>
                         <div class="rundlost">
-                            <p style="margin-top:30px;">订单编号</p>
+                            <p >订单编号</p>
                             <input type="text" placeholder="S211221000034">
                             <p style="margin-top:20px;">客户信息</p>
                             <input type="text" placeholder="中国联通网络通信有限公司北京市分公司">
@@ -232,7 +231,7 @@ export default {
     }
 }
 * {touch-action: pan-y;}
-.pur_box {
+.pur_box1 {
     padding-bottom: 100px;
     & > div:nth-of-type(1) {
         margin-top: 0;
@@ -248,7 +247,14 @@ export default {
     }
     .van-tabs__wrap {
         height: 60px;
-        border-top: 1px solid #e1e1e1;
+        line-height: 60px;
+    }
+     .van-tab__text--ellipsis {
+        overflow: visible;
+        font-size: 28px;
+    }
+    .van-tabs__line {
+        height: 4px;
     }
     .item {
         // height: 117px;
@@ -305,7 +311,7 @@ export default {
                 }
             }
             & > div:nth-of-type(2) {
-                margin-top: 20px;
+                margin-top: 0px;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;

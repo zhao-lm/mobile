@@ -5,6 +5,7 @@
       <van-tabs
         v-model="active"
         @change="getData()"
+        title-active-color='#d82138'
         style="background: #edeff2 !important"
       >
         <van-tab title="待评价"></van-tab>

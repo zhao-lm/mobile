@@ -27,8 +27,8 @@
                     </ul>
                 </div>
                 <div>
-                    <van-swipe :show-indicators='false' :autoplay='3000'>
-                        <van-swipe-item v-for="(item,key)  in imgList" :key="key">
+                    <van-swipe :show-indicators='false' :autoplay="3000">
+                        <van-swipe-item v-for="(item,key)  in imgList" :key="key" @click="$router.push('/selection/selectContract')">
                             <img v-if="item[0]" :src="require('../../'+item[0])" alt="">
                             <img v-if="item[1]" :src="require('../../'+item[1])" alt="">
                         </van-swipe-item>
@@ -47,7 +47,7 @@
                     <waterfall :col="2" :data="data">
                         <template>
                             <div v-for="(item,key) in data" :key="key" class="cell-item" :class="key==0?'active':''"
-                                :style="{background:colorList[key%4]}">
+                                :style="{background:colorList[key%4]}" @click="$router.push('/selection/selectContract')">
                                 <div>
                                     <div>
                                         <p>{{item.name}}</p>
@@ -146,7 +146,7 @@ export default {
                     code: '7402709579',
                     name: '苹果',
                     describe: "IPHONE XS MAX GOLD 256GB A2104-CHN",
-                    price: '9480.7',
+                    price: '9480',
                     stock: '112',
                     averageSales: 83,
                     salesVolume: 36373,
@@ -305,7 +305,8 @@ export default {
                 justify-content: space-between;
                 img {
                     width: 48%;
-                    height: 100%;
+                    height: 170px;
+                    border-radius: 10px;
                 }
             }
         }
@@ -398,7 +399,7 @@ export default {
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
-                    font-size: 20px;
+                    font-size: 24px;
                     font-family: PingFangSC-Regular, PingFang SC;
                     font-weight: 400;
                     color: #666666;

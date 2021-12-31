@@ -6,7 +6,7 @@
       <mt-button @click="$router.togo('/Home/procurement')">选品采购</mt-button>
       <mt-button @click="$router.togo('/Logistics/loglist')">物流中心</mt-button> -->
             <div class="conHeader">
-                <img style="width:100%;height:100%;" src="../../assets/loginImg/syHeader.png" alt="" @click="goPush('/selection/selectContract')">
+                <img style="width:100%;height:100%;" src="../../assets/loginImg/syHeader.jpg" alt="" @click="goPush('/selection/selectContract')">
             </div>
             <div class="conCenter">
 
@@ -18,9 +18,9 @@
                             <img src="../../assets/loginImg/cai1.jpg" alt="" @click="goPush('/Home/procurement')">
                         </div>
                         <div class="cairight">
-                            <img class="imgClass1" src="../../assets/loginImg/cai2.jpg" alt=""
+                            <img class="imgClass1" src="../../assets/loginImg/cai2.svg" alt=""
                                 @click="goPush('/story')">
-                            <img class="imgClass2" src="../../assets/loginImg/cai3.jpg" alt=""
+                            <img class="imgClass2" src="../../assets/loginImg/cai3.svg" alt=""
                                 @click="goPush('/Home/purchase')">
                         </div>
                     </div>
@@ -31,12 +31,12 @@
                     <p>仓储中心</p>
                     <div class="caiImg">
                         <div class="cairight">
-                            <img class="imgClass1" src="../../assets/loginImg/cangchu1.jpg" alt="" @click="fail()">
-                            <img class="imgClass2 imgrightik" src="../../assets/loginImg/cangchu2.jpg" alt=""
+                            <img class="imgClass1" src="../../assets/loginImg/cangchu1.svg" alt="" @click="fail()">
+                            <img class="imgClass2 imgrightik" src="../../assets/loginImg/cangchu2.svg" alt=""
                                 @click="goPush('/inventoryReport')">
                         </div>
                         <div class="cangleft">
-                            <img src="../../assets/loginImg/cangchu3.jpg" alt="" @click="fail()">
+                            <img src="../../assets/loginImg/cangchu3.svg" alt="" @click="fail()">
                         </div>
                     </div>
                 </div>
@@ -46,11 +46,11 @@
                     <p>物流中心</p>
                     <div class="caiImg">
                         <div class="caileft">
-                            <img src="../../assets/loginImg/wuliu1.jpg" alt="" @click="goPush('/Logistics/loglist')">
+                            <img src="../../assets/loginImg/wuliu1.svg" alt="" @click="goPush('/Logistics/loglist')">
                         </div>
                         <div class="cairight">
-                            <img class="imgClass1" src="../../assets/loginImg/wuliu2.jpg" alt="" @click="fail()">
-                            <img class="imgClass2" src="../../assets/loginImg/wuliu3.jpg" alt="" @click="fail()">
+                            <img class="imgClass1" src="../../assets/loginImg/wuliu2.svg" alt="" @click="fail()">
+                            <img class="imgClass2" src="../../assets/loginImg/wuliu3.svg" alt="" @click="fail()">
                         </div>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                     <p>供货中心</p>
                     <div class="caiImg">
                         <div class="gongleft">
-                            <img src="../../assets/loginImg/gonghuo1.jpg" alt="" @click="goPush('/Home/ask_apply')">
+                            <img src="../../assets/loginImg/gonghuo1.svg" alt="" @click="goPush('/Home/ask_apply')">
                         </div>
                     </div>
                 </div>

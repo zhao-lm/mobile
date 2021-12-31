@@ -1,6 +1,6 @@
 <template>
     <div class="content-box">
-        <common-header tittle="选品采购"></common-header>
+        <common-header :isBack='false' @goBack='goBack' tittle="选品采购"></common-header>
         <div class="page-content">
             <div class="pro_head">
                 <p>
@@ -9,13 +9,7 @@
                 </p>
             </div>
             <div class="pro_box">
-                <van-tabs v-model="active" @change="getData()">
-                    <van-tab title="手机"></van-tab>
-                    <van-tab title="泛智能"></van-tab>
-                    <van-tab title="智慧屏"></van-tab>
-                    <van-tab title="路由器"></van-tab>
-                    <van-tab title="其他"></van-tab>
-                </van-tabs>
+                <div></div>
                 <div>
                     <ul>
                         <li v-for="(item,key) in list" :key="key" @click="goPush(item)">
@@ -37,7 +31,7 @@
                 <div>
                     <div class="title">
                         <p>
-                            <img src="../../assets/detailImg/编组 3.png" alt="">
+                            <img src="../../assets/detailImg/bianzu3.png" alt="">
                             <span>热门推荐</span>
                         </p>
                         <p style="display:none">
@@ -47,7 +41,7 @@
                     <waterfall :col="2" :data="data">
                         <template>
                             <div v-for="(item,key) in data" :key="key" class="cell-item" :class="key==0?'active':''"
-                                :style="{background:colorList[key%4]}" @click="$router.push('/selection/selectContract')">
+                                :style="{background:colorList[key%4]}"  @click="toDetail(item)">
                                 <div>
                                     <div>
                                         <p>{{item.name}}</p>
@@ -87,15 +81,15 @@ export default {
             list: [
                 {
                     brand: '华为',
-                    icon: 'assets/detailImg/华为.png',
+                    icon: 'assets/detailImg/huawei.png',
                 },
                 {
                     brand: '小米',
-                    icon: 'assets/detailImg/小米.png',
+                    icon: 'assets/detailImg/xiaomi.png',
                 },
                 {
                     brand: '苹果',
-                    icon: 'assets/detailImg/苹果.png',
+                    icon: 'assets/detailImg/pingguo.png',
                 },
                 {
                     brand: '360',
@@ -107,21 +101,21 @@ export default {
                 },
                 {
                     brand: '创维',
-                    icon: 'assets/detailImg/创维.png',
+                    icon: 'assets/detailImg/chuangwei.png',
                 },
                 {
                     brand: '中兴',
-                    icon: 'assets/detailImg/中兴.png',
+                    icon: 'assets/detailImg/zhongxing.png',
                 },
                 {
                     brand: 'H3C',
                     icon: 'assets/detailImg/H3C.png',
                 }, {
                     brand: '诺基亚',
-                    icon: 'assets/detailImg/诺基亚.png',
+                    icon: 'assets/detailImg/nuojiya.png',
                 },
             ],
-            imgList: [['assets/detailImg/位图(1).png', 'assets/detailImg/位图.png'], ['assets/detailImg/位图备份.png', 'assets/detailImg/位图(1).png'],['assets/detailImg/位图.png','assets/detailImg/位图备份.png']],
+            imgList: [['assets/detailImg/weitu1.png', 'assets/detailImg/weitu2.png'], ['assets/detailImg/weitu3.png', 'assets/detailImg/weitu1.png'],['assets/detailImg/weitu2.png','assets/detailImg/weitu3.png']],
             data: [
                 {
                     name: '荣耀60',
@@ -130,7 +124,7 @@ export default {
                     stock: '3000',
                     averageSales: 3000,
                     salesVolume: 42456,
-                    icon: 'assets/detailImg/编组.png'
+                    icon: 'assets/detailImg/bianzu.png'
                 },
                 {
                     name: '小米',
@@ -140,7 +134,7 @@ export default {
                     stock: '66',
                     averageSales: 22,
                     salesVolume: 39765,
-                    icon: 'assets/detailImg/小米-小米Max 3 全网通 6+128 金色7402710782.png'
+                    icon: 'assets/detailImg/xmImg.png'
                 },
                 {
                     code: '7402709579',
@@ -150,7 +144,7 @@ export default {
                     stock: '112',
                     averageSales: 83,
                     salesVolume: 36373,
-                    icon: 'assets/detailImg/IPHONE-IPHONE XS MAX GOLD 256GB A2104-CHN.png'
+                    icon: 'assets/detailImg/pgImg.png'
                 },
                 {
                     name: '三星',
@@ -160,7 +154,7 @@ export default {
                     stock: '69',
                     averageSales: 56,
                     salesVolume: 27412,
-                    icon: 'assets/detailImg/三星-4G手机终端_三星SM-G9650 128G_三星_六模_黑_无礼包.png'
+                    icon: 'assets/detailImg/sxImg.png'
                 },
                 {
                     name: '华为',
@@ -170,7 +164,7 @@ export default {
                     stock: '178',
                     averageSales: 67,
                     salesVolume: 23214,
-                    icon: 'assets/detailImg/华为-4G手机终端_华为P20 Pro 64G_华为_六模_亮黑_无礼包.png'
+                    icon: 'assets/detailImg/hwImg.png'
                 },
                 {
                     name: 'VIVO',
@@ -180,7 +174,7 @@ export default {
                     stock: '156',
                     averageSales: 59,
                     salesVolume: 21765,
-                    icon: 'assets/detailImg/VIVO-4G手机终端_vivo NEX A(8+128G)_vivo_六模_星钻黑_无礼包.png'
+                    icon: 'assets/detailImg/vivoImg.png'
                 },
                 {
                     name: 'OPPO',
@@ -190,7 +184,7 @@ export default {
                     stock: '36',
                     averageSales: 34,
                     salesVolume: 15432,
-                    icon: 'assets/detailImg/OPPO-OPPO R17 Pro(8+128) 新年版.png'
+                    icon: 'assets/detailImg/oppoImg.png'
                 },
                 {
                     name: '荣耀',
@@ -200,7 +194,7 @@ export default {
                     stock: '143',
                     averageSales: 28,
                     salesVolume: 12564,
-                    icon: 'assets/detailImg/荣耀-荣耀50Pro（8GB+256GB）亮黑色.png'
+                    icon: 'assets/detailImg/ryImg.png'
                 },
             ]
         }
@@ -212,11 +206,20 @@ export default {
     mounted() {
     },
     methods: {
+        goBack(){
+            this.$router.push('/home')
+        },
         getData() {
 
         },
         goPush(item){
             this.$router.push({path:'/selection/selectBrand',query:{}})
+        },
+        toDetail(item) {
+            this.$router.push({
+                path: '/selection/selectContract',
+                query:{item: JSON.stringify(item) }
+            })
         }
     }
 }

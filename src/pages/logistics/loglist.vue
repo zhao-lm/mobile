@@ -1,6 +1,6 @@
 <template>
   <div class="content-box">
-    <common-header tittle="运单信息"></common-header>
+    <common-header :isBack='false' @goBack='goBack'  tittle="运单信息"></common-header>
     <div class="page-content stor_box1">
       <van-tabs
         v-model="active"
@@ -18,20 +18,20 @@
         </p>
       </div>
       <div class="item content" v-for="(item, key) in arr" :key="key">
-        <div>
+        <div @click="(item.isqualified == 1 && toDetail('1',item)) || (item.isqualified == 2 && toDetail('2',item))">
           <p>
             <span>运单编号：</span>
             <span>{{ item.code }}</span>
             <mt-button
               class="hege"
               v-if="item.isqualified == 1"
-              @click="toDetail('1')"
+      
               >合格</mt-button
             >
             <mt-button
               class="nohege"
               v-if="item.isqualified == 2"
-              @click="toDetail('2')"
+    
               >不合格</mt-button
             >
           </p>
@@ -52,7 +52,7 @@
             <span>上传时间：</span>
             <span>{{ item.applicationTime }}</span>
           </p>
-          <div v-if="item.pjDiv=='1'" class="pjDiv" @click="addGoodsHandler()">
+          <div v-if="item.status==1" class="pjDiv" @click="addGoodsHandler(item)">
              <mt-button class="pingjia">评价</mt-button> 
           </div>
         </div>
@@ -64,6 +64,7 @@
 <script>
 import { mapMutations, mapGetters, mapState } from "vuex";
 import commonHeader from "common/common-header";
+import list from '../../assets/data/waybill'
 export default {
   data() {
     return {
@@ -113,12 +114,12 @@ export default {
     this.getData();
   },
   methods: {
-    addGoodsHandler() {
+    addGoodsHandler(item) {
       //待办点击事件
-      this.$router.togo("/Logistics/evaluate");
+      this.$router.push({path:"/Logistics/evaluate",query:{item:JSON.stringify(item)}});
     },
     getData() {
-      let arr = this.data.filter((item, key) => {
+      let arr = list.filter((item, key) => {
         if (this.active == 0) {
           return item.status == 1;
         } else {
@@ -128,9 +129,12 @@ export default {
       this.arr = arr;
     },
     //已审批点击事件
-    toDetail(flag) {
-      this.$router.push({ name: "logDetail", params: { flag: flag } });
+    toDetail(flag,item) {
+      this.$router.push({ path: "/Logistics/logDetail",query:{ flag: flag,item:JSON.stringify(item)} });
     },
+    goBack(){
+        this.$router.push('/home')
+    }
   },
   components: {
     commonHeader,

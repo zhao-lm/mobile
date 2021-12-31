@@ -2,25 +2,25 @@
     <div class="content-box">
         <common-header tittle="评价运单" :showContent="showContent"></common-header>
         <div class="page-content stor_box3">
-            <div class="item content" v-for="(item, key) in arr" :key="key">
+            <div class="item content">
                 <div>
                     <p>
                         <span>运单编号：</span>
-                        <span>{{ item.code }}</span>
+                        <span>{{ data.code }}</span>
                     </p>
                     <p>
                         <span>华盛编号：</span>
-                        <span>{{ item.hscode }}</span>
+                        <span>{{ data.hscode }}</span>
                     </p>
                     <p>
                         <span>运单图片：</span>
-                        <img v-for="(val, index) in item.imgList" :key="index" :src="val.src" alt=""
+                        <img v-for="(val, index) in dataList[0].imgList" :key="index" :src="val.src" alt=""
                             @click="show(index)" />
-                        <previewer ref="previewer" :list="item.imgList"> </previewer>
+                        <previewer ref="previewer" :list="dataList[0].imgList"> </previewer>
                     </p>
                     <p>
                         <span>上传时间：</span>
-                        <span>{{ item.applicationTime }}</span>
+                        <span>{{ data.applicationTime }}</span>
                     </p>
                 </div>
             </div>
@@ -29,13 +29,14 @@
                 <div class="eBtn1">
                     <p>
                         <span>是否合格：</span>
-                        <span>{{hege}}</span>
+                        <span>{{data.isqualified | isfilter}}</span>
                     </p>
-                    <p v-show="hege=='不合格'">
-                        <span>原因分类：其他</span>
+                    <!-- 不合格 -->
+                    <p v-if="data.isqualified=='2'">
+                        <span>原因分类：{{data.causeSelection}}</span>
                     </p>
-                    <p v-show="hege=='不合格'">
-                        <span>具体原因：非本单签收单</span>
+                    <p v-if="data.isqualified=='2'">
+                        <span>具体原因：{{data.reason}}</span>
                     </p>
                 </div>
             </div>
@@ -43,10 +44,10 @@
                 <p>核查信息</p>
                 <div class="hBtn">
                     <p>
-                        <span>核查人员：乔士兰</span>
+                        <span>核查人员：{{data.inspector}}</span>
                     </p>
                     <p>
-                        <span>核查时间：2021-12-25 11:57</span>
+                        <span>核查时间：{{data.applicationTime}}</span>
                     </p>
                 </div>
             </div>
@@ -61,7 +62,7 @@ export default {
         return {
             hege: '',
             active: 0,
-            data: [
+            dataList: [
                 {
                     code: "JDV003530362356",
                     hscode: "4961081535",
@@ -80,16 +81,44 @@ export default {
                 },
             ],
             arr: [],
+            data: {
+                code: "JDV003530362356",
+                hscode: "4961081535",
+                status: 1,
+                imgList: [
+                    {
+                        src: require("../../assets/qianshou/qianshou3.jpg"),
+                        msrc: require("../../assets/qianshou/qianshou3.jpg"),
+                        w: 600,
+                        h: 400
+                    }
+                ],
+                applicationTime: "2021-12-21 11:27",
+                isqualified: "0",
+                clickFlag: true,
+            },
         };
     },
     created() {
-        this.getData();
+        if (this.$route.query.item != '{}') {
+            this.data = JSON.parse(this.$route.query.item);
+            console.log(this.data)
+        }
+        // this.getData();
         this.init();
+    },
+    filters:{
+        isfilter(val){
+            if(val=='2'){
+                return '否'
+            }
+            return '是'
+        }
     },
     methods: {
         show(index) {
             // 显示特定index的图片，使用ref
-            this.$refs.previewer[0].show(index);
+            this.$refs.previewer.show(index);
         },
         init() {
             if (this.$route.params.flag == '1') {

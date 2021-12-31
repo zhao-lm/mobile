@@ -120,7 +120,7 @@ export default {
             this.arr = arr
         },
         goDetail(item) {
-            this.$router.push({ path: '/Home/Detail', query: { id: item.id } })
+            this.$router.push({ path: '/Home/Detail', query: { status: item.status } })
         }
     },
     components: {

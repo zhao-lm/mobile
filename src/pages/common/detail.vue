@@ -14,7 +14,7 @@
                 <Step v-for="(item,key) in data.arr" :key='key'>
                     <template slot="title">{{getTitle(item,key)}}</template>
                     <template slot="content">
-                        <p>{{item.name}}</p>
+                        <!-- <p>{{item.name}}</p> -->
                         <p v-if="data.status>=key">{{item.time}}</p>
                         <p v-if="data.status>=key">{{item.date}}</p>
                     </template>
@@ -332,13 +332,13 @@ export default {
                 color: #aaaaaa;
             }
             .ivu-steps-content {
-                p:nth-of-type(1) {
-                    font-size: 24px;
-                    font-family: PingFangSC-Medium, PingFang SC;
-                    font-weight: 500;
-                    color: #aaaaaa;
-                    // text-align: center;
-                }
+                // p:nth-of-type(1) {
+                //     font-size: 24px;
+                //     font-family: PingFangSC-Medium, PingFang SC;
+                //     font-weight: 500;
+                //     color: #aaaaaa;
+                //     // text-align: center;
+                // }
                 p {
                     font-size: 24px;
                     width: 110px;
@@ -356,7 +356,7 @@ export default {
             }
             .ivu-steps-content {
                 p:nth-of-type(1) {
-                    color: #666666;
+                    // color: #666666;
                 }
             }
         }
@@ -366,7 +366,7 @@ export default {
             }
             .ivu-steps-content {
                 p:nth-of-type(1) {
-                    color: #666666;
+                    // color: #666666;
                 }
             }
         }

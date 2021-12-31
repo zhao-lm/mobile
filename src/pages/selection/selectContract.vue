@@ -6,15 +6,14 @@
             <div class="rightContent">
                 <div class="phoneItem">
                     <div class="itemLeft">
-                        <!-- <img src="../../assets/logoImg/360.png" alt=""> -->
-                        <img src="../../assets/detailImg/编组 4.png" alt="">
+                        <img :src="require('../../'+detail.icon)" alt="">
                     </div>
                     <div class="itemRight">
-                        <div class="itemTitle">IPHONE XS MAX GOLD 256GB A2104-CHN I
+                        <div class="itemTitle">{{detail.describe}}
                         </div>
                         <div class="itemBot">
-                            <div class="itemNum">5437268</div>
-                            <div class="itemPrice">￥<span>3000</span> </div>
+                            <div class="itemNum">{{detail.code}}</div>
+                            <div class="itemPrice">￥<span>{{detail.price}}</span> </div>
                         </div>
                     </div>
                 </div>
@@ -25,7 +24,7 @@
                 <div>供应商名称</div>
                 <div>合同编码</div>
                 <div>生效日期</div>
-                <div>经代码</div>
+                <div>采购类型</div>
             </div>
             <div class="rightMain">
                 <div>{{item.name}}</div>
@@ -51,22 +50,38 @@ export default {
                     name: '北京博通伟业广告有限公司',
                     code: '4600011741',
                     time: "2021-12-16",
-                    viaCode: '经销'
+                    viaCode: '经销采购订单'
                 },
                 {
                     name: '小米通讯技术有限公司',
                     code: '4600011722',
                     time: "2021-03-05",
-                    viaCode: '经销'
+                    viaCode: '经销采购订单'
                 },
-            ]
+            ],
+            detail: {
+                averageSales: 65,
+                code: "7402707231",
+                contractNo: "4600008698",
+                describe: "4G手机终端_华为P20 64G_华为_六模_极光_无礼包",
+                icon: "assets/contart/img1.png",
+                price: "2779",
+                salesVolume: 21346,
+                stock: "35",
+            }
+        }
+    },
+    created() {
+        if (this.$route.query.item != '{}') {
+            this.detail = JSON.parse(this.$route.query.item)
         }
     },
     methods: {
         //点击确定的时候
         onSureClick() {
             this.$router.push({
-                path: '/selection/selectWare'
+                path: '/selection/selectWare',
+                query:{item: JSON.stringify(this.detail) }
             })
         }
     },

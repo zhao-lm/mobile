@@ -6,15 +6,14 @@
             <div class="rightContent" v-for="(item,key) in arr" :key="key">
                 <div class="phoneItem">
                     <div class="itemLeft">
-                        <!-- <img src="../../assets/logoImg/360.png" alt=""> -->
-                        <img :src="require('../../'+item.img)" alt="">
+                        <img :src="require('../../'+detail.icon)" alt="">
                     </div>
                     <div class="itemRight">
-                        <div class="itemTitle">{{item.title}}
+                        <div class="itemTitle">{{detail.describe}}
                         </div>
                         <div class="itemBot">
-                            <div class="itemNum">{{item.code}}</div>
-                            <div class="itemPrice">￥<span>{{item.money}}</span></div>
+                            <div class="itemNum">{{detail.code}}</div>
+                            <div class="itemPrice">￥<span>{{detail.price}}</span> </div>
                         </div>
                     </div>
                 </div>
@@ -24,13 +23,13 @@
                     <div>供应商名称</div>
                     <div>合同编码</div>
                     <div>生效日期</div>
-                    <div>经代码</div>
+                    <div>采购类型</div>
                 </div>
                 <div class="right">
                     <div>北京博通伟业广告有限公司</div>
                     <div>4600011741</div>
                     <div>2021-12-16</div>
-                    <div>经销</div>
+                    <div>经销采购订单</div>
                 </div>
             </div>
             <!-- <div class="title">
@@ -56,14 +55,14 @@
                 <div>仓库信息</div>
             </div>
             <div class="contentMain" v-for="(item,index) in addArr" :key="index">
-                <div class="firstTitle">
+                <!-- <div class="firstTitle">
                     <div class="type">{{item.type}}:</div>
                     <div class="typeInput">
                         <Input v-model="item.typeModel" :disabled='true'>
                         </Input>
                     </div>
                     <img @click="deleteItem(index)" src='../../assets/logoImg/delete.png' alt="">
-                </div>
+                </div> -->
                 <div class="firstTitle">
                     <div class="type">{{item.address}}:</div>
                     <div class="typeInput">
@@ -75,6 +74,7 @@
                         </div>
                     </div>
                     <ActionSheet :shows.sync='shows' @refresh='refresh' />
+                    <img @click="deleteItem(index)" src='../../assets/logoImg/delete.png' alt="">
                 </div>
                 <div class="firstTitle">
                     <div class="type">{{item.location}}:</div>
@@ -129,7 +129,7 @@ export default {
             ],
             arr: [
                 {
-                    img: 'assets/detailImg/编组 4.png',
+                    img: 'assets/detailImg/bianzu4.png',
                     title: 'IPHONE XS MAX GOLD 256GB A2104-CHN I',
                     code: '7402709579',
                     money: '3000'
@@ -163,8 +163,24 @@ export default {
                     soldNum: 200
                 }
             ],
-            shows: false
+            shows: false,
+            detail: {
+                averageSales: 65,
+                code: "7402707231",
+                contractNo: "4600008698",
+                describe: "4G手机终端_华为P20 64G_华为_六模_极光_无礼包",
+                icon: "assets/contart/img1.png",
+                price: "2779",
+                salesVolume: 21346,
+                stock: "35",
+            }
         };
+    },
+    created() {
+        if (this.$route.query.item != '{}') {
+            console.log(this.$route.query.item);
+            this.detail = JSON.parse(this.$route.query.item)
+        }
     },
     methods: {
         //删除
@@ -217,7 +233,8 @@ export default {
         },
         nextClick() {
             this.$router.push({
-                path: "/selection/selectConfirm"
+                path: "/selection/selectConfirm",
+                query: { item: JSON.stringify(this.detail) }
             });
         }
     },
@@ -575,6 +592,7 @@ export default {
     height: 60px;
     margin-left: 8%;
     input {
+        font-size: 24px;
         border-width: 3px;
         height: 60px;
     }

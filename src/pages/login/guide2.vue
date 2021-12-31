@@ -1,46 +1,53 @@
 <template>
     <div class="content-box guide2" @click="nextGuide">
-        <img src="../../assets/loginImg/guide2.png" alt="">
-        <!-- <mt-button class="word2" @click="nextGuide"></mt-button> -->
-          <v-touch
-                @swipeleft = "swipeLeft"
-                @swiperight = "swipeRight"
-                :swipe-options="{direction: 'horizontal'}">
-         </v-touch>
+        <div>
+            <img src="../../assets/loginImg/guide2.png" alt="">
+            <!-- <mt-button class="word2" @click="nextGuide"></mt-button> -->
+            <v-touch @swipeleft="swipeLeft" @swiperight="swipeRight" :swipe-options="{direction: 'horizontal'}">
+            </v-touch>
+        </div>
+
     </div>
- 
+
 </template>
 
 <script>
 export default {
-  components: {},
-  data() {
-    return {
-        transitionName: 'slideright'
-    };
-  },
-  methods: {
-    swipeleft(){
-        // 页面跳转或其它操作
+    components: {},
+    data() {
+        return {
+            transitionName: 'slideright'
+        };
     },
-    nextGuide() {
-         this.$router.togo({ path: '/home' })
+    methods: {
+        swipeleft() {
+            // 页面跳转或其它操作
+        },
+        nextGuide() {
+            this.$router.togo({ path: '/home' })
+        }
     }
-  }
 };
 </script>
 
 
-<style lang="less">
-@import "~styles/index.less";
-@import "~styles/variable.less";
+<style lang="less" scoped>
+@import '~styles/index.less';
+@import '~styles/variable.less';
 .content-box {
     width: 100%;
     height: 100%;
 }
 .guide2 img {
     width: 100%;
+    height: auto;
+}
+.guide2 > div {
+    display: flex;
+    align-items: center;
+    width: 100%;
     height: 100%;
+    background: #F6F9FA;
 }
 .word2 {
     width: 5rem;

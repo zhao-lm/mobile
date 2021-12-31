@@ -41,7 +41,7 @@
                     <div v-if="active==0" class="item">
                         <p>
                             <span>商品名称</span>
-                            <span>{{data.name}}</span>
+                            <span>{{data.content}}</span>
                         </p>
                         <p>
                             <span>商品类别</span>
@@ -63,9 +63,9 @@
                             <span>品牌</span>
                             <span>{{data.brand}}</span>
                         </p>
-                         <p>
+                        <p>
                             <span>品牌描述</span>
-                            <span>{{data.brandDescribe}}</span>
+                            <span>{{data.brandDescription}}</span>
                         </p>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                     <div class="item" style="margin-top:0px;">
                         <p>
                             <span>地点编码</span>
-                            <span>{{data.placeCode}}</span>
+                            <span>{{data.placeNumber}}</span>
                         </p>
                         <p>
                             <span>地点名称</span>
@@ -88,7 +88,7 @@
                         </p>
                         <p>
                             <span>库位编码</span>
-                            <span>{{data.locationCode}}</span>
+                            <span>{{data.locationNumber}}</span>
                         </p>
                         <p>
                             <span>库位名称</span>
@@ -116,17 +116,16 @@ export default {
                 pattern: '统谈统采',
                 date: '2021-12-26',
                 num: 20,
-                name:'华为nova85G（8GB+128GB）亮黑色',
-                category:'智慧生活终端',
-                model:'TNBP',
-                modelDescribe:'华为nova85G（8+128）',
-                brand:'10006',
-                brandDescribe:'华为',
-                locationCode:'1008',
-                location:'业务周转库（定期清理）',
-                place:'上海省仓',
-                placeCode:'Z090',
-
+                name: '华为nova85G（8GB+128GB）亮黑色',
+                category: '智慧生活终端',
+                model: 'TNBP',
+                modelDescribe: '华为nova85G（8+128）',
+                brand: '10006',
+                brandDescribe: '华为',
+                locationCode: '1008',
+                location: '业务周转库（定期清理）',
+                place: '上海省仓',
+                placeCode: 'Z090',
             },
             active: 0,
             list: [
@@ -134,6 +133,13 @@ export default {
                 { i_img: 'assets/detailImg/供应商默认.png', ac_img: 'assets/detailImg/供应商选中.png', name: '型号' },
                 { i_img: 'assets/detailImg/数量默认.png', ac_img: 'assets/detailImg/数量选中.png', name: '品牌' }
             ],
+        }
+    },
+    created() {
+        if (this.$route.query.item != '{}') {
+            this.data = JSON.parse(this.$route.query.item);
+            console.log(this.data)
+            this.data.imgList = [this.data.img]
         }
     },
     methods: {
@@ -150,7 +156,7 @@ export default {
 @import '~styles/index.less';
 @import '~styles/variable.less';
 .inveD_box {
-    padding-bottom:80px;
+    padding-bottom: 80px;
     & > div {
         margin-top: 20px;
     }
@@ -174,7 +180,7 @@ export default {
         & > span:nth-of-type(2) {
             color: #999;
         }
-        .span1{
+        .span1 {
             font-size: 30px;
             font-weight: 600;
             margin-right: 4px;
@@ -235,14 +241,14 @@ export default {
             & .item {
                 margin-top: 26px;
                 & > p {
-                    height: 0.8rem;
+                    // height: 0.8rem;
                     display: flex;
-                    align-items: center;
+                    // align-items: center;
                     & > span {
                         display: block;
                         border-top: 1px solid #e1e1e1;
                         border-left: 1px solid #e1e1e1;
-                        height: 100%;
+                        // height: 100%;
                         line-height: 0.8rem;
                         padding-left: 0.3rem;
                     }

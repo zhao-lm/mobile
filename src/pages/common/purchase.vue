@@ -2,7 +2,7 @@
     <div class="content-box">
         <common-header tittle="采购申请"></common-header>
         <div class="page-content pur_box">
-            <van-tabs v-model="active" @change="getData()">
+            <van-tabs v-model="active" @change="getData()" title-active-color='#d82138'>
                 <van-tab title="全部"></van-tab>
                 <van-tab title="待审批"></van-tab>
                 <van-tab title="已通过"></van-tab>

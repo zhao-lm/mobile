@@ -1,26 +1,26 @@
 <template>
     <div class="content-box">
-        <common-header tittle="评价运单" :showContent="showContent"></common-header>
+        <common-header tittle="评价运单" :showRightTitle='true' rightTitle="提交" @sureClick='onTosuccess'></common-header>
         <div class="page-content stor_box2">
-            <div class="item content" v-for="(item, key) in arr" :key="key">
+            <div class="item content">
                 <div>
                     <p>
                         <span>运单编号：</span>
-                        <span>{{ item.code }}</span>
+                        <span>{{ data.code }}</span>
                     </p>
                     <p>
                         <span>华盛编号：</span>
-                        <span>{{ item.hscode }}</span>
+                        <span>{{ data.hscode }}</span>
                     </p>
                     <p>
                         <span>运单图片：</span>
-                        <img v-for="(val, index) in item.imgList" :src="val.src" :key="index" alt=""
+                        <img v-for="(val, index) in dataList[0].imgList" :src="val.src" :key="index" alt=""
                             @click="show(index)" />
-                        <previewer ref="previewer" :list="item.imgList"> </previewer>
+                        <previewer ref="previewer" :list="dataList[0].imgList"> </previewer>
                     </p>
                     <p>
                         <span>上传时间：</span>
-                        <span>{{item.applicationTime }}</span>
+                        <span>{{data.applicationTime }}</span>
                     </p>
                 </div>
             </div>
@@ -66,6 +66,7 @@ import { Popup } from "mint-ui";
 export default {
     data() {
         return {
+            showContent: '提交',
             showToolbar: true,
             message: "请选择",
             slots: [
@@ -88,7 +89,7 @@ export default {
             ishege: "1", //原因分类是否显示
             juti: false, //选择其他的时候显示具体原因
             active: 0,
-            data: [
+            dataList: [
                 {
                     code: "JDV003530362356",
                     hscode: "4961081535",
@@ -107,15 +108,35 @@ export default {
                 },
             ],
             arr: [],
+            data: {
+                code: "JDV003530362356",
+                hscode: "4961081535",
+                status: 1,
+                imgList: [
+                    {
+                        src: require("../../assets/qianshou/qianshou3.jpg"),
+                        msrc: require("../../assets/qianshou/qianshou3.jpg"),
+                        w: 600,
+                        h: 400
+                    }
+                ],
+                applicationTime: "2021-12-21 11:27",
+                isqualified: "0",
+                clickFlag: true,
+            },
         };
     },
     created() {
-        this.getData();
+        if (this.$route.query.item != '{}') {
+            this.data = JSON.parse(this.$route.query.item);
+            console.log(this.data)
+        }
+        // this.getData();
     },
     methods: {
         show(index) {
             // 显示特定index的图片，使用ref
-            this.$refs.previewer[0].show(index);
+            this.$refs.previewer.show(index);
         },
         //原因分类
         handleClick() {
@@ -171,6 +192,10 @@ export default {
             });
             this.arr = arr;
         },
+        //点击提交
+        onTosuccess() {
+            this.$router.togo("/Logistics/loginsuccess");
+        }
     },
     components: {
         commonHeader,
@@ -315,6 +340,7 @@ export default {
     .mint-cell-text {
         font-size: 30px !important;
         margin-left: 20px !important;
+        color: #000 !important;
     }
     .mint-field-core {
         border: 1px solid #ccc !important;
@@ -330,6 +356,11 @@ export default {
     line-height: 40px;
     font-size: 30px;
     margin-top: 30px;
+}
+
+.otherR .mint-field-core {
+    font-size: 30px;
+    color: #000;
 }
 
 .usi-btn-cancel {

@@ -25,7 +25,7 @@
                     <p>共<span>{{total}}</span>件</p>
                 </div>
             </div>
-            <div class="items" v-for="(item,key) in arr" :key="key" @click="goDetail(item.id)">
+            <div class="items" v-for="(item,key) in arr" :key="key" @click="goDetail(item)">
                 <div>
                     <p>
                         <!-- <img src="../../assets/imgs/订单管理.png" alt=""> -->
@@ -62,6 +62,7 @@
 <script>
 import commonHeader from 'common/common-header';
 import ActionSheet from '../../components/actionSheet.vue';
+import reportList from '../../assets/data/report'
 export default {
     components: {
         commonHeader,ActionSheet
@@ -77,29 +78,11 @@ export default {
             show: false,
             flag: false,
             total: 25,
-            arr: [
-                {
-                    code: '7403003217',
-                    img: 'assets/imgs/iphone1.png',
-                    content: '5G手机终端 OPPOA72 (8+128G)_OPPO_六模_简单黑_无礼包',
-                    num: 20,
-                    place: "上海省仓",
-                    placeNumber: 'Z090',
-                    location: '业务周转库 (定时清理)',
-                    locationNumber: '1006'
-                },
-                {
-                    code: '7403008245',
-                    img: 'assets/imgs/iphone1.png',
-                    content: 'realme V15（8+128G）联通版镜湖蓝',
-                    num: 5,
-                    place: "上海省仓",
-                    placeNumber: 'Z090',
-                    location: '业务周转库 (定时清理)',
-                    locationNumber: '1006'
-                },
-            ],
+            arr: [],
         }
+    },
+    created(){
+        this.arr = reportList
     },
     filters: {
         getVal(val) {
@@ -121,8 +104,8 @@ export default {
         search() {
             this.flag = true
         },
-        goDetail(id){
-            this.$router.push({path:'/inventoryReport/detail',query:{id:id}})
+        goDetail(item){
+            this.$router.push({path:'/inventoryReport/detail',query:{item:JSON.stringify(item) }})
         }
     }
 }
@@ -161,6 +144,7 @@ export default {
     }
 }
 .inve_box {
+    padding-bottom: 100px;
     & > div:nth-of-type(2) {
         background: #fff;
         padding: 16px 32px;

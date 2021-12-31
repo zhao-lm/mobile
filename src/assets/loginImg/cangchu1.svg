@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="161px" height="71px" viewBox="0 0 161 71" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 6</title>
+    <defs>
+        <linearGradient x1="100%" y1="59.7237761%" x2="0%" y2="40.2762239%" id="linearGradient-1">
+            <stop stop-color="#DEE4FE" offset="0%"></stop>
+            <stop stop-color="#80B8F0" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="0" y="0" width="161" height="71" rx="4"></rect>
+        <linearGradient x1="50%" y1="2.33828671%" x2="50%" y2="100%" id="linearGradient-4">
+            <stop stop-color="#C6D5FF" offset="0%"></stop>
+            <stop stop-color="#AEBDFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页-待办" transform="translate(-16.000000, -457.000000)">
+            <rect id="矩形备份-5" fill="#FFFFFF" x="0" y="4" width="360" height="984"></rect>
+            <g id="编组-6" transform="translate(16.000000, 457.000000)">
+                <g id="路径-3">
+                    <mask id="mask-3" fill="white">
+                        <use xlink:href="#path-2"></use>
+                    </mask>
+                    <use id="蒙版" fill="url(#linearGradient-1)" opacity="0.3" xlink:href="#path-2"></use>
+                    <path d="M24.3707749,49.9304058 C24.3707749,49.9304058 113.045873,-33.542276 181.262516,39.231682 C214.864646,75.0786528 197.332581,137.609244 150.55461,131.553826 C102.367287,125.315967 24.3707749,49.9304058 24.3707749,49.9304058 Z" stroke="#C2D6FE" stroke-width="6" opacity="0.2" stroke-linecap="round" mask="url(#mask-3)" transform="translate(111.533155, 70.704733) rotate(-35.000000) translate(-111.533155, -70.704733) "></path>
+                </g>
+                <g id="盘点明细报表" opacity="0.3" transform="translate(111.000000, 12.716418)">
+                    <g id="编组-2" transform="translate(2.000000, 2.119403)">
+                        <g id="蒙版" fill="url(#linearGradient-4)" fill-rule="nonzero">
+                            <path d="M40.3125,6.69086475 L40.3125,0 L34.9375,0 L34.9375,5.69435298 L29.5625,5.69435298 L29.5625,0 L24.1875,0 L24.1875,5.69435298 L18.8125,5.69435298 L18.8125,0 L13.4375,0 L13.4375,5.69435298 L8.0625,5.69435298 L8.0625,0 L2.6875,0 L2.6875,6.69086475 C1.0680515,7.6404092 0.083761163,7.75611305 0,11.388706 L0,39.8604708 C0.229632385,43.2257891 0.616836137,45.9239 6.154375,45.5548238 L36.845625,45.5548238 C41.8823805,45.8905229 42.7703676,43.2257891 43,39.8604708 L43,11.388706 C42.9162388,7.75611305 41.9319485,7.6404092 40.3125,6.69086475 Z" id="形状"></path>
+                        </g>
+                        <rect id="矩形" fill="#D7E2F9" fill-rule="nonzero" x="10.75" y="17.6054953" width="21.5" height="5.17808684"></rect>
+                        <path d="M30.4400116,8.78841789 C33.3079481,8.44594864 35.3723636,8.71713275 37.8314278,10.4226836 C40.290492,12.1282344 40.9336241,13.3590464 41.1653005,14.4425524 C41.3969769,15.5260584 40.0525617,17.2828908 39.4151562,16.1154593 C38.7777506,14.9480279 37.7413947,14.1910827 35.9290268,12.8939232 C33.5916971,11.2210347 29.7554971,11.7290708 28.8661878,11.0078077 C27.9768784,10.2865446 27.5720752,9.13088713 30.4400116,8.78841789 Z" id="路径-2" fill="#FFFFFF" opacity="0.329357329"></path>
+                        <rect id="矩形备份-2" fill="#D7E2F9" fill-rule="nonzero" x="10.75" y="28.9972863" width="21.5" height="5.17808684"></rect>
+                    </g>
+                    <polygon id="矩形备份-8" fill="#000000" fill-rule="nonzero" opacity="0" points="0 0 48 0 48 28.7277116 48 50.8656716 0 50.8656716"></polygon>
+                </g>
+            </g>
+            <text id="盘点明细报表" font-family="PingFangSC-Medium, PingFang SC" font-size="16" font-weight="400" fill="#4D5E9E">
+                <tspan x="25.5" y="489">盘点明细报表</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

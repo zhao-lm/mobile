@@ -6,12 +6,12 @@
         </div>
         
         <div class="loginInput">
-            <div style="display:flex;margin-left:20px;">
+            <div style="display:flex;margin-left:10px;">
               <img src="../../assets/loginImg/people.svg" alt="">
               <!-- <mt-field class="inputClass" placeholder="请输入账号" v-model="username"></mt-field> -->
               <input class="inputClass" type="text" placeholder="请输入账号">
             </div>
-            <div style="display:flex;margin-left:20px;">
+            <div style="display:flex;margin-left:10px;">
               <img src="../../assets/loginImg/lock.svg" alt="">
               <!-- <mt-field class="inputClass" placeholder="请输入密码" :type="password" v-modal="password"></mt-field> -->
               <input class="inputClass" :type="password" placeholder="请输入密码">

@@ -22,8 +22,8 @@
                     </div>
                 </van-swipe-item>
             </van-swipe>
-            <van-icon name="arrow-left" @click="prev()" class="arrow-left arrow"/>
-            <van-icon name="arrow" @click="next()" class="arrow arrow-right"/>
+            <van-icon name="arrow-left" @click="prev()" class="arrow-left arrow" />
+            <van-icon name="arrow" @click="next()" class="arrow arrow-right" />
         </div>
         <p class="tit_item1">
             <i></i>
@@ -31,14 +31,14 @@
                 <span class="span1">数量金额</span>
             </span>
         </p>
-        <div v-for="(item,key) in data.encoeList" :key="key" class="detailed">
+        <div class="detailed">
             <p>
                 <span>订单数量</span>
-                <span>{{item.encoded}}</span>
+                <span>{{data.number}}</span>
             </p>
             <p style="border-bottom: 1px solid #e1e1e1;">
                 <span>订单总金额</span>
-                <span>{{item.encod}}</span>
+                <span>{{data.money}}</span>
             </p>
         </div>
         <p class="tit_item1">
@@ -55,101 +55,104 @@
                         <p>{{item.name}}</p>
                     </li>
                 </ul>
-                <div v-if="active==0" class="item"  style="padding:15px;padding-top:0px;">
-                        <p>
-                            <span>名称</span>
-                            <span>{{data.lineNumber}}</span>
-                        </p>
-                        <p>
-                            <span>编码</span>
-                            <span>{{data.encoded}}</span>
-                        </p>
+                <div v-if="active==0" class="item" style="padding:15px;padding-top:0px;">
+                    <p>
+                        <span>名称</span>
+                        <span>{{data.name}}</span>
+                    </p>
+                    <p>
+                        <span>编码</span>
+                        <span>{{data.encoded}}</span>
+                    </p>
                 </div>
                 <div v-if="active==1" class="item">
-                        <p style="padding:0 15px;">
-                            <span>名称</span>
-                            <span>IPHONE 13 STARLIGHT 128GB-CHN</span>
+                    <p style="padding:0 15px;">
+                        <span>名称</span>
+                        <span>{{data.lineNumber}}</span>
+                    </p>
+                    <p style="padding:0 15px;">
+                        <span>编码</span>
+                        <span>{{data.encoded}}</span>
+                    </p>
+                    <div class="tit_item1">
+                        <i></i>
+                        <span>
+                            <span class="span1">厂家信息</span>
+                        </span>
+                    </div>
+                    <div class="detailed" style="padding:15px;">
+                        <p>
+                            <span>单据是否传输厂家</span>
+                            <span>是</span>
                         </p>
-                        <p style="padding:0 15px;">
-                            <span>编码</span>
-                            <span>7403017380</span>
+                        <p>
+                            <span>邮件是否发送</span>
+                            <span>是</span>
                         </p>
-                         <div class="tit_item1">
-                            <i></i>
-                            <span>
-                                <span class="span1">厂家信息</span>
-                            </span>
-                        </div>
-                        <div class="detailed" v-for="(item,key) in data.encoeList" :key="key" style="padding:15px;">
-                            <p>
-                                <span>单据是否传输厂家</span>
-                                <span>是</span>
-                            </p>
-                            <p>
-                                <span>邮件是否发送</span>
-                                <span>是</span>
-                            </p>
-                            <p>
-                                <span>短信是否发送</span>
-                                <span>是</span>
-                            </p>
-                            <p style="border-bottom: 1px solid #e1e1e1;">
-                                <span>厂家是否发货</span>
-                                <span>是</span>
-                            </p>
-                        </div>
+                        <p>
+                            <span>短信是否发送</span>
+                            <span>是</span>
+                        </p>
+                        <p style="border-bottom: 1px solid #e1e1e1;">
+                            <span>厂家是否发货</span>
+                            <span>是</span>
+                        </p>
+                    </div>
                 </div>
                 <div v-if="active==2" class="item">
-                    <div class="detailed" v-for="(item,key) in data.encoeList" :key="key" style="padding:15px;padding-top:0px;">
-                            <p>
-                                <span>方式</span>
-                                <span>配送</span>
-                            </p>
-                            <p>
-                                <span>待发</span>
-                                <span>40 件</span>
-                            </p>
-                            <p style="border-bottom: 1px solid #e1e1e1;">
-                                <span>已发</span>
-                                <span>0 件</span>
-                            </p>
-                        </div>
+                    <div class="detailed"
+                        style="padding:15px;padding-top:0px;">
+                        <p>
+                            <span>方式</span>
+                            <span>{{data.mode}}</span>
+                        </p>
+                        <p>
+                            <span>待发</span>
+                            <span>{{data.readyNum}} 件</span>
+                        </p>
+                        <p style="border-bottom: 1px solid #e1e1e1;">
+                            <span>已发</span>
+                            <span>{{data.IssuedNum}} 件</span>
+                        </p>
+                    </div>
                 </div>
                 <div v-if="active==3" class="item">
-                    <div class="detailed" v-for="(item,key) in data.encoeList" :key="key" style="padding:15px;padding-top:0px;">
-                            <p>
-                                <span>地点</span>
-                                <span>上海省仓</span>
-                            </p>
-                            <p>
-                                <span>库位</span>
-                                <span>业务周转库（定期清理)</span>
-                            </p>
-                            <p style="border-bottom: 1px solid #e1e1e1;">
-                                <span>库存</span>
-                                <span>0 件</span>
-                            </p>
-                        </div>
+                    <div class="detailed"
+                        style="padding:15px;padding-top:0px;">
+                        <p>
+                            <span>地点</span>
+                            <span>{{data.place}}</span>
+                        </p>
+                        <p>
+                            <span>库位</span>
+                            <span>{{data.location}}</span>
+                        </p>
+                        <p style="border-bottom: 1px solid #e1e1e1;">
+                            <span>库存</span>
+                            <span>{{data.num}} 件</span>
+                        </p>
+                    </div>
                 </div>
                 <div v-if="active==4" class="item">
-                    <div class="detailed" v-for="(item,key) in data.encoeList" :key="key" style="padding:15px;padding-top:0px;">
-                            <p>
-                                <span>省份</span>
-                                <span>安徽</span>
-                            </p>
-                            <p>
-                                <span>城市</span>
-                                <span>芜湖市</span>
-                            </p>
-                            <p>
-                                <span>区县</span>
-                                <span>镜湖区</span>
-                            </p>
-                            <p style="border-bottom: 1px solid #e1e1e1;">
-                                <span>地址</span>
-                                <span>中山路步行街57号五星电器3楼</span>
-                            </p>
-                        </div>
+                    <div class="detailed"
+                        style="padding:15px;padding-top:0px;">
+                        <p>
+                            <span>省份</span>
+                            <span>{{data.province}}</span>
+                        </p>
+                        <p>
+                            <span>城市</span>
+                            <span>{{data.city}}</span>
+                        </p>
+                        <p>
+                            <span>区县</span>
+                            <span>{{data.region}}</span>
+                        </p>
+                        <p style="border-bottom: 1px solid #e1e1e1;">
+                            <span>地址</span>
+                            <span>{{data.detail}}</span>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -157,39 +160,39 @@
 </template>
 <script>
 import commonHeader from 'common/common-header'
-export default{
+export default {
     components: {
         commonHeader
     },
-    data(){
-        return{
-            data:{
+    data() {
+        return {
+            data: {
                 code: 'PO2112210020',
                 lineNumber: '京东五星电器集团有限公司',
                 money: '6000',
-                encoded:'5003000024',
+                encoded: '5003000024',
                 type: '经销采购 (NB)',
                 name: '深圳市爱施德股份有限公司',
                 number: 20,
                 place: '吉林省仓',
                 location: '全新良品库',
                 imgList: [{
-                    img:'assets/imgs/iphone1.png',
-                    money:'5989',
-                },{
-                    img:'assets/imgs/iphone2.png',
-                    money:'5989',
-                },{
-                    img:'assets/imgs/iphone3.png',
-                    money:'5989',
-                },{
-                    img:'assets/imgs/iphone4.png',
-                    money:'5989',
-                 }
+                    img: 'assets/imgs/iphone1.png',
+                    money: '5989',
+                }, {
+                    img: 'assets/imgs/iphone2.png',
+                    money: '5989',
+                }, {
+                    img: 'assets/imgs/iphone3.png',
+                    money: '5989',
+                }, {
+                    img: 'assets/imgs/iphone4.png',
+                    money: '5989',
+                }
                 ],
-                encoeList:[{
-                     encoded:'20',
-                    encod:'139.980.00',
+                encoeList: [{
+                    encoded: '20',
+                    encod: '139.980.00',
                 }],
             },
             linlist: [
@@ -203,7 +206,26 @@ export default{
             show: false
         }
     },
-    methods:{
+    created() {
+        if (this.$route.query.item != '{}') {
+            this.data = JSON.parse(this.$route.query.item);
+            this.data.imgList = [{
+                img: 'assets/imgs/iphone1.png',
+                money: '5989',
+            }, {
+                img: 'assets/imgs/iphone2.png',
+                money: '5989',
+            }, {
+                img: 'assets/imgs/iphone3.png',
+                money: '5989',
+            }, {
+                img: 'assets/imgs/iphone4.png',
+                money: '5989',
+            }
+            ]
+        }
+    },
+    methods: {
         prev() {
             this.$refs.swiper.prev()
         },
@@ -214,189 +236,185 @@ export default{
 }
 </script>
 <style lang="less">
-    .my-swipe {
-        border-bottom: 1px solid #e1e1e1;
-        position: relative;
-        .van-swipe-item {
-            font-size: 20px;
-            line-height: 1rem;
-            text-align: center;
-            background-color: #fff;
-            & img {
-                height: 336px;
-                width:200px;
-            }
+.my-swipe {
+    border-bottom: 1px solid #e1e1e1;
+    position: relative;
+    .van-swipe-item {
+        font-size: 20px;
+        line-height: 1rem;
+        text-align: center;
+        background-color: #fff;
+        & img {
+            height: 336px;
+            width: 200px;
         }
     }
-    .arrow{
-        position: absolute !important;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 32px;
-    }
-    .arrow-left{
-            left: 48px;
-    }
-    .arrow-right{
-        right: 48px;
-    }
-    .van-icon{
-        position: absolute !important;
-    }
-    .tit_item1{
-        line-height: 48px;
-        background:#fff;
-        display:block;
+}
+.arrow {
+    position: absolute !important;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 32px;
+}
+.arrow-left {
+    left: 48px;
+}
+.arrow-right {
+    right: 48px;
+}
+.van-icon {
+    position: absolute !important;
+}
+.tit_item1 {
+    line-height: 48px;
+    background: #fff;
+    display: block;
+    margin-top: 10px;
+    position: relative;
+    padding-left: 20px;
+    & > ::before {
+        content: '';
+        background: #d82138;
+        width: 4px;
+        height: 28px;
+        top: 0;
+        left: 5px;
+        position: absolute;
         margin-top: 10px;
-        position: relative;
-        padding-left:20px;
-        & > ::before{
-            content: '';
-            background: #d82138;
-            width:4px;
-            height:28px;
-            top: 0;
-            left: 5px;
-            position: absolute;
-            margin-top:10px;
-        }
     }
-.detailed{
-  background: #fff;
-  padding: 20px;
-   & > p{
-       height: 0.8rem;
+}
+.detailed {
+    background: #fff;
+    padding: 20px;
+    & > p {
+        height: 0.8rem;
         display: flex;
         align-items: center;
-         & > span {
-                        display: block;
-                        border-top: 1px solid #e1e1e1;
-                        border-left: 1px solid #e1e1e1;
-                        height: 100%;
-                        line-height: 0.8rem;
-                        padding-left: 0.3rem;
-                    }
-                    & > span:nth-of-type(1) {
-                        width: 25%;
-                        font-size: 24px;
-                        font-family: PingFangSC-Regular, PingFang SC;
-                        font-weight: 400;
-                        color: #999999;
-                    }
-                    & > span:nth-of-type(2) {
-                        width: 75%;
-                        border-right: 1px solid #e1e1e1;
-                        
-                        font-size: 24px;
-                        font-family: PingFangSC-Medium, PingFang SC;
-                        font-weight: 500;
-                        color: #000000;
-                    }
-   } 
+        & > span {
+            display: block;
+            border-top: 1px solid #e1e1e1;
+            border-left: 1px solid #e1e1e1;
+            height: 100%;
+            line-height: 0.8rem;
+            padding-left: 0.3rem;
+        }
+        & > span:nth-of-type(1) {
+            width: 25%;
+            font-size: 24px;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            color: #999999;
+        }
+        & > span:nth-of-type(2) {
+            width: 75%;
+            border-right: 1px solid #e1e1e1;
+
+            font-size: 24px;
+            font-family: PingFangSC-Medium, PingFang SC;
+            font-weight: 500;
+            color: #000000;
+        }
+    }
 }
-.detailede{
-      & > .detive{
-          background: #fff;
+.detailede {
+    & > .detive {
+        background: #fff;
         & > ul {
+            display: flex;
+            align-items: center;
+            & > li {
+                height: 1.2rem;
+                width: 20%;
+                flex: 1;
+                text-align: center;
+                font-size: 24px;
+                font-family: PingFangSC-Medium, PingFang SC;
+                font-weight: 500;
+                color: #000000;
+                img {
+                    width: 36px;
+                    height: 36px;
+                    margin: 8px 0px;
+                }
+            }
+        }
+        & .item {
+            margin-top: 26px;
+            & > p {
+                height: 0.8rem;
                 display: flex;
                 align-items: center;
-                & > li {
-                    height: 1.2rem;
-                    width: 20%;
-                    flex: 1;
-                    text-align: center;
+                & > span {
+                    display: block;
+                    border-top: 1px solid #e1e1e1;
+                    border-left: 1px solid #e1e1e1;
+                    height: 100%;
+                    line-height: 0.8rem;
+                    padding-left: 0.3rem;
+                }
+                & > span:nth-of-type(1) {
+                    width: 25%;
+                    font-size: 24px;
+                    font-family: PingFangSC-Regular, PingFang SC;
+                    font-weight: 400;
+                    color: #999999;
+                }
+                & > span:nth-of-type(2) {
+                    width: 75%;
+                    border-right: 1px solid #e1e1e1;
                     font-size: 24px;
                     font-family: PingFangSC-Medium, PingFang SC;
                     font-weight: 500;
                     color: #000000;
-                    img {
-                        width: 36px;
-                        height: 36px;
-                        margin: 8px 0px;
-                    }
                 }
             }
-            & .item {
-                margin-top: 26px;
-                & > p {
-                    height: 0.8rem;
-                    display: flex;
-                    align-items: center;
-                    & > span {
-                        display: block;
-                        border-top: 1px solid #e1e1e1;
-                        border-left: 1px solid #e1e1e1;
-                        height: 100%;
-                        line-height: 0.8rem;
-                        padding-left: 0.3rem;
-                    }
-                    & > span:nth-of-type(1) {
-                        width: 25%;
-                        font-size: 24px;
-                        font-family: PingFangSC-Regular, PingFang SC;
-                        font-weight: 400;
-                        color: #999999;
-                    }
-                    & > span:nth-of-type(2) {
-                        width: 75%;
-                        border-right: 1px solid #e1e1e1;
-                        font-size: 24px;
-                        font-family: PingFangSC-Medium, PingFang SC;
-                        font-weight: 500;
-                        color: #000000;
-                    }
-                }
-                & > p:nth-last-of-type(1) {
-                    & > span {
-                        border-bottom: 1px solid #e1e1e1;
-                    }
+            & > p:nth-last-of-type(1) {
+                & > span {
+                    border-bottom: 1px solid #e1e1e1;
                 }
             }
-            .items {
-                & > p {
-                    & > span:nth-of-type(1) {
-                        width: 75%;
-                    }
-                    & > span:nth-of-type(2) {
-                        width: 25%;
-                        color: #999999;
-                    }
+        }
+        .items {
+            & > p {
+                & > span:nth-of-type(1) {
+                    width: 75%;
+                }
+                & > span:nth-of-type(2) {
+                    width: 25%;
+                    color: #999999;
                 }
             }
-
-      }
-       
+        }
     }
-.illustrate{ 
+}
+.illustrate {
     position: absolute;
     bottom: 0px;
     left: 0px;
     width: 100%;
-    & > div{
+    & > div {
         width: 40%;
         background: #d82138;
         color: #fff;
         line-height: 48px;
-       
-        
     }
-    & > div:first-of-type{
+    & > div:first-of-type {
         width: 60%;
         text-align: left;
         padding-left: 20px;
     }
-    & > div:last-of-type{
+    & > div:last-of-type {
         height: 78px;
         position: absolute;
         bottom: 0;
         right: 0;
         padding-top: 10px;
-        & > span{
+        & > span {
             height: 20px;
             line-height: 20px;
-            display: block; 
+            display: block;
         }
-        &::before{
+        &::before {
             content: '';
             position: absolute;
             top: 0;

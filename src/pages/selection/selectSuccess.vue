@@ -1,50 +1,61 @@
 <template>
-  <div class="main">
-        <common-header @sureClick='onSureClick'  :tittle="tittle" :showback="true" :showright='true'></common-header>
-       <div class="logo">
-           <img src="../../assets/logoImg/yes.png" alt="">
-           <div class="order">
+    <div class="main">
+        <common-header @sureClick='onSureClick' :isBack='false' @goBack='goBack' :tittle="tittle" :showback="true" :showright='true'>
+        </common-header>
+        <div class="logo">
+            <img src="../../assets/logoImg/yes.png" alt="">
+            <div class="order">
                 订单申请提交成功
-           </div>
-       <div class="orderNO">订单  PO2112210020 【Z090】</div>
-       </div>
-    <div class="button">
-        <div class="sure">确定</div>
-        <div @click="toDetail" class="toDetail">查看申请</div>
+            </div>
+            <div class="orderNO">订单 PO2112210020 【Z090】</div>
+        </div>
+        <div class="button">
+            <div class="sure" @click="sure()">确定</div>
+            <div @click="toDetail" class="toDetail">查看申请</div>
+        </div>
+
     </div>
-                            
-  </div>
 </template>
 
 <script>
 import commonHeader from '@/components/common-header'
 export default {
-  data() {
-    return {
-        tittle:'选品采购'
-    };
-  },
-  methods: {
-      toDetail(){
-           this.$router.push({
-             path:'/selection/selectInfo'
-         })
-      }
-  },
-   components: {
+    data() {
+        return {
+            tittle: '选品采购'
+        };
+    },
+    methods: {
+        toDetail() {
+            this.$router.push({
+                path: '/Home/Detail'
+            })
+        },
+        sure(){
+             this.$router.push({
+                path: '/Home/procurement'
+            })
+        },
+        goBack() {
+            this.$router.push({
+                path: '/selection/selectBrand'
+            })
+        }
+    },
+    components: {
         commonHeader
     },
-  mounted() {}
+    mounted() { }
 };
 </script>
 
 <style scoped>
-.main{
+.main {
     height: 100%;
     width: 100%;
     background: white;
 }
-.logo{
+.logo {
     display: inline-flex;
     flex-direction: column;
     align-items: center;
@@ -53,32 +64,32 @@ export default {
     margin-left: 30%;
 }
 
-.logo img{
+.logo img {
     height: 0.4rem;
     width: 0.4rem;
     display: inline-block;
 }
-.order{
+.order {
     font-size: 26px;
     font-weight: 600;
     margin-top: 0.4rem;
 }
-.orderNo{
-    font-size:20px;
-    color:#9e9e9e;
+.orderNo {
+    font-size: 20px;
+    color: #9e9e9e;
     margin-top: 0.4rem;
 }
-.button{
+.button {
     height: 1rem;
     width: 100%;
     position: fixed;
-    bottom: 0;
+    bottom: 30px;
     left: 0;
     display: flex;
-    align-items: center; 
+    align-items: center;
     justify-content: space-around;
 }
-.sure{
+.sure {
     height: 0.7rem;
     width: 40%;
     border-radius: 0.5rem;
@@ -89,7 +100,7 @@ export default {
     line-height: 0.7rem;
     margin-top: 0.15rem;
 }
-.toDetail{
+.toDetail {
     height: 0.7rem;
     width: 40%;
     border-radius: 0.5rem;

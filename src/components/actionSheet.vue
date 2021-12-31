@@ -125,7 +125,7 @@ export default {
 }
 .modalHead input {
     // background: #fff;
-    border: 1px solid #d82138;
+    border: 3px solid #d82138;
     outline: none;
     border-radius: 30px;
     height: 60px;

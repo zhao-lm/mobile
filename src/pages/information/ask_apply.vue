@@ -9,7 +9,7 @@
                 </p>
             </div>
             <div style="overflow:hidden;margin-top:5px;padding-top:9px;">
-                <van-tabs v-model="active" @change="getData()" style="width:50%;float:left;">
+                <van-tabs v-model="active" @change="getData()" title-active-color='#d82138' style="width:50%;float:left;">
                     <van-tab title="全部"></van-tab>
                     <van-tab title="今天"></van-tab>
                     <van-tab title="本周"></van-tab>
@@ -56,19 +56,19 @@
                         <span>{{item.code}}</span>
                     </p>
                    <span style="color: #D82138;">
-                        {{item.lisnull}}
+                        待发货0件
                     </span>
                 </div>
                 <div>
-                    <div @click="$router.togo('/Home/deil_ask')">
+                    <div @click="goPush(item)">
                         <div>
                             <img v-for="(val,index) in item.imgList" :key="index" :src="require('../../'+val)" alt="">
                         </div>
                         <div v-if="item.imgList.length<=1" class="content" style="flex:1;">
-                            {{item.content}}
+                            {{item.name}}
                         </div>
                         <div>
-                          <span style="display:block;text-align:right;margin-bottom:5px;">共{{item.num}}件</span>
+                          <span style="display:block;text-align:right;margin-bottom:5px;">共{{item.number}}件</span>
                            <span style="display:block;"> ￥{{item.money}}</span>
                         </div>
                     </div>
@@ -82,7 +82,8 @@
 </template>
 
 <script>
-import commonHeader from 'common/common-header'
+import commonHeader from 'common/common-header';
+import list from '../../assets/data/orderList'
 export default {
     components: {
         commonHeader
@@ -157,7 +158,7 @@ export default {
         this.$router.togo("/information/ask_apply");
         },
         getData() {
-            let arr = this.data.filter((item, key) => {
+            let arr = list.filter((item, key) => {
                 switch (this.active) {
                     case 0:
                         return true;
@@ -165,12 +166,14 @@ export default {
                         return item.status == 1;
                     case 2:
                         return item.status == 2;
-                    case 3:
-                        return item.status == 3;
                         break;
                 }
             });
-            this.arr = arr
+            this.arr = arr;
+            console.log(arr)
+        },
+        goPush(item){
+            this.$router.togo({path:'/Home/deil_ask',query:{item:JSON.stringify(item)}})
         }
     }
 }

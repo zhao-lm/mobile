@@ -4,16 +4,15 @@
         <div class="head">
             <div class="rightContent">
                 <div class="phoneItem">
-                    <div class="itemLeft">
-                        <!-- <img src="../../assets/logoImg/360.png" alt=""> -->
-                        <img src="../../assets/detailImg/编组 4.png" alt="">
+                     <div class="itemLeft">
+                        <img :src="require('../../'+detail.icon)" alt="">
                     </div>
                     <div class="itemRight">
-                        <div class="itemTitle">IPHONE XS MAX GOLD 256GB A2104-CHN I
+                        <div class="itemTitle">{{detail.describe}}
                         </div>
                         <div class="itemBot">
-                            <div class="itemNum">7402709579</div>
-                            <div class="itemPrice">￥ <span>3000</span> </div>
+                            <div class="itemNum">{{detail.code}}</div>
+                            <div class="itemPrice">￥<span>{{detail.price}}</span> </div>
                         </div>
                     </div>
                 </div>
@@ -24,13 +23,13 @@
                 <div>供应商名称</div>
                 <div>合同编码</div>
                 <div>生效日期</div>
-                <div>经代码</div>
+                <div>采购类型</div>
             </div>
             <div class="rightMain">
                 <div>北京博通伟业广告有限公司</div>
                 <div>4600011741</div>
                 <div>2021-12-16</div>
-                <div>经销</div>
+                <div>经销采购订单</div>
             </div>
         </div>
         <div class="info">
@@ -65,7 +64,17 @@ import commonHeader from '@/components/common-header'
 export default {
     data() {
         return {
-            tittle: '确认采购信息'
+            tittle: '确认采购信息',
+            detail: {
+                averageSales: 65,
+                code: "7402707231",
+                contractNo: "4600008698",
+                describe: "4G手机终端_华为P20 64G_华为_六模_极光_无礼包",
+                icon: "assets/contart/hwImg.png",
+                price: "2779",
+                salesVolume: 21346,
+                stock: "35",
+            }
         }
     },
     methods: {
@@ -74,6 +83,11 @@ export default {
             this.$router.push({
                 path: '/selection/selectSuccess'
             })
+        }
+    },
+    created() {
+        if (this.$route.query.item != '{}') {
+            this.detail = JSON.parse(this.$route.query.item)
         }
     },
     components: {
@@ -153,15 +167,15 @@ export default {
     justify-content: space-between;
 }
 .itemNum {
-    font-size:18px;
+    font-size: 18px;
     color: #ccc;
 }
 .itemPrice {
     font-size: 0.16rem;
     color: red;
-    &>span{
+    & > span {
         font-size: 0.4rem;
-        font-weight:600;
+        font-weight: 600;
     }
 }
 .title {
@@ -211,7 +225,7 @@ export default {
     padding: 0.2rem 0rem 0.2rem 0.2rem;
 }
 .rightMain div {
-    font-size:24px;
+    font-size: 24px;
     height: 0.6rem;
     line-height: 0.6rem;
 }
@@ -236,22 +250,23 @@ export default {
     margin-top: 0.26rem;
 }
 .infoTitle {
-    font-size: 0.22rem;
+    font-size: 24px;
     margin-left: 0.1rem;
     font-weight: 600;
     line-height: 0.8rem;
 }
 .button {
     position: fixed;
-    bottom: 0;
+    bottom: 0px;
     left: 0;
     width: 100%;
-    /* height: 1rem; */
+    height:120px;
     display: inline-block;
     align-items: center;
     justify-content: center;
     background: white;
     padding: 20px 0px;
+    padding-top:30px;
 }
 .submit {
     width: 90%;
@@ -262,7 +277,7 @@ export default {
     color: white;
     /* margin-left: 0.2rem; */
     /* margin-top: 0.15rem; */
-    font-size:26px;
+    font-size: 26px;
     text-align: center;
     border-radius: 30px;
 }

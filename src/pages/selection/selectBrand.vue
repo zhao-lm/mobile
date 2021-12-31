@@ -1,26 +1,27 @@
 <template>
-    <div class="box">
-        <common-header @sureClick='onSureClick' :showRightTitle="true" :rightTitle='rightTitle' :tittle="tittle"
-            :showback="true" :showright='true'></common-header>
-        <div class="header">
-            <div class="headerInput">
-                <input class="headInput" type="text" placeholder="请输入产品名称或编码">
-                <div class="headSearch">
-                <i @click="search" class="mintui mintui-search"></i>
-            </div>
-            </div>
-            
-        </div>
-        <div class="content">
-
-            <div class="leftContent">
-                <div @click="logoClick(index)" class="phoneName" :class="actives==index?'active':''"
-                    v-for="(item,index) in imgArr" :key="index">
-                    <img :src="require('../../'+item.img)" alt="">
-                    <span>{{item.title}}</span>
+    <div class="content-box">
+        <common-header @sureClick='onSureClick' :isBack='false' @goBack='goBack' :showRightTitle="true" :rightTitle='rightTitle'
+            :tittle="tittle" :showback="true" :showright='true'></common-header>
+        <div class="page-content sel_box">
+            <div class="header">
+                <div class="headerInput">
+                    <input class="headInput" type="text" placeholder="请输入产品名称或编码">
+                    <div class="headSearch">
+                        <i @click="search" class="mintui mintui-search"></i>
+                    </div>
                 </div>
 
-                <!-- <div class="phone
+            </div>
+            <div class="content">
+
+                <div class="leftContent">
+                    <div @click="logoClick(index)" class="phoneName" :class="actives==index?'active':''"
+                        v-for="(item,index) in imgArr" :key="index">
+                        <img :src="require('../../'+item.img)" alt="">
+                        <span>{{item.title}}</span>
+                    </div>
+
+                    <!-- <div class="phone
                 Name ">
                     <img src="../../assets/logoImg/360.png" alt="">
                     <span>360</span>
@@ -29,30 +30,32 @@
                     <img src="../../assets/logoImg/360.png" alt="">
                     <span>360</span>
                 </div> -->
-            </div>
-            <div class="rightContent">
-                <!-- .borderActive -->
-                <div class="phoneItem" v-for="(item,index) in itemArr" :key="index" @click="rightActiveClick(index)"
-                    :class="rightActive==index?'borderActive':' '">
-                    <div class="itemLeft">
-                        <img :src="require('../../'+item.img)" alt="">
-
-                    </div>
-                    <div class="itemRight">
-                        <div class="itemTitle">{{item.title}}</div>
-                        <div class="itemBot">
-                            <div class="itemNum">{{item.num}}</div>
-                            <div class="itemPrice">￥<span>{{item.price}}</span> </div>
+                </div>
+                <div class="rightContent">
+                    <!-- .borderActive -->
+                    <div class="phoneItem" v-for="(item,index) in itemArr" :key="index" @click="rightActiveClick(index)"
+                        :class="rightActive==index?'borderActive':' '">
+                        <div class="itemLeft">
+                            <img :src="require('../../'+item.icon)" alt="">
+                        </div>
+                        <div class="itemRight">
+                            <div class="itemTitle">{{item.describe}}</div>
+                            <div class="itemBot">
+                                <div class="itemNum">{{item.code}}</div>
+                                <div class="itemPrice">￥<span>{{item.price}}</span> </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 </template>
 
 <script>
 import commonHeader from "@/components/common-header";
+import list from '@/assets/data/product';
 export default {
     data() {
         return {
@@ -71,114 +74,68 @@ export default {
                 { img: "assets/logoImg/H3C.png", title: "h3c" },
                 { img: "assets/logoImg/njy.png", title: "诺基亚" }
             ],
-            itemArr: [
-                {
-                    img: "assets/logoImg/iphone.png",
-                    title: "IPHONE XS MAX GOLD 256GB A2104-CHN",
-                    num: "7402709579",
-                    price: "3000"
-                },
-                {
-                    img: "assets/logoImg/iphone.png",
-                    title: "IPHONE XS MAX GOLD 256GB A2104-CHN",
-                    num: "7402709579",
-                    price: "3000"
-                },
-                {
-                    img: "assets/logoImg/iphone.png",
-                    title: "IPHONE XS MAX GOLD 256GB A2104-CHN",
-                    num: "7402709579",
-                    price: "3000"
-                },
-                {
-                    img: "assets/logoImg/iphone.png",
-                    title: "IPHONE XS MAX GOLD 256GB A2104-CHN",
-                    num: "7402709579",
-                    price: "3000"
-                },
-                {
-                    img: "assets/logoImg/iphone.png",
-                    title: "IPHONE XS MAX GOLD 256GB A2104-CHN",
-                    num: "7402709579",
-                    price: "3000"
-                },
-                {
-                    img: "assets/logoImg/iphone.png",
-                    title: "IPHONE XS MAX GOLD 256GB A2104-CHN",
-                    num: "7402709579",
-                    price: "3000"
-                },
-                {
-                    img: "assets/logoImg/iphone.png",
-                    title: "IPHONE XS MAX GOLD 256GB A2104-CHN",
-                    num: "7402709579",
-                    price: "3000"
-                },
-                {
-                    img: "assets/logoImg/iphone.png",
-                    title: "IPHONE XS MAX GOLD 256GB A2104-CHN",
-                    num: "7402709579",
-                    price: "3000"
-                },
-                {
-                    img: "assets/logoImg/iphone.png",
-                    title: "IPHONE XS MAX GOLD 256GB A2104-CHN",
-                    num: "7402709579",
-                    price: "3000"
-                },
-                {
-                    img: "assets/logoImg/iphone.png",
-                    title: "IPHONE XS MAX GOLD 256GB A2104-CHN",
-                    num: "7402709579",
-                    price: "3000"
-                },
-                {
-                    img: "assets/logoImg/iphone.png",
-                    title: "IPHONE XS MAX GOLD 256GB A2104-CHN",
-                    num: "7402709579",
-                    price: "3000"
-                },
-                {
-                    img: "assets/logoImg/iphone.png",
-                    title: "IPHONE XS MAX GOLD 256GB A2104-CHN",
-                    num: "7402709579",
-                    price: "3000"
-                }
-            ]
+            itemArr: [],
         };
+    },
+    created() {
+        this.getList()
+    },
+    mounted() {
+        console.log(list)
+    },
+    watch: {
+        actives(val) {
+            this.getList()
+        }
     },
     methods: {
         logoClick(index) {
-            console.log(index, this.actives);
             this.actives = index;
         },
         rightActiveClick(index) {
             this.rightActive = index;
-            // console.log(1111)
         },
         //点击确定的时候
         onSureClick() {
             this.$router.push({
-                path: "/selection/selectContract"
+                path: "/selection/selectContract",
+                query: { item: JSON.stringify(this.itemArr[this.rightActive]) }
             });
         },
         search() {
 
+        },
+        getList() {
+            let arr = [];
+            arr = list.filter((item) => {
+                return this.imgArr[this.actives].title == item.brand
+            });
+            if (arr.length >= 1) {
+                this.itemArr = arr[0].data;
+            }
+        },
+        goBack() {
+            this.$router.push('/Home/procurement')
         }
     },
     components: {
         commonHeader
     },
-    mounted() { }
+
 };
 </script>
 
 <style lang="less" scoped>
+@import '~styles/index.less';
+@import '~styles/variable.less';
 .header {
     height: 1rem;
     width: 100%;
     background: rgb(242 242 242);
-    box-shadow: 0 0 10px rgba(0 0 0, 0.8);
+    // box-shadow: 0 0 10px rgba(0 0 0, 0.8);
+}
+.sel_box{
+    padding-bottom: 100px;
 }
 .headerInput {
     position: relative;
@@ -214,8 +171,8 @@ export default {
     margin: 0.1rem 0rem 0.1rem 0.1rem;
 }
 .content {
-    overflow: hidden;
-    height: 80%;
+    // overflow: hidden;
+    // height: 80%;
     margin-top: 0.25rem;
     display: flex;
     justify-content: space-between;
@@ -313,16 +270,15 @@ export default {
     justify-content: space-between;
 }
 .itemNum {
-    font-size:20px;
+    font-size: 20px;
     color: #ccc;
 }
 .itemPrice {
     font-size: 0.16rem;
     color: red;
-    &>span{
+    & > span {
         font-size: 30px;
         font-weight: 600;
-
     }
 }
 .borderActive {
